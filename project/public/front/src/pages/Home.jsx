@@ -5,6 +5,7 @@ import CategorieItems from '../components/Home/CategorieItems'
 import SectionProducts from '../components/Home/SectionProducts'
 import SliderSection from '../components/Home/SliderSection'
 import SectionProducts from '../components/Home/SectionProducts'
+import '../styles/Home.css'
  const Home = () => {
   return (
     <>
