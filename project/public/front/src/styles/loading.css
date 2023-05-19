@@ -1,0 +1,66 @@
+.loading-wrapper{
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+.loading{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loading .circles{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+}
+.loading .circles .circle{
+    width:500px;
+    aspect-ratio: 1;
+    /* background-color: red; */
+    /* border: 1px solid black; */
+    position: absolute;
+    border: 30px solid transparent;
+    border-radius: 50%;
+    padding: 2rem;
+    mix-blend-mode:multiply;
+}
+.loading .circles .circle-1{
+    border-top-color:  #FF2511;
+    animation: rotate infinite 1500ms;
+}
+.loading .circles .circle-2{
+    border-right-color:  #d33;
+    animation: rotate infinite 2000ms;
+
+}
+.loading .circles .circle-1{
+    border-bottom-color:  tomato;
+    animation: rotate infinite 1800ms;
+
+}
+.loading .circles .circle-1{
+    border-left-color:  #FF8A8A;
+    animation: rotate infinite 2500ms;
+
+}
+
+@keyframes rotate {
+    100%{
+        transform: rotate(360deg);
+    }
+}
