@@ -5,7 +5,9 @@ import MainRoute from './features/MainRoute';
 function App() {
   return (
     <div className="App">
-        <Route path='/*' element={<MainRoute/>}  />
+       <Routes>
+       <Route path='/*' element={<MainRoute/>}  />
+       </Routes>
 
     </div>
   );

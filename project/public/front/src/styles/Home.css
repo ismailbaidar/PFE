@@ -4,10 +4,7 @@
   --secondary:#FBFAF8;
   --red:#d33
 }
-@font-face {
-  font-family: lightf;
-  src: url('./Demo_Fonts/Fontspring-DEMO-greycliffcf-boldoblique.otf');
-}
+
 .App{
   background-color: var(--secondary);
   position: relative;
@@ -31,7 +28,7 @@
   background-color: var(--main);
   transition: .3s ease-in;
   align-items: center;
-  box-shadow: 4px 6px 21px #f2f2f2a6;
+  box-shadow: 1px 1px 5px GRAY;
   z-index: 3000;
 }
 .Navbar img{
@@ -167,7 +164,7 @@ height: 12px;
   border-radius: 8px;
 }
 .SliderAndContent2{
-  background-image: url('./images/Hero-Image.png');
+  background-image: url('../images/Hero-Image.png');
   background-size: cover;
   width: 55%;
   display: flex;
