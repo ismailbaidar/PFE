@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@800&family=Kanit&family=Mochiy+Pop+One&family=Montserrat:wght@200;500;800;900&family=Oswald:wght@200;400;700&family=Poppins:wght@400;500;600;700;800;900&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap');
+:root{
+  --main:#fff;
+  --secondary:#FBFAF8;
+  --red:#d33
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.Main{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    margin: 65px 0 0 0;
+}
+.itemSide
+{
+    display: flex;
+    padding: 7px 10px;
+    align-items: center;
+    font-size: 14px;
+    gap: 7px;
+}
+
+.itemSide p{
+    font-weight: 400;
+}
+
+.SideFilter{
+    width: 20%;
+}
+.activeCheckbox{
+    color: #ddd;
+    background-color: #dd3333;
+    border: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkbox{
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    border: 0.9px solid #322f2f ;
+}
+.activeI{
+    color: #dd3333;
+}
+.mainItem{
+    padding-left:0 !important ;
+}
+
+.show
+{
+    font-size: 12px;
+    color: #dd3333;
+    cursor: pointer;
+}
+
+.SelectSection{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.itemSelect{
+    padding:11px 20px;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px #c1bdbd3d;
+    border-radius: 4px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    outline: none !important;
+    border: none;
+    text-transform: uppercase;
+}
+
+#categorieTitle{
+    font-size: 20px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.FilterPrice{
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+}
+
+.FilterPrice input[type="range"]{
+    background: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.FilterPrice input[type="range"]::-webkit-slider-thumb{
+    width: 18px;
+    height: 18px;
+    background-color: #dd3333;
+    appearance: none;
+    border: 0;
+    border-radius: 50%;
+    z-index: 20;
+    pointer-events: auto;
+}
+.FilterPrice input[type="range"]::-moz-range-thumb{
+    width: 14px;
+    height: 14px;
+    background-color: #dd3333;
+    appearance: none;
+    border: 0;
+    border-radius: 50%;
+    z-index: 21;
+    pointer-events: auto;
+}
+.range
+{
+    position: relative;
+    height: 6px;
+    margin: 15px 0;
+    background-color: #e3dedeab;
+    border-radius: 13px;
+}
+.progress{
+    height: 100%;
+    background-color: #dd3333;
+    border-radius: 10px;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+}
+.rangeNumber{
+    text-align: center;
+    font-size: 14px;
+    margin: 15px 0;
+    font-weight: 400;
+}
+.ProductSide{
+    width: 75%;
+
+}
+.products{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.products .card{
+    width: calc((100% - 45px ) / 4);
+}
+@media (width<1180px){
+    .products .card{
+        width: calc((100% - 45px ) / 3);
+    }
+}
+@media(width<820px){
+    .products .card{
+        width: calc((100% - 45px ) / 3);
+    }
+    .Main{
+        flex-direction: column;
+    }
+    .SideFilter{
+        width: 100%;
+    }
+    .ProductSide{
+        width: 100%;
+    }
+
+}
+@media(width<650px){
+    .products .card{
+        width: calc((100% - 45px ) / 2);
+    }
+}
+@media(width<400px){
+    .products .card{
+        width:100% ;
+    }
+
+}
+.info{
+    text-align: start;
+    color: #dd3333;
+    margin: 20px 0;
+}
+
+.Items
+{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #bbb9b93d;
+    border-radius: 7px;
+    padding: 5px 10px;
+    width: fit-content;
+}
+.filterItem{
+    padding: 5px 7px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+.key{
+    color: #dd3333;
+}
+
+.RmFilter
+{
+font-size: 14px;
+color: #dd3333;
+}
+
+
