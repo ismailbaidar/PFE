@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@800&family=Kanit&family=Mochiy+Pop+One&family=Montserrat:wght@200;500;800;900&family=Oswald:wght@200;400;700&family=Poppins:wght@400;500;600;700;800;900&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap');
+:root{
+  --main:#fff;
+  --secondary:#FBFAF8;
+  --red:#d33
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.Checkout
+{
+    padding: 5px 80px;
+    margin-top: 65px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.SideCheckout{
+    width: 75%;
+    background-color: #fff;
+    box-shadow: 1px 1px 30px #939392cd;
+    border-radius: 5px;
+}
+.SideSummary{
+    width: 20%;
+    background-color: #fff;
+    box-shadow: 1px 1px 30px #939392cd;
+    border-radius: 5px;
+}
