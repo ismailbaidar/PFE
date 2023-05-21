@@ -6,6 +6,10 @@
     --gray: #818483;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .App {
     background-color: var(--secondary);
     position: relative;
@@ -15,6 +19,13 @@
     padding: 0;
     margin: 0;
     font-family: "Montserrat", Sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--red);
 }
 
 .Navbar {
