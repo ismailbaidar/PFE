@@ -1,0 +1,196 @@
+.single-page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    margin-block: 4rem;
+    gap: 3rem;
+}
+
+.single-page-wrapper .product-part .product-image .all-images {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    gap: 1rem;
+}
+.single-page-wrapper
+    .product-part
+    .product-image
+    .all-images::-webkit-scrollbar {
+    display: none;
+}
+
+.single-page-wrapper .product-part .product-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.single-page-wrapper
+    .product-part
+    .product-info
+    .title-price-wrapper
+    .single-page-wrapper
+    .product-part
+    .product-image
+    .main-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-part {
+    display: grid;
+    padding-inline: 3rem;
+    grid-template-columns: 1fr 1fr;
+}
+.single-page-wrapper .product-info .brand {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: var(--red);
+}
+
+.single-page-wrapper .product-info .title-price-wrapper .product-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.single-page-wrapper .product-part .product-info {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.single-page-wrapper .product-part .title-price-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.single-page-wrapper .product-part .title-price-wrapper .product-old-price {
+    color: var(--gray);
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+.single-page-wrapper .product-part .title-price-wrapper .product-new-price {
+    color: var(--red);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.single-page-wrapper
+    .product-part
+    .product-info
+    .qte-input-cart-button
+    .qte-input {
+    display: flex;
+}
+
+.single-page-wrapper
+    .product-part
+    .product-info
+    .qte-input-cart-button
+    .qte-input
+    * {
+    padding: 0.5rem 0.75rem;
+}
+
+.single-page-wrapper
+    .product-part
+    .product-info
+    .qte-input-cart-button
+    .qte-input
+    .qte-changer-button {
+    padding: 0.5rem;
+    background-color: var(--red);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    color: white;
+}
+
+.single-page-wrapper .product-part .product-info .qte-input-cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.single-page-wrapper
+    .product-part
+    .product-info
+    .qte-input-cart-button
+    .cart-button {
+    padding: 0.75rem 1rem;
+    border: none;
+    background-color: var(--red);
+    color: white;
+}
+
+.brand-icon-rating {
+    display: flex;
+    justify-content: space-between;
+}
+/* this style is for the rating component */
+.icon {
+    color: var(--gray);
+}
+.icon[data-active="true"] {
+    color: #d33;
+}
+
+/* end of rating component style */
+
+.description-review-wrapper {
+    background-color: transparent;
+    display: grid;
+    gap: 2rem;
+}
+
+.description-review-wrapper .description-review-navigator {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.description-review-wrapper .content-wrapper .content[data-visible="false"] {
+    display: none;
+}
+.description-review-navigator .navigator-option[data-visible="true"] {
+    font-weight: bold;
+    color: var(--red);
+}
+
+.similar-products {
+    overflow: scroll;
+    display: grid;
+    gap: 1rem;
+    height: max-content;
+}
+.similar-products .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.similar-products .products {
+    display: flex;
+    gap: 1rem;
+    overflow: scroll;
+    width: 100%;
+    height: max-content;
+    padding: 3rem;
+}
+
+.similar-products::-webkit-scrollbar {
+    display: none;
+}
+.similar-products .products::-webkit-scrollbar {
+    display: none;
+}
