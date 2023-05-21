@@ -28,7 +28,7 @@
   background-color: var(--main);
   transition: .3s ease-in;
   align-items: center;
-  box-shadow: 4px 6px 21px #f2f2f2a6;
+  box-shadow: 1px 1px 5px GRAY;
   z-index: 3000;
 }
 .Navbar img{

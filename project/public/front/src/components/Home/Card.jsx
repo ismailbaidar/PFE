@@ -4,6 +4,7 @@ import img1 from '../../images/RYZEN-q3crjgx5y3ilg06s3ndp3w88gofdfl2ckluo4w369g.
 import img2 from '../../images/VEGA-AMD-q3criqloicmx94fmxfx0ygzhq5lxkvuajt4k304h3k.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 const Card = () => {
   return (
     <div className='card' >

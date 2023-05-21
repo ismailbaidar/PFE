@@ -1,6 +1,5 @@
-import {Route,Routes} from 'react-router-dom'
-import MainRoute from './features/MainRoute';
-
+import { Route, Routes } from "react-router-dom";
+import MainRoute from "./features/MainRoute";
 
 function App() {
   return (
@@ -10,6 +9,7 @@ function App() {
     </Routes>
     </div>
   );
+
 }
 
 export default App;

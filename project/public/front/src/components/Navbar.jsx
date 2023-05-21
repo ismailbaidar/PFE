@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping, faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import SectionSideNavigation from '../components/Home/SectionSideNavigation';
 import Search from './Search';
+
 const Navbar = () => {
     const [toogle,setToogle]=useState(false)
     const [search,setSearch]=useState(false)
