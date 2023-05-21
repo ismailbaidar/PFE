@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import  img from '../images/Hero-Image.png'
+import  img from '../images/Untitled_design-removebg-preview.svg'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping, faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import SectionSideNavigation from './Home/SectionSideNavigation';
+import SectionSideNavigation from '../components/Home/SectionSideNavigation';
+import Search from './Search';
+
 const Navbar = () => {
     const [toogle,setToogle]=useState(false)
+    const [search,setSearch]=useState(false)
   return (
     <div className={'Navbar'} >
     <div className='logo' >
@@ -25,10 +28,10 @@ const Navbar = () => {
       <FontAwesomeIcon icon={faHeart}   />
       </div>
 
-    <FontAwesomeIcon icon={faMagnifyingGlass}  />
+    <FontAwesomeIcon  onClick={()=>setSearch(true)} icon={faMagnifyingGlass}  />
     </div>
          {toogle && <SectionSideNavigation set={setToogle}  />}
-
+         {search && <Search hide={setSearch} />}
     </div>
   );
 }

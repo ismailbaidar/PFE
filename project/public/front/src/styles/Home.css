@@ -259,7 +259,8 @@ grid-template-rows: repeat(auto-fill,290px);
   display: flex;
   font-weight: 400;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
 }
 .price .HightPrice{
   text-decoration: line-through;
@@ -269,6 +270,7 @@ grid-template-rows: repeat(auto-fill,290px);
 .price .lowPrice{
   font-weight: bold;
   color: var(--red);
+  font-size: 15px;
 }
 .hiddenButtons{
   padding: 5px 10px;
@@ -589,6 +591,9 @@ position: relative;
   margin: 20px 0 0 0;
   display: flex;
   justify-content: space-around;
+  position: absolute;
+width: 100%;
+top: 100%;
 }
 .footer h3,h4{
   line-height: 40px;
@@ -608,4 +613,88 @@ position: relative;
   color: #888;
   gap: 5px;
   font-size: 12px;
+}
+
+
+
+.search
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f3efefea;
+    z-index: 7000;
+
+
+}
+.searchBox{
+    margin: 60px auto;
+    padding: 8px 16px;
+    background-color: #fff;
+    width: fit-content;
+    border-radius: 15px;
+    box-shadow: 8px 4px 30px #bfbfbfa8;
+    transition: all .6s ease;
+}
+.searchBox input{
+    border: 0;
+    outline:0;
+    width: 0;
+    transition: all .6s ease;
+}
+
+.searchBox input.show{
+    width: 190px;
+    height: 100%;
+}
+.model{
+    width: fit-content;
+    background-color: #fff;
+    margin: 10px auto;
+    padding: 5px 5px;
+    border-radius: 7px;
+    height: auto;
+    max-height:400px ;
+    overflow-y: scroll;
+}
+
+.model::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+    background-color: #868484;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+  }
+
+
+.ModelItem
+{
+    display: flex;
+    align-items: center;
+    padding: 9px 10px;
+    gap :5px;
+}
+.ModelItem img{
+    width: 60px;
+    object-fit: cover;
+}
+
+.ModelItem:not(:last-child){
+    border-bottom: 1px solid #72707057;}
+
+#iconeCloseS
+{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
