@@ -1,0 +1,25 @@
+.spec-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spec-card .image {
+    width: 50px;
+    aspect-ratio: 1;
+    background-color: red;
+}
+.spec-card .key-value-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.spec-card .key-value-info .spec-key {
+    color: var(--red);
+    text-transform: uppercase;
+}
+
+.spec-card .key-value-info .spec-value {
+    font-weight: bold;
+}
