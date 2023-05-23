@@ -10,7 +10,7 @@ body {
 }
 .register-wrapper {
     display: grid;
-    grid-template-columns: 0.75fr 1.25fr;
+    grid-template-columns: 1fr 1.25fr;
     height: 100vh;
 }
 /* form */

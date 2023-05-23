@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Accessories() {
-  return (
-    <img src="../../icons/Accessories.svg" alt="#" />
-  )
+    return <img src="../../icons/accessories.svg" alt="#" />;
 }
 
-export default Accessories
+export default Accessories;
