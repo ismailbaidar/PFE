@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.register{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* form */
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.4rem;
+}
+/* slider */
+.slider{
+    width: 80%;
+    height: 100vh;
+    background: #DD3333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.slider-img{
+    width: 90%;
+    height: 50vh;
+}
+.next-slide{
+    display: flex;
+    gap: 1rem;
+}
+.slider-point{
+    display: flex;
+    width: 10px; 
+    height: 10px;
+    background-color: white;
+    border: 1px solid white;
+    transition: width linear 250ms;
+    border-radius: 10px;
+}
+.slider-point.active{
+    background-color: #DD3333;
+    width: 20px;
+}

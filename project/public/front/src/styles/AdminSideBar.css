@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@800&family=Kanit&family=Mochiy+Pop+One&family=Montserrat:wght@200;500;800;900&family=Oswald:wght@200;400;700&family=Poppins:wght@400;500;600;700;800;900&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.sideBarAdmin{
+    width: 20%;
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    transition: all .6s ease;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+
+}
+.fullSideBarAdmin{
+    width: 20%;
+}
+
+.minSidbarAdmin{
+    width: 7%;
+}
+
+.minSidbarAdmin .titleDashboard {
+    display: none;
+}
+
+
+.itemSideBar{
+    display: flex;
+    gap: 10px;
+    color: #6e6868;
+    padding: 10px;
+    border-radius: 7px;
+}
+.activeEm{
+    background-color: rgb(255 198 198 / 75%);
+    color: #d33;
+}
+
+.titleDashboard{
+    font-weight: 400;
+    font-size: 15px;
+    transition: all .3s   ease;
+
+}
+
+
+.minSidbarAdmin #DashboardIcon
+{
+    font-size: 25px;
+    transition: all .6s ease;
+}
+.minSidbarAdmin .itemSideBar{
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+.fullSideBarAdmin #DashboardIcon{
+    font-size: 18px;
+    transition: all .6s ease;
+}
+#iconToogleDashboardM{
+    border-radius: 50%;
+    position: absolute;
+    right: -8px;
+    top: 15px;
+    background: #d33;
+    width: 18px;
+    height: 18px;
+    transition: all .6s ease;
+    color: #fff;
+}
+
+.DashbordMain{
+    min-height: 100vh;
+}
+
+
+.WrapperAdmin{
+    padding: 20px;
+    margin-left: 20%;
+}
+
+.SearchDashboardM
+{
+    background-color: #fff;
+    width: 100%;
+}
