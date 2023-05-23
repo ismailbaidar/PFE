@@ -6,27 +6,35 @@ import {
     faCircleXmark,
     faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 export default function FlashCard({ type, title, content }) {
+    const [isVisible, setIsVisible] = useState(true);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsVisible(false);
+        }, 5000);
+    });
     return (
-        <div className="flash-card-wrapper" data-type={type}>
-            <div className="icon">
-                {type == "success" ? (
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                ) : type == "error" ? (
-                    <FontAwesomeIcon icon={faCircleXmark} />
-                ) : type == "info" ? (
-                    <FontAwesomeIcon icon={faCircleInfo} />
-                ) : (
-                    <FontAwesomeIcon icon={faTriangleExclamation} />
-                )}
-            </div>
-            <div className="content">
-                <h3 className="title">Lorem, ipsum dolor.</h3>
-                <p className="description">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Non, quaerat!
-                </p>
-            </div>
-        </div>
+        <>
+            {isVisible && (
+                <div className="flash-card-wrapper" data-type={type}>
+                    <div className="icon">
+                        {type == "success" ? (
+                            <FontAwesomeIcon icon={faCircleCheck} />
+                        ) : type == "error" ? (
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        ) : type == "info" ? (
+                            <FontAwesomeIcon icon={faCircleInfo} />
+                        ) : (
+                            <FontAwesomeIcon icon={faTriangleExclamation} />
+                        )}
+                    </div>
+                    <div className="content">
+                        <h3 className="title">{title}</h3>
+                        <p className="description">{content}</p>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }

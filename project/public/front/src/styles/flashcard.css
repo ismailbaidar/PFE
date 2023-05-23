@@ -36,7 +36,7 @@
 .flash-card-wrapper svg {
     font-size: 3.5rem;
     color: white;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
     padding-inline: 0.5rem;
 }
 .flash-card-wrapper::after {
@@ -47,11 +47,12 @@
     background: white;
     bottom: 0;
     opacity: 0.5;
-    animation: something linear 3000ms alternate;
+    animation: something linear 5000ms alternate;
 
     transform-origin: right;
 }
 .flash-card-wrapper .content .description {
+    text-align: start;
     font-size: 0.75rem;
 }
 .flash-card-wrapper .content h3 {
