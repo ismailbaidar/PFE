@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
 import ImageCard from '../components/Admin/ImageCard';
 import OptionsSelect from '../components/Admin/OptionsSelect';
+import InputItem from '../components/Admin/InputItem';
+import FileIntem from '../components/Admin/FileIntem';
 const AddProduct = () => {
     let option={key:'',value:''}
     const [options,setOptions]=useState([option])
@@ -21,33 +23,17 @@ const AddProduct = () => {
   return (
     <div className='Addproduct' >
     <div className='HProduct'  >Ajouter Produit</div>
-    <div className='InputFullProduct  InputProduct' >
-    <span className='placeholderPI' >Titre</span>
-    <input/>
 
-    </div>
+
+    <InputItem placeholder={"Titre"} type={'text'}  />
 
     <div className='ContainerInputProduct' >
-    <div className='InputProduct' >
-        <div className='placeholderPI' >Price</div>
-        <input/>
+    <InputItem placeholder={"Price"} type={'text'}  />
+    <InputItem placeholder={"Qte"} type={'number'}  />
     </div>
 
-     <div className='InputProduct' >
-     <div className='placeholderPI' >QTe</div>
-     <input type='number' />
-    </div>
+    <InputItem placeholder={"Categorie"} type={'select'}  />
 
-
-
-    </div>
-
-    <div className='InputFullProduct InputProduct' >
-    <div className='placeholderPI' >Catgorie</div>
-    <select >
-    <option>Choisir ---</option>
-    </select>
-    </div>
 
     <div className='options' >
     <span className='placeholderPI' >Options</span>
@@ -59,18 +45,9 @@ const AddProduct = () => {
     <div className='AddBtnOption' onClick={()=>setOptions([...options,option])} >+ Ajouter une autre option</div>
     </div>
 
-    <div className='fileInputProductAjouter' >
-        <div className='placeholderPI' >Photos du Produit</div>
-        <div className='ImagesContainer' >
-        {files.map(e=><ImageCard img={e} />)}
-        <div className='InputFileProductAd' >
-        <label htmlFor='file' ><FontAwesomeIcon id='uploadIcon' icon={faCloudArrowUp} /> Upload File</label>
-        <input type='file' onChange={AddFile} id='file' />
-        </div>
-        </div>
-    </div>
+    <FileIntem   placeholder={'poduct images'} files={files} AddFile={AddFile} />
 
-    <div className='description' >
+    <div className='descriptionAddProduct' >
     <div className='placeholderPI' >Description</div>
     <JoditEditor
 			ref={editor}
@@ -79,7 +56,7 @@ const AddProduct = () => {
 			tabIndex={1}
 			onBlur={newContent => setContent(newContent)}
 			onChange={newContent => {
-                console.log(newContent)
+            console.log(newContent)
             }}
 		/>
     </div>

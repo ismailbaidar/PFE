@@ -6,6 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Search from '../components/Admin/Search'
 import DashboardHome from '../pages/DashboardHome'
 import AddProduct from '../pages/AddProduct'
+import AddCategorie from '../pages/AddCategorie'
 
 
 const AdminRoute = () => {
@@ -16,7 +17,8 @@ const AdminRoute = () => {
             <Search/>
         <Routes>
             <Route path='/' element={<DashboardHome/>} />
-            <Route path='/Ajouter' element={<AddProduct/>} />
+            <Route path='/AjouterProduit' element={<AddProduct/>} />
+            <Route path='/AjouterCategorie' element={<AddCategorie/>} />
             <Route    />
         </Routes>
 
