@@ -102,14 +102,14 @@
     height: 100%;
     pointer-events: none;
 }
-.FilterPrice input[type="range"]::-webkit-slider-thumb{
-    width: 18px;
-    height: 18px;
+.FilterPrice input[type="range"]::-webkit-slider-runnable-track{
+    width: 14px;
+    height: 14px;
     background-color: #dd3333;
     appearance: none;
     border: 0;
     border-radius: 50%;
-    z-index: 20;
+    z-index: 21;
     pointer-events: auto;
 }
 .FilterPrice input[type="range"]::-moz-range-thumb{

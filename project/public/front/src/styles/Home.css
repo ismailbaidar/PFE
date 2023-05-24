@@ -636,7 +636,7 @@ a {
     position: absolute;
     width: 100%;
     top: 100%;
-
+}
     .footer h3,
     h4 {
         line-height: 40px;
@@ -728,7 +728,13 @@ a {
 
     #iconeCloseS {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 20px;
+        right: 20px;
+        width: 25px;
+        height: 25px;
+        background-color: #d33;
+        color: #fff;
+        border-radius: 50%;
+        padding: 2px;
     }
-}
+

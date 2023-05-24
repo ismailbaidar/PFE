@@ -1,0 +1,119 @@
+.Addproduct{
+    padding: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.InputFullProduct
+{
+    width: 100%;
+}
+.ContainerInputProduct{
+    display: flex;
+    gap: 10px;
+}
+
+.InputProduct{
+    flex: 1;
+}
+.InputProduct input{
+    padding: 13px;
+    width: 100%;
+    border: 1px solid #d9d3d3;
+    border-radius: 5px;
+}
+.InputProduct select{
+
+padding: 13px;
+width: 100%;
+border: 1px solid #d7d0d0;
+background-color: #fff;
+border-radius: 5px;
+}
+.AddBtnOption{
+    margin: 5px 0;
+color: #d33;
+font-size: 12px;
+}
+.InputFileProductAd input{
+    display: none;
+
+}
+.ImagesContainer{
+    display: flex;
+    gap: 5px;
+}
+.ImagesContainer > *{
+   width: 75px;
+   height: 75px;
+   background-color: #fff;
+   border-radius: 6px;
+   border: 1px solid #ead4d4;
+}
+.InputFileProductAd label {
+    color: #11111163;
+
+    display: block;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+}
+
+#uploadIcon
+{
+    font-size: 30px;
+    color: #11111163;
+}
+.ImageCard img
+{
+    height: 100%;
+    object-fit: cover;
+}
+.ImageCard{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.placeholderPI
+{
+    margin: 7px 0;
+    display: block;
+    font-size: 11px;
+}
+
+.OptionsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Addproduct
+{
+    background-color: #fff;
+    margin: 10px 0;
+    border-radius: 6px;
+    width: 75%;
+margin: 25px auto;
+}
+
+.AjouterProduit{
+    padding: 6px 14px;
+background-color: #d33;
+color: #fff;
+width: fit-content;
+margin-left: auto;
+font-size: 14px;
+}
+
+.HProduct
+{
+    font-size: 20px;
+    margin: 9px 0;
+    text-align: center;
+
+}

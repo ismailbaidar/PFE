@@ -16,7 +16,6 @@ const MainRoute = () => {
     <Route  index element={<Home/>}  />
     <Route  path='Categorie/:idCategorie' element={<AllProducts/>}  />
     <Route  path='Checkout' element={<Checkout/>}  />
-    <Route path="register" element={<Register />} />
     <Route path="/product/:productId" element={<SinglePage />} />
     </Routes>
     <Footer/>

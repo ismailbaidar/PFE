@@ -15,18 +15,245 @@
     margin-top: 65px;
     display: flex;
     justify-content: space-between;
+    min-height: calc(100vh - 65px);
 
 }
 
 .SideCheckout{
-    width: 75%;
-    background-color: #fff;
-    box-shadow: 1px 1px 30px #939392cd;
-    border-radius: 5px;
+    width: 65%;
+    padding: 5px 10px;
 }
 .SideSummary{
-    width: 20%;
-    background-color: #fff;
-    box-shadow: 1px 1px 30px #939392cd;
+    width: 30%;
+}
+.itemHead{
+    border-bottom: 1px solid #8b8a8a4a;
+}
+.itemSideP{
     border-radius: 5px;
+    background-color: #fff;
+    margin: 10px 0;
+}
+.HTitle{
+padding: 7px;
+display: flex;
+gap: 7px;
+align-items: center;
+}
+.HTitle > .titleHead{
+    font-weight: 600;
+    color: #807d7d;
+}
+#iconeSuccess{
+    color: #66e11a;
+}
+.itemContent{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 5px;
+    padding: 10px 20px;
+}
+.InputItem
+{
+    width: calc(( 100% - 10px) / 2);
+}
+.InputItem input{
+    padding: 12px 12px;
+    border: 1px solid #807e7e5c;
+    border-radius: 4px;
+    width: 100%;
+}
+.inputPlaceholder{
+    font-size: 12px;
+    font-weight: 700;
+    margin: 8px 0;
+    color: #736f6f;
+
+}
+#iconeSuccessDisabled{
+    color: #c8c1c1;
+}
+
+.PaymentContent{
+    padding: 20px;
+}
+.ItemMethod{
+    width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 5px 10px;
+border: 1px solid #d2cbcbcc;
+border-radius: 5px;
+background-color: #f4f4f426;
+}
+.ItemMethod img {
+    width:  40px;
+    height:  40px;
+    object-fit: contain;
+}
+.methodChois
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.methodChois input {
+    opacity: 0;
+  }
+
+.customRadio{
+width: 15px;
+height: 15px;
+border-radius: 50%;
+position: relative;
+}
+.radB{
+    width:8px;
+    height:8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  border-radius: 50%;
+  outline-offset: 3px;
+  outline: 3px solid #fb0000;
+  margin-right: 20px;
+}
+ input[type="radio"]:checked~.radB {
+    outline-color: #d33;
+    background: #d33;
+  }
+.Methodes{
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+.InputDicount{
+    display: flex;
+    height: 45px;
+    margin: 10px 0;
+}
+.InputDicount input{
+    width: 70%;
+    height: 100%;
+    border: 1px solid #ccc8c8b2;
+}
+.InputDicount button{
+    width: 30%;
+    height: 100%;
+    border:none;
+    color: #fff;
+    background-color: #d33;
+}
+.placerOrder{
+    width: 100%;
+background-color: #d23;
+color: #fff;
+border: 0;
+padding: 15px 10px;
+margin: 9px 0;
+}
+
+.Confirm{
+    margin: 20px auto;
+    width: 90%;
+    background-color: #d33;
+    color: #fff;
+    padding: 15px 10px;
+    margin-left: auto;
+    border: 0;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%);
+
+}
+
+
+.PaymentContent-ter{
+    font-size: 12px;
+    margin: 5px 0;
+}
+.inputfull{
+    width: 100%;
+}
+.inputfull input{
+    width: 100%;
+    padding: 12px 12px;
+    border: 1px solid #807e7e5c;
+    border-radius: 4px;
+}
+
+.TitleREH{
+    font-size: 14px;
+color: #bbb7b7;
+margin-top:10px ;
+}
+
+.OrdersListm
+{
+    display: flex;
+flex-direction: column;
+border-bottom: 1px solid #e3e0e0;
+}
+.ItemOrderList{
+    display: flex;
+align-items: center;
+padding: 10px;
+justify-content: space-between;
+}
+.cardAndPm{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.cardAndPm img{
+    width: 68px;
+    object-fit: cover;
+}
+.totalPrice
+{
+    font-weight: 500;
+}
+#TitleOrderListm{
+    margin-top: 18px;}
+#PriceOrderListm{
+    color:  #d33;
+    margin-top: 5px;
+}
+
+.OrderShipOrder{
+    padding: 10px;
+    border-bottom: 1px solid #e3e0e0;
+}
+.ItemDataM{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.titleItemDataM
+{
+    color: #949494;
+}
+.TotalPriceM
+
+{
+    padding: 10px;
+}
+
+#totalm
+
+{
+    font-weight: 700;
+}
+
+#totalPricem{
+    color: #d33;
+    font-weight: 700;
 }
