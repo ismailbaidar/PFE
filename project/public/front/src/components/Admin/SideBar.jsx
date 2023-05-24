@@ -15,6 +15,7 @@ const SideBar = () => {
         <ItemSideBar icon={faBoxArchive} title={'Transaction'}/>
         <ItemSideBar icon={faBoxArchive} title={'Brands'}/>
         <ItemSideBar icon={faBoxArchive} title={'Categories'}/>
+        <ItemSideBar icon={faBoxArchive} title={'Content Management'}/>
         <FontAwesomeIcon id='iconToogleDashboardM'  onClick={()=>setShow(!show)} icon={ show ? faAngleRight : faAngleLeft } />
     </div>
   )

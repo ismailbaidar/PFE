@@ -7,6 +7,7 @@ import Search from '../components/Admin/Search'
 import DashboardHome from '../pages/DashboardHome'
 import AddProduct from '../pages/AddProduct'
 import AddCategorie from '../pages/AddCategorie'
+import AddBrand from '../pages/AddBrand'
 
 
 const AdminRoute = () => {
@@ -19,6 +20,7 @@ const AdminRoute = () => {
             <Route path='/' element={<DashboardHome/>} />
             <Route path='/AjouterProduit' element={<AddProduct/>} />
             <Route path='/AjouterCategorie' element={<AddCategorie/>} />
+            <Route path='/AjouterBrand' element={<AddBrand/>} />
             <Route    />
         </Routes>
 
