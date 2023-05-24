@@ -4,6 +4,10 @@
     --secondary: #fbfaf8;
     --red: #d33;
     --gray: #818483;
+    --success: #41d888;
+    --error: #f94416;
+    --info: #0087d7;
+    --warning: #ffbc00;
 }
 
 a {

@@ -7,6 +7,7 @@ import Search from '../components/Admin/Search'
 import DashboardHome from '../pages/DashboardHome'
 import AddProduct from '../pages/AddProduct'
 
+
 const AdminRoute = () => {
   return (
     <div  className='DashbordMain' >
@@ -16,6 +17,7 @@ const AdminRoute = () => {
         <Routes>
             <Route path='/' element={<DashboardHome/>} />
             <Route path='/Ajouter' element={<AddProduct/>} />
+            <Route    />
         </Routes>
 
         </div>

@@ -1,4 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@800&family=Kanit&family=Mochiy+Pop+One&family=Montserrat:wght@200;500;800;900&family=Oswald:wght@200;400;700&family=Poppins:wght@400;500;600;700;800;900&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 .sideBarAdmin{
     width: 20%;
     background-color: #fff;
@@ -43,6 +49,8 @@
     font-weight: 400;
     font-size: 11px;
         transition: all .3s   ease;
+    font-size: 15px;
+    transition: all .3s   ease;
 
 }
 
