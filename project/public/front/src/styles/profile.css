@@ -1,0 +1,10 @@
+.profile {
+    padding: 1rem;
+    background-color: white;
+    display: grid;
+
+    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    width: 100%;
+}

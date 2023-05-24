@@ -1,0 +1,82 @@
+.navigation-sidebar {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 6rem;
+
+    width: max-content;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.navigation-sidebar .logo {
+    width: max-content;
+    height: max-content;
+}
+
+.navigation-sidebar .sidebar .sidebar-list {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 0.5rem;
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    /* flex: 1; */
+    display: flex;
+
+    align-items: center;
+    gap: 0.5rem;
+    /* width: max-content; */
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item div {
+    display: flex;
+    gap: 0.5rem;
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item.account {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item:hover {
+    color: var(--red);
+    background: var(--light-main);
+}
+
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    background: white;
+    box-shadow: 1px 1px 3px lightgray;
+    left: 0;
+    right: 0;
+    gap: 0.75rem;
+    color: black;
+    transform-origin: top;
+    transition: transform linear 200ms;
+    padding: 0.5rem;
+}
+.navigation-sidebar
+    .sidebar
+    .sidebar-list
+    .sidebar-list-item
+    .sublist[data-visible="false"] {
+    transform: scaleY(0);
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item ul.true {
+    transform: scaleY(1);
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item ul li {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item ul li:hover {
+    color: var(--red);
+    background: var(--light-main);
+}
