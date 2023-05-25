@@ -2,6 +2,7 @@ import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import ImageCard from './ImageCard'
+import IFile from './IFile'
 
 const FileIntem = ({files,AddFile,placeholder}) => {
   return (
@@ -9,10 +10,7 @@ const FileIntem = ({files,AddFile,placeholder}) => {
         <div className='placeholderPI' >{placeholder}</div>
         <div className='ImagesContainer' >
         {files.map(e=><ImageCard img={e} />)}
-        <div className='InputFileProductAd' >
-        <label htmlFor='file' ><FontAwesomeIcon id='uploadIcon' icon={faCloudArrowUp} /> Upload File</label>
-        <input type='file' onChange={AddFile} id='file' />
-        </div>
+        <IFile AddFile={AddFile} />
         </div>
     </div>
   )

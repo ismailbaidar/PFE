@@ -8,11 +8,15 @@ import DashboardHome from '../pages/DashboardHome'
 import AddProduct from '../pages/AddProduct'
 import AddCategorie from '../pages/AddCategorie'
 import AddBrand from '../pages/AddBrand'
+import AjouterSpect from '../pages/AjouterSpect'
+import ContentManagement from '../pages/ContentManagement'
+import { useSelector } from 'react-redux'
 
 
 const AdminRoute = () => {
+
   return (
-    <div  className='DashbordMain' >
+    <div  className='DashbordMain dark ' >
         <SideBar  />
         <div className='WrapperAdmin'>
             <Search/>
@@ -21,11 +25,11 @@ const AdminRoute = () => {
             <Route path='/AjouterProduit' element={<AddProduct/>} />
             <Route path='/AjouterCategorie' element={<AddCategorie/>} />
             <Route path='/AjouterBrand' element={<AddBrand/>} />
+            <Route path='/AjouterOption' element={<AjouterSpect/>} />
+            <Route path='/ContentManagement' element={<ContentManagement/>} />
             <Route    />
         </Routes>
-
         </div>
-
     </div>
   )
 }

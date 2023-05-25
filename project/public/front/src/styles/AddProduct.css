@@ -117,3 +117,252 @@ font-size: 14px;
     text-align: center;
 
 }
+
+
+.SliderContentManagement
+{
+    overflow-x: scroll;
+    height: 150px;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    position: relative;
+}
+.sliderItemsManagement{
+    display: flex;
+    height: 100%;
+    width: max-content;
+    gap: 5px;
+}
+
+.ItemSliderMnagement{
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    width: 260px;
+}
+.ItemSliderMnagement img{
+    width: 100%;
+height: 100%;
+object-fit: cover;
+}
+#leftIconSlider{
+position: absolute;
+left: -30px;
+top: 50%;
+background-color: #d33;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+color: #fff;
+transform: translate(0%,-50%);
+
+}
+#rightIconSlider{
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    background-color: #d33;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: #fff;
+    transform: translate(0%,-50%);
+}
+
+.SliderContainerM{
+    position: relative;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap:5px ;
+}
+.AddPicSlider{
+display: flex;
+align-items: center;
+padding: 6px;
+background-color: #d33;
+color: #fff;
+}
+.AddPicSlider input{
+    display: none;
+}
+
+.LayerItemSliderMnagement{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.6s ease;
+    background-color: rgba(221, 51, 51, 0.603);
+    z-index: 4000;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#iconeDeleteSliderItem{
+    color: #fff;
+    font-size: 50px;
+    transition: all .6s ease-out;
+}
+
+.ContentManagement
+{
+    position: relative;
+    padding: 10px 10px 162px 10px;
+        background-color: #fff;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.SlidersContentManagement{
+    font-size: 17px;
+color: #6a6868;
+margin: 10px 0;
+}
+
+
+.modelDeleteMn{
+    background: #fff;
+padding: 5px 10px;
+margin-top: 10px;
+border-radius: 6px;
+}
+
+.h-modelDMn
+{
+    margin: 5px 0;
+}
+
+.containerBtnMn
+{
+    display: flex;
+    gap:5px
+}
+.containerBtnMn >*
+{
+    flex: 1;
+}
+
+.RefuseModelDeleteBtn{
+    padding: 5px 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.AcceptModelDeleteBtn{
+padding: 5px 10px;
+border: 1px solid #c4c4c4;
+border-radius: 5px;
+background-color: #d33;
+color: #fff;
+cursor: pointer;
+}
+
+.PlaceholderSliders{
+font-size: 13px;
+margin: 15px 0;
+display: block;
+margin-left: 10px;
+}
+
+.socialLinksConatiner{
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+.InfoItemSocial{
+display: none;
+position: absolute;
+top: 110%;
+left: 50%;
+width: 150px;
+border: 1px solid #dbdbdb;
+padding: 5px;
+border-radius: 5px;
+}
+.ItemSocialLinks{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+}
+.ItemSocialLinks:hover .InfoItemSocial {
+    display: block;
+}
+
+.iconSocial{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.saveBtn
+{
+padding: 5px;
+border: 0;
+cursor: pointer;
+background-color: #d33;
+color: #fff;
+display: block;
+margin-left: auto;
+margin-top: 5px;
+border-radius: 5px;
+}
+
+.AddSlink
+{
+    background-color: #d33;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+
+}
+.AddSlink p{
+    color:#fff;
+    font-weight: 900;
+    font-size: 35px;
+}
+.AjouterSocialLink{
+    position: absolute;
+width: 251px;
+left: 105%;
+background: #fff;
+color: #111;
+padding: 12px;
+border-radius: 5px;
+border: 1px solid #b5b1b1;
+box-shadow: 10px 10px 175px #fff;
+}
+
+.AjouterSocialLink #iconeCloseS
+{
+    width: 15px;
+    height: 15px;
+    right: 5px;
+    top: 5px;
+}
+
+.AjouterSocialLink .ImagesContainer >* {
+    width: 50px;
+    height: 50px;
+}
+.AjouterSocialLink #uploadIcon {
+    font-size: 15px;
+}
+
+.AjouterSocialLink .ImagesContainer label{
+    font-size: 10px;
+}
+
+
+

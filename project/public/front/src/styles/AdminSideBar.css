@@ -5,6 +5,100 @@
     padding: 0;
     margin: 0;
 }
+
+.dark {
+    background-color: #222020;
+    border: #5c5555;
+}
+.dark .Addproduct{
+
+    background-color: #393636;
+}
+.dark .ContentManagement{
+    background-color: #393636;
+}
+
+.dark .HProduct{
+    color:#fff
+}
+
+
+.dark .sideBarAdmin{
+    background-color: #393636;
+}
+.dark .SearchDashboardM input {
+    background-color: #393636;
+    color: #c0bfbf;
+}
+
+.dark  .activeEm{
+    color: rgb(255, 255, 255);
+    background-color: rgba(123, 117, 117, 0.75);
+}
+
+.dark .SearchDashboardM{
+    background-color: #393636;
+}
+
+.dark .SlidersContentManagement{
+    color: #d7cccc;
+}
+.dark .PlaceholderSliders{
+    color: #eae6e6;
+}
+
+.dark .AjouterSocialLink{
+    background: #393636;
+    color: #111;
+    border: 1px solid #3e3b3b;
+    box-shadow: 10px 10px 175px #2f2f2f;
+}
+
+
+.dark .InputProduct input {
+        border: 1px solid #4f4949;
+        background: #645f5f;
+        color: #fff;
+}
+
+.dark .InputProduct select {
+    border: 1px solid #4f4949;
+    background: #645f5f;
+    color: #fff;
+}
+
+.dark .InputFileProductAd label {
+    color: #000;}
+
+.dark #uploadIcon {
+    font-size: 30px;
+    color: #312f2f;
+}
+.dark .InfoItemSocial{
+    border: 1px solid #3e3b3b;
+background-color: #393636;
+}
+
+.dark .placeholderPI{
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .sideBarAdmin{
     width: 20%;
     background-color: #fff;
@@ -20,6 +114,8 @@
     top: 0;
 
 }
+
+
 .fullSideBarAdmin{
     width: 20%;
 }
@@ -225,3 +321,4 @@ padding: 3px;
     font-size: 20px;
     color: #646060;
 }
+
