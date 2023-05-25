@@ -8,7 +8,6 @@ import {
     faKey,
     faSliders,
     faBell,
-    faArrowDown,
     faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";

@@ -100,17 +100,10 @@
     height: 100%;
     pointer-events: none;
 }
-<<<<<<< Updated upstream
-.FilterPrice input[type="range"]::-webkit-slider-runnable-track{
-    width: 14px;
-    height: 14px;
-    background-color: #dd3333;
-=======
 .FilterPrice input[type="range"]::-webkit-slider-thumb {
     width: 18px;
     height: 18px;
     background-color: var(--red);
->>>>>>> Stashed changes
     appearance: none;
     border: 0;
     border-radius: 50%;
