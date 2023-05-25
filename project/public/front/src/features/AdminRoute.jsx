@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux'
 const AdminRoute = () => {
 
   return (
-    <div  className='DashbordMain dark ' >
+    <div  className='DashbordMain  ' >
         <SideBar  />
         <div className='WrapperAdmin'>
             <Search/>
