@@ -1,0 +1,114 @@
+.stats-sidebar {
+    position: fixed;
+    float: right;
+
+    max-width: max-content;
+    background: #f8f8f8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    gap: 1.5rem;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 1rem;
+}
+
+.stats-sidebar .logout-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.stats-sidebar .image-name-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.stats-sidebar .image-name-email .image {
+    width: 100px;
+    aspect-ratio: 1;
+    background: blue;
+    border-radius: 50%;
+}
+.stats-sidebar .image-name-email .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.stats-sidebar .image-name-email .email {
+    font-size: 0.8rem;
+    color: darkgray;
+}
+
+.stats-sidebar .stats-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+.stats-sidebar .stats-wrapper .first-part,
+.stats-sidebar .stats-wrapper .second-part {
+    display: grid;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.stats-sidebar .stats-wrapper .second-part {
+    grid-template-columns: repeat(1, 1fr);
+}
+.stats-sidebar .stats-wrapper .first-part {
+    grid-template-columns: repeat(2, 1fr);
+}
+.stats-sidebar .stats-wrapper .first-part .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+
+    padding: 0.5rem;
+}
+
+.stats-sidebar .stats-wrapper .first-part .stats .stat-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    color: #f5b2ab;
+}
+.stats-sidebar .stats-wrapper .first-part .stats .stats-count {
+    padding-left: 0.25rem;
+}
+.stats-sidebar .stats-wrapper .first-part .stats .stat-title.blue {
+    background: var(--lightblue);
+    color: var(--font-blue);
+}
+.stats-sidebar .stats-wrapper .first-part .stats .stat-title.green {
+    background: var(--lightgreen);
+    color: var(--font-green);
+}
+.stats-sidebar .stats-wrapper .first-part .stats .stat-title.red {
+    background: var(--lightred);
+    color: var(--font-red);
+}
+.stats-sidebar .stats-wrapper .first-part .stats .stat-title.purple {
+    color: var(--font-purple);
+    background: var(--lightpurple);
+}
+
+.stats-sidebar .stats-wrapper .second-part .title {
+    color: black;
+}
+.stats-sidebar .stats-wrapper .second-part .value {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: var(--red);
+}

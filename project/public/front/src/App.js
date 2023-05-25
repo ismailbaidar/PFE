@@ -5,6 +5,7 @@ import SinglePage from "./components/Single page/SinglePage";
 import Register from "./components/register/Register";
 import ErrorPage from "./pages/ErrorPage";
 import FlashCard from "./components/Flash card/FlashCard";
+import Profile from "./components/profile/Profile";
 function App() {
     return (
         <div className="App">
@@ -14,6 +15,7 @@ function App() {
                 <Route path="register" element={<Register />} />
                 <Route path="/product/:productId" element={<SinglePage />} />
                 <Route path="*" element={<ErrorPage errorType={404} />} />
+                <Route path="test" element={<Profile />}></Route>
             </Routes>
         </div>
     );
