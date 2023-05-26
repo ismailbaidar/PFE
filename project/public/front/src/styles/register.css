@@ -12,7 +12,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.25fr;
     height: 100vh;
-    margin-top: 65px;
 }
 /* form */
 .form {
