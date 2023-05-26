@@ -1,10 +1,10 @@
 import React from 'react';
 
-const InputItem = ({placeholder,content,full}) => {
+const InputItem = ({placeholder,content,full,value}) => {
   return (
     <div className={`${full?'inputfull':'InputItem'}`} >
         <div className='inputPlaceholder' >{placeholder}</div>
-        <input  placeholder={content} />
+        <input  value={value} placeholder={content} />
     </div>
   );
 }
