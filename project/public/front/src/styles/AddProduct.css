@@ -1,55 +1,55 @@
-.Addproduct{
+.Addproduct {
     padding: 5px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.InputFullProduct
-{
+.InputFullProduct {
     width: 100%;
 }
-.ContainerInputProduct{
+.ContainerInputProduct {
     display: flex;
     gap: 10px;
 }
 
-.InputProduct{
+.InputProduct {
     flex: 1;
 }
-.InputProduct input{
+.InputProduct input {
     padding: 13px;
     width: 100%;
     border: 1px solid #d9d3d3;
     border-radius: 5px;
 }
-.InputProduct select{
-
-padding: 13px;
-width: 100%;
-border: 1px solid #d7d0d0;
-background-color: #fff;
-border-radius: 5px;
+.InputProduct select {
+    padding: 13px;
+    width: 100%;
+    border: 1px solid #d7d0d0;
+    background-color: #fff;
+    border-radius: 5px;
 }
-.AddBtnOption{
+.AddBtnOption {
     margin: 5px 0;
-color: #d33;
-font-size: 12px;
+    color: #d33;
+    font-size: 12px;
 }
-.InputFileProductAd input{
+.InputFileProductAd input {
     display: none;
-
 }
-.ImagesContainer{
+.ImagesContainer {
     display: flex;
     gap: 5px;
 }
-.ImagesContainer > *{
-   width: 75px;
-   height: 75px;
-   background-color: #fff;
-   border-radius: 6px;
-   border: 1px solid #ead4d4;
+.ImagesContainer > * {
+    width: 75px;
+    height: 75px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #ead4d4;
+}
+.InputFileProductAd {
+    width: 50%;
 }
 .InputFileProductAd label {
     color: #11111163;
@@ -64,101 +64,92 @@ font-size: 12px;
     font-size: 12px;
 }
 
-#uploadIcon
-{
+#uploadIcon {
     font-size: 30px;
     color: #11111163;
 }
-.ImageCard img
-{
+.ImageCard img {
     height: 100%;
     object-fit: cover;
 }
-.ImageCard{
+.ImageCard {
     padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.placeholderPI
-{
+.placeholderPI {
     margin: 7px 0;
     display: block;
     font-size: 11px;
 }
 
-.OptionsContainer{
+.OptionsContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.Addproduct
-{
+.Addproduct {
     background-color: #fff;
     margin: 10px 0;
     border-radius: 6px;
     width: 75%;
-margin: 25px auto;
+    margin: 25px auto;
 }
 
-.AjouterProduit{
-padding: 10px 14px;
-background-color: #d33;
-color: #fff;
-width: fit-content;
-margin-left: auto;
-font-size: 14px;
+.AjouterProduit {
+    padding: 10px 14px;
+    background-color: #d33;
+    color: #fff;
+    width: fit-content;
+    margin-left: auto;
+    font-size: 14px;
 }
 
-.HProduct
-{
+.HProduct {
     font-size: 20px;
     margin: 9px 0;
     text-align: center;
-
 }
 
-
-.SliderContentManagement
-{
+.SliderContentManagement {
     overflow-x: scroll;
     height: 150px;
     overflow-y: hidden;
     scrollbar-width: none;
     position: relative;
 }
-.sliderItemsManagement{
+.sliderItemsManagement {
     display: flex;
     height: 100%;
     width: max-content;
     gap: 5px;
 }
 
-.ItemSliderMnagement{
+.ItemSliderMnagement {
     height: 100%;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
     width: 260px;
 }
-.ItemSliderMnagement img{
+.ItemSliderMnagement img {
     width: 100%;
-height: 100%;
-object-fit: cover;
+    height: 100%;
+    object-fit: cover;
 }
-#leftIconSlider{
-position: absolute;
-left: -30px;
-top: 50%;
-background-color: #d33;
-width: 25px;
-height: 25px;
-border-radius: 50%;
-color: #fff;
-transform: translate(0%,-50%);
-
+#leftIconSlider {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    background-color: #d33;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: #fff;
+    transform: translate(0%, -50%);
 }
-#rightIconSlider{
+#rightIconSlider {
     position: absolute;
     right: -30px;
     top: 50%;
@@ -167,28 +158,28 @@ transform: translate(0%,-50%);
     height: 25px;
     border-radius: 50%;
     color: #fff;
-    transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
 }
 
-.SliderContainerM{
+.SliderContainerM {
     position: relative;
     width: 80%;
     margin: auto;
     display: flex;
-    gap:5px ;
+    gap: 5px;
 }
-.AddPicSlider{
-display: flex;
-align-items: center;
-padding: 6px;
-background-color: #d33;
-color: #fff;
+.AddPicSlider {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: #d33;
+    color: #fff;
 }
-.AddPicSlider input{
+.AddPicSlider input {
     display: none;
 }
 
-.LayerItemSliderMnagement{
+.LayerItemSliderMnagement {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -203,89 +194,83 @@ color: #fff;
     align-items: center;
 }
 
-
-#iconeDeleteSliderItem{
+#iconeDeleteSliderItem {
     color: #fff;
     font-size: 50px;
-    transition: all .6s ease-out;
+    transition: all 0.6s ease-out;
 }
 
-.ContentManagement
-{
+.ContentManagement {
     position: relative;
     padding: 10px 10px 162px 10px;
-        background-color: #fff;
+    background-color: #fff;
     border-radius: 5px;
     margin-top: 15px;
 }
 
-.SlidersContentManagement{
+.SlidersContentManagement {
     font-size: 17px;
-color: #6a6868;
-margin: 10px 0;
+    color: #6a6868;
+    margin: 10px 0;
 }
 
-
-.modelDeleteMn{
+.modelDeleteMn {
     background: #fff;
-padding: 5px 10px;
-margin-top: 10px;
-border-radius: 6px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 6px;
 }
 
-.h-modelDMn
-{
+.h-modelDMn {
     margin: 5px 0;
 }
 
-.containerBtnMn
-{
+.containerBtnMn {
     display: flex;
-    gap:5px
+    gap: 5px;
 }
-.containerBtnMn >*
-{
+.containerBtnMn > * {
     flex: 1;
 }
 
-.RefuseModelDeleteBtn{
+.RefuseModelDeleteBtn {
     padding: 5px 10px;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
     cursor: pointer;
 }
-.AcceptModelDeleteBtn{
-padding: 5px 10px;
-border: 1px solid #c4c4c4;
-border-radius: 5px;
-background-color: #d33;
-color: #fff;
-cursor: pointer;
+.AcceptModelDeleteBtn {
+    padding: 5px 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #d33;
+    color: #fff;
+    cursor: pointer;
 }
 
-.PlaceholderSliders{
-font-size: 13px;
-margin: 15px 0;
-display: block;
-margin-left: 10px;
+.PlaceholderSliders {
+    font-size: 13px;
+    margin: 15px 0;
+    display: block;
+    margin-left: 10px;
 }
 
-.socialLinksConatiner{
+.socialLinksConatiner {
     display: flex;
     gap: 10px;
     margin: 20px;
 }
-.InfoItemSocial{
-display: none;
-position: absolute;
-top: 110%;
-left: 50%;
-width: 150px;
-border: 1px solid #dbdbdb;
-padding: 5px;
-border-radius: 5px;
+.InfoItemSocial {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    width: 150px;
+    border: 1px solid #dbdbdb;
+    padding: 5px;
+    border-radius: 5px;
 }
-.ItemSocialLinks{
+.ItemSocialLinks {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -295,64 +280,58 @@ border-radius: 5px;
     display: block;
 }
 
-.iconSocial{
+.iconSocial {
     width: 100%;
     height: 100%;
 }
 
-
-
-.saveBtn
-{
-padding: 5px;
-border: 0;
-cursor: pointer;
-background-color: #d33;
-color: #fff;
-display: block;
-margin-left: auto;
-margin-top: 5px;
-border-radius: 5px;
+.saveBtn {
+    padding: 5px;
+    border: 0;
+    cursor: pointer;
+    background-color: #d33;
+    color: #fff;
+    display: block;
+    margin-left: auto;
+    margin-top: 5px;
+    border-radius: 5px;
 }
 
-.AddSlink
-{
+.AddSlink {
     background-color: #d33;
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     position: relative;
-
 }
-.AddSlink p{
-    color:#fff;
+.AddSlink p {
+    color: #fff;
     font-weight: 900;
     font-size: 35px;
 }
-.AjouterSocialLink{
+.AjouterSocialLink {
     position: absolute;
-width: 251px;
-left: 105%;
-background: #fff;
-color: #111;
-padding: 12px;
-border-radius: 5px;
-border: 1px solid #b5b1b1;
-box-shadow: 10px 10px 175px #fff;
+    width: 251px;
+    left: 105%;
+    background: #fff;
+    color: #111;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #b5b1b1;
+    box-shadow: 10px 10px 175px #fff;
 }
 
-.AjouterSocialLink #iconeCloseS
-{
+.AjouterSocialLink #iconeCloseS {
     width: 15px;
     height: 15px;
     right: 5px;
     top: 5px;
 }
 
-.AjouterSocialLink .ImagesContainer >* {
+.AjouterSocialLink .ImagesContainer > * {
     width: 50px;
     height: 50px;
 }
@@ -360,9 +339,6 @@ box-shadow: 10px 10px 175px #fff;
     font-size: 15px;
 }
 
-.AjouterSocialLink .ImagesContainer label{
+.AjouterSocialLink .ImagesContainer label {
     font-size: 10px;
 }
-
-
-

@@ -1,0 +1,105 @@
+.cart-product-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-product-card .image-title-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.cart-product-card .image-title-container .title-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-weight: bold;
+}
+.cart-product-card .image-title-container .title-brand .brand {
+    color: var(--red);
+}
+.cart-product-card .image-title-container .title-brand .title {
+    color: black;
+}
+.cart-product-card .image-title-container .image {
+    width: 100px;
+    aspect-ratio: 1;
+    background-color: green;
+}
+
+.cart-product-card .product-price-qte-control {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+.cart-product-card .product-price-qte-control .product-price {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: bold;
+}
+.cart-product-card .product-price-qte-control .product-price .old-price {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.cart-product-card .product-price-qte-control .product-price .old-price {
+    color: var(--red);
+}
+.cart-product-card .product-price-qte-control .qte-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.cart-product-card
+    .product-price-qte-control
+    .qte-control
+    .qte-control-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.title-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-product-card
+    .product-price-qte-control
+    .qte-control
+    .qte-control-buttons
+    button {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    border: none;
+    background-color: var(--red);
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-price-qte-control .qte-control .qte-control-buttons button * {
+    position: absolute;
+}
+
+.cart-product-card .product-price-qte-control .delete-product {
+    padding: 0.5rem;
+    font-size: 0.5rem;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--red);
+    color: white;
+}
+
+.cart-product-card .product-price-qte-control .delete-product * {
+    position: absolute;
+}
