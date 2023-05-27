@@ -44,6 +44,16 @@ li {
     background-color: var(--red);
 }
 
+
+.itemListCategorie::after{
+    content: '';
+    position: absolute;
+    width: 101%;
+    height: 100%;
+    left: 0;
+}
+
+
 .Navbar {
     display: flex;
     justify-content: space-between;

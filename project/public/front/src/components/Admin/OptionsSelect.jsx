@@ -1,10 +1,10 @@
 import React from 'react';
 
-const OptionsSelect = () => {
+const OptionsSelect = ({data}) => {
   return (
     <div className='ContainerInputProduct' >
     <div className='InputProduct'>
-    <select   >
+    <select>
     <option>choisis une option</option>
     </select>
     </div>
