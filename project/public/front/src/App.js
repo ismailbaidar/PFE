@@ -11,10 +11,9 @@ import Navbar from "./components/Navbar";
 function App() {
     return (
         <div className="App">
-            <Navbar> </Navbar>
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
-                <Route path="/Admin/*" element={<AdminRoute />} />
+                <Route path="/Admin/*" element={   <AdminRoute />} />
                 <Route path="register" element={<Register />} />
                 <Route path="/product/:productId" element={<SinglePage />} />
                 <Route path="*" element={<ErrorPage errorType={404} />} />

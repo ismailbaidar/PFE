@@ -2,3 +2,40 @@
 {
     margin-top: 20px;
 }
+.AnalyseProduct{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+.ItemAnalyseProduct
+{
+    flex: 1 1;
+    box-shadow: 0px 1px 6px #65656547;
+    padding: 18px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+#analyseIconProduct{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #28a87d;
+    color: #ffecec;
+}
+
+.infoAnalyse
+{
+    gap: 3px;
+    flex-flow: column;
+    display: flex;
+}
+.nbrItemAnalyse{
+    font-size: 24px;
+}
+
+.nbrItemAnalyse {
+    font-size: 26px;
+}
