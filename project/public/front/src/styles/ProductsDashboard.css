@@ -10,20 +10,22 @@
 .ItemAnalyseProduct
 {
     flex: 1 1;
-    box-shadow: 0px 1px 6px #65656547;
-    padding: 18px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    gap: 17px;
+box-shadow: 0px 1px 6px #65656547;
+padding: 18px;
+border-radius: 5px;
+display: flex;
+align-items: center;
+gap: 17px;
+background-color: #fff;
+color: #dd0c0c;
 }
 #analyseIconProduct{
-    width: 30px;
-    height: 30px;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #28a87d;
-    color: #ffecec;
+width: 30px;
+height: 30px;
+padding: 10px;
+border-radius: 50%;
+background-color: #d33;
+color: #ffecec;
 }
 
 .infoAnalyse
@@ -38,4 +40,261 @@
 
 .nbrItemAnalyse {
     font-size: 26px;
+}
+
+.actionbtntable{
+    display: flex;
+    gap: 5px;
+}
+
+.delete{
+padding: 5px;
+color: #d33;
+border: 1px solid #d33;
+border-radius: 5px;
+background-color: transparent;
+}
+
+.edite{
+padding: 5px;
+color: var(--warning);
+border: 1px solid var(--warning);
+border-radius: 5px;
+background-color: transparent;
+}
+
+
+.ajouterProduit{
+    padding: 7px 10px;
+    border-radius: 7px;
+    color: #fff;
+    border: 0;
+    background-color: #d33;
+    margin-bottom: 5px;
+    margin-left: auto;
+    display: block;
+}
+
+
+.ModelItemProduct
+{
+width: 100vw;
+height: 100vh;
+background: #dbd4d4b5;
+z-index: 888888;
+top: 0;
+left: 0;
+position: fixed;
+display: flex;
+align-items: center;
+justify-content: end;
+padding: 15px;
+}
+.ModelData
+{
+    width: 20%;
+    background-color: #fff;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.HeadModelData{
+    padding: 8px;
+    border-bottom: 1px solid #d9d6d66e;
+}
+
+.BodyModelData{
+    padding: 10px;
+}
+
+.titleModelData
+{
+    color: #292727;
+    font-size: 14px;
+}
+
+.CntModel{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #6f6c6c;
+    margin: 3px 0;
+
+}
+
+.itemBModelData{
+    margin: 5px 0;
+}
+
+.ChartItem
+{
+    width: 100%;
+    height: 150px;
+}
+
+.containerCollections{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.itemCollection{
+width: calc((100% / 4) - 10px);
+padding: 10px ;
+background-color: #fff;
+border-radius: 7px;
+}
+.itemsCollection{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr  1fr;
+    grid-template-rows: 1fr  1fr;
+}
+
+
+.ItemImg{
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.ItemImg img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.nameCollection
+{
+    margin: 5px 0;
+    text-align: center;
+}
+.AddCollectionbtn
+{
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #6f6c6c;
+}
+
+.PaginationCollection
+{
+    margin-left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    gap: 4px;
+    margin-top: 5px ;
+    width: fit-content;
+}
+
+.bulletPagination
+{
+    width: 10px;
+    height: 10px;
+    border: 2px solid #d33;
+    border-radius: 50%;
+}
+
+.activeBullet
+{
+    background-color: #d33;
+}
+.headCollection
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.actionCollection{
+    display: flex;
+    gap: 5px;
+}
+
+.actionCollection > *{
+    font-size: 10px;
+}
+
+
+.EditeCollection{
+    display: flex;
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.LeftSide{
+    width: 35%;
+}
+.MainImage img
+{
+    width: 100%;
+    object-fit: cover;
+}
+.imagesCol{
+    display: flex;
+    gap: 5px;
+    width: fit-content;
+}
+
+.imgCol{
+    width: 80px;
+    height: 80px;
+}
+.imgCol img{
+    width: 100%;
+    object-fit: cover;
+}
+.containerCollImg{
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+.inputSearch{
+    display: flex;
+    border: 1px solid  #a2a2a2;
+    padding: 5px;
+    border-radius: 5px;
+}
+.inputSearch input{
+    flex: 1;
+    border: 0;
+    outline: none;
+}
+
+.itemResult{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+
+.itemResult img{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+
+}
+
+.searchItems
+{
+    overflow-y: scroll;
+    height: 200px;
+    margin-top: 10px;
+    scrollbar-width: thin;
+}
+
+
+
+.itemResult button{
+width: 25px;
+height: 25px;
+border-radius: 50%;
+border: 0;
+background: #d33;
+color: #fff;
 }

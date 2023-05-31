@@ -9,13 +9,15 @@ import AddCategorie from "../pages/AddCategorie";
 import AddBrand from "../pages/AddBrand";
 import AjouterSpect from "../pages/AjouterSpect";
 import ContentManagement from "../pages/ContentManagement";
-import { useSelector } from "react-redux";
 import ModifierProduit from "../pages/ModifierProduit";
 import Loading from "../components/Loading";
 import ModifierCategorie from "../pages/ModifierCategorie";
 import ModifierBrand from "../pages/ModifierBrand";
 import ModifierSpect from "../pages/ModifierSpect";
 import Products from "../pages/Products";
+import Categories from "../pages/Categories";
+import Collection from "../pages/Collection";
+import EditeCollection from "../pages/EditeCollection";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
 
@@ -61,6 +63,9 @@ const AdminRoute = () => {
                         element={<ContentManagement />}
                     />
                     <Route path="/Products" element={<Products />} />
+                    <Route path='/categories' element={<Categories/>} />
+                    <Route path="/collections" element={<Collection/>}/>
+                    <Route path="/collections/:id" element={<EditeCollection/>}/>
                 </Routes>
             </div>
         </div>

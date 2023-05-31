@@ -135,6 +135,13 @@ li {
     position: relative;
 }
 
+.itemListCategorie:first-child{
+    border-radius:5px 5px 0 0;
+}
+.itemListCategorie:last-child{
+    border-radius:0 0 5px 5px;
+}
+
 @media (width <= 1024px) {
     .listCategorie {
         display: none;

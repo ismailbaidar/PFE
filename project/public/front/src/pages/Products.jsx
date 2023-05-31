@@ -4,8 +4,12 @@ import AnalyseProduct from "../components/Admin/AnalyseProduct";
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash,faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { useMemo } from "react";
+import ModelItem from "../components/Admin/ModelItem";
 
 export default function Products() {
+    const [iditem,setId]=useState(null);
     const columns = [
         { field: "id", headerName: "ID", width: 70 },
         { field: "Name", headerName: "Name", width: 130 },
@@ -26,8 +30,8 @@ export default function Products() {
         { field: "Categorie", headerName: "Categorie", width: 140 },
         { field: "Action", headerName: "Action", width: 140 ,renderCell:(params)=>{
             return <div className="actionbtntable" >
-            <button onClick={(e)=>{e.stopPropagation();console.log(params)}} className="edite" ><FontAwesomeIcon icon={faTrash}/></button>
-            <button onClick={(e)=>e.stopPropagation()}><FontAwesomeIcon icon={faEdit}/></button>
+            <button onClick={(e)=>{e.stopPropagation();console.log(params)}} className="delete" ><FontAwesomeIcon icon={faTrash}/></button>
+            <button onClick={(e)=>e.stopPropagation()}  className="edite" ><FontAwesomeIcon icon={faEdit}/></button>
             </div>
         }},
 
@@ -43,20 +47,25 @@ export default function Products() {
 
     ];
 
+    const dataItem = useMemo(()=> iditem ? rows.filter(e=>e.id==iditem):'',[iditem])
+
+
     return (
         <div className="ProductsDashboard">
             <AnalyseProduct />
+            <button  className="ajouterProduit" >Ajouter Produit</button>
             <DataGrid
                 rows={rows}
                 columns={columns}
+                onRowClick={(params)=>setId(params.id)}
                 initialState={{
                     pagination: {
                         paginationModel: { page: 0, pageSize: 5 },
                     },
                 }}
                 pageSizeOptions={[5, 10]}
-                checkboxSelection
             />
+            {iditem && <ModelItem setIdNull={()=>setId(null)} />}
         </div>
     );
 }
