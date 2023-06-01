@@ -1,0 +1,20 @@
+.profile-navbar {
+    /* background: red; */
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.profile-navbar .profile-partie {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.profile-navbar .profile-partie .image-profile {
+    border-radius: 50%;
+    width: 40px;
+    aspect-ratio: 1;
+    background-color: blue;
+}
