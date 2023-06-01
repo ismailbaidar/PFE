@@ -16,7 +16,7 @@ export default function NavigationSidebar() {
     return (
         <div className="navigation-sidebar">
             <div className="logo">
-                <img src="" alt="logo" />
+                <img src="../images/logored.png" />
             </div>
             <div className="sidebar">
                 <ul className="sidebar-list">

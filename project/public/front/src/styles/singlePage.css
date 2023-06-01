@@ -13,6 +13,9 @@
     overflow: hidden;
     gap: 1rem;
 }
+.single-page-wrapper .product-part .product-image .all-images img {
+    width: 150px;
+}
 .single-page-wrapper
     .product-part
     .product-image

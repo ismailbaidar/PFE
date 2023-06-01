@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@800&family=Kanit&family=Mochiy+Pop+One&family=Montserrat:wght@200;500;800;900&family=Oswald:wght@200;400;700&family=Poppins:wght@400;500;600;700;800;900&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap");
+
 :root {
     --main: #fff;
     --secondary: #fbfaf8;
@@ -44,15 +45,13 @@ li {
     background-color: var(--red);
 }
 
-
-.itemListCategorie::after{
-    content: '';
+.itemListCategorie::after {
+    content: "";
     position: absolute;
     width: 101%;
     height: 100%;
     left: 0;
 }
-
 
 .Navbar {
     display: flex;
@@ -74,6 +73,7 @@ li {
 
 .logo img {
     height: 100%;
+    object-fit: contain;
 }
 .logo {
     height: 100%;
@@ -135,11 +135,11 @@ li {
     position: relative;
 }
 
-.itemListCategorie:first-child{
-    border-radius:5px 5px 0 0;
+.itemListCategorie:first-child {
+    border-radius: 5px 5px 0 0;
 }
-.itemListCategorie:last-child{
-    border-radius:0 0 5px 5px;
+.itemListCategorie:last-child {
+    border-radius: 0 0 5px 5px;
 }
 
 @media (width <= 1024px) {

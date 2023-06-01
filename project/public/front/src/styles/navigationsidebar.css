@@ -12,6 +12,11 @@
 .navigation-sidebar .logo {
     width: max-content;
     height: max-content;
+    /* background: red; */
+}
+.navigation-sidebar .logo img {
+    width: 100px;
+    object-fit: contain;
 }
 
 .navigation-sidebar .sidebar .sidebar-list {
