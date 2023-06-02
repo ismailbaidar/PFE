@@ -1,0 +1,102 @@
+.confirmation-code-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirmation-code-container .confirmation-code-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 3rem 2.5rem;
+    box-shadow: 0px 0px 3px lightgray;
+    gap: 3rem;
+}
+.confirmation-code-container .confirmation-code-wrapper .first-part {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    border-bottom: 1px solid gray;
+    gap: 1rem;
+}
+.confirmation-code-container .confirmation-code-wrapper .first-part svg {
+    color: var(--red);
+    font-size: 2.2rem;
+}
+.confirmation-code-container
+    .confirmation-code-wrapper
+    .first-part
+    .paragraph-confirmation-type {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.confirmation-code-wrapper .second-part .inputs {
+    display: flex;
+    gap: 0.5rem;
+
+    width: 50%;
+    justify-content: space-between;
+}
+.confirmation-code-wrapper .second-part .inputs input {
+    width: 1ch;
+    width: 40px;
+    height: 50px;
+
+    /* padding: 1.5rem 1.25rem; */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirmation-code-wrapper .second-part .inputs input:focus {
+    border: 1px solid var(--red);
+    outline: 2px solid var(--red);
+    color: var(--red);
+}
+
+.confirmation-code-wrapper .second-part .inputs input * {
+    position: absolute;
+}
+.confirmation-code-wrapper .second-part {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.confirmation-code-wrapper .second-part .email-viewer {
+    width: 60%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.confirmation-code-wrapper .second-part .paragraph {
+    width: 50%;
+    font-weight: 400;
+    color: rgb(91, 91, 91);
+}
+
+.second-part .verify-button {
+    width: 50%;
+    padding: 1rem 1.25rem;
+    background: var(--red);
+    border: none;
+    color: white;
+    /* font-size: 1.2rem; */
+    border: 2px solid var(--red);
+    transition: background 250ms linear;
+}
+.second-part .verify-button:hover {
+    background-color: white;
+    color: var(--red);
+}
