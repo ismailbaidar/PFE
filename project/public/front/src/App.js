@@ -16,6 +16,7 @@ function App() {
                 <Route path="/product/:productId" element={<SinglePage />} />
                 <Route path="*" element={<ErrorPage errorType={404} />} />
                 <Route path="test" element={<Profile />}></Route>
+                <Route path="" element={''}></Route>
             </Routes>
         </div>
     );
