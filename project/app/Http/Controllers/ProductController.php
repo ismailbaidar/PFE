@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,23 +20,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        // return response()->json(["something"=>$request->file("images")]);
         try {
-            $data = $request->validate(['*'=>'required']);
-            $produit =Produit::create([
+
+
+            $produit =Product::create([
                 'name'=>$request->name,
                 'description'=>$request->description,
                 'price'=>$request->price,
                 'discount'=>$request->discount,
                 'stock'=>$request->stock,
                 'brand_id'=>$request->brand,
-                'categorie'=>$request->categorie
+                'categorie_id'=>$request->categorie
             ]);
             foreach($request->images as $img ){
+                // return response()->json(["hello"=>$img]);
                 $imgPath = time().'.'.$img->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
                 $produit->images()->create(['url'=>$imgPath]);
             }
-            return response()->json(['status'=>'produit bien ajouter #'].$produit);
+            return response()->json(['status'=>'produit bien ajouter #'.$produit]);
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);
         }
@@ -54,7 +59,38 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        try {
+            $data = $request->validate(['*'=>'required']);
+        $produit = Product::find($id);
+        $produit->update([
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'price'=>$request->price,
+                'discount'=>$request->discount,
+                'stock'=>$request->stock,
+                'brand_id'=>$request->brand,
+                'categorie_id'=>$request->categorie
+        ]);
+        $produitImages = $produit->images();
+        foreach($produitImages as $img){
+            Storage::delete('public/images'.$img->url);
+            $img->delete();
+        }
+
+        foreach($request->images as $img ){
+            $imgPath = time().'.'.$img->getClientOriginalExtension();
+            $img->StoreAs('images',$imgPath,'public');
+            $produit->images()->create(['url'=>$imgPath]);
+        }
+
+        return response()->json(['status'=>'le produit est modifier #'.$produit->id]);
+
+        } catch (\Throwable $th) {
+            return response()->json(['error'=>$th->getMessage()]);
+        }
+
+
     }
 
     /**

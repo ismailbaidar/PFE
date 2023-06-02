@@ -9,7 +9,19 @@ import Profile from "./components/profile/Profile";
 import Cart from "./components/cart/Cart";
 import Navbar from "./components/Navbar";
 import ConfirmationCode from "./components/confirmationcode/ConfirmationCode";
+import axios from "axios";
 function App() {
+    axios.defaults.headers.post["Content-Type"] = "application/json";
+    axios.defaults.headers.post["Accept"] = "application/json";
+
+    axios.defaults.withCredentials = true;
+    axios.interceptors.request.use(function (config) {
+        const token = localStorage.getItem("auth_token");
+        config.headers.Authorization =
+            "Bearer 2|EJfLAQEzIXYnc7F2fMLsN7WB3L9C1drisQuwD3lG";
+
+        return config;
+    });
     return (
         <div className="App">
             <Routes>
