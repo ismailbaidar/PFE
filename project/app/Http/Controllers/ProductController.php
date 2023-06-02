@@ -35,8 +35,8 @@ class ProductController extends Controller
                 'categorie_id'=>$request->categorie
             ]);
             foreach($request->images as $img ){
-                // return response()->json(["hello"=>$img]);
-                $imgPath = time().'.'.$img->getClientOriginalExtension();
+                return response()->json(["hello"=>$img]);
+                $imgPath = time().'.'.json_decode($img)->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
                 $produit->images()->create(['url'=>$imgPath]);
             }
