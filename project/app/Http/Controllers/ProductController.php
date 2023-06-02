@@ -21,9 +21,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        // return response()->json(["something"=>$request->file("images")]);
         try {
-
 
             $produit =Product::create([
                 'name'=>$request->name,
@@ -34,13 +32,12 @@ class ProductController extends Controller
                 'brand_id'=>$request->brand,
                 'categorie_id'=>$request->categorie
             ]);
-            foreach($request->images as $img ){
-                // return response()->json(["hello"=>$img]);
+            foreach($request->file('images') as $img ){
                 $imgPath = time().'.'.$img->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
                 $produit->images()->create(['url'=>$imgPath]);
             }
-            return response()->json(['status'=>'produit bien ajouter #'.$produit]);
+            return response()->json(['status'=>'produit bien ajouter #'.$produit->id]);
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);
         }

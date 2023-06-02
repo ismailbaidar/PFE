@@ -13,10 +13,8 @@ export const addProduct = createAsyncThunk(
         form.append("stock", data.stock);
         form.append("brand", 1);
         form.append("categorie", 1);
-        data.images.map((e) => {
-            form.append("images[]", e);
-            console.log(e);
-        });
+        data.images.forEach((e) => form.append("images[]", e));
+        console.log(form.get("images[1]"))
 
         return axios
             .post("http://localhost:8000/api/product/", form)
@@ -30,8 +28,8 @@ const Product = createSlice({
     initialState: { products: [], status: "uyr" },
     extraReducers: (builder) => {
         builder.addCase(addProduct.fulfilled, (state, { payload }) => {
-            state.status = payload.status;
             console.log(payload);
+            state.status = payload.status;
         });
         /* builder.addCase(addProduct.pending, (state, { payload }) => {
             state.status = payload.status;

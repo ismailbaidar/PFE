@@ -16,7 +16,7 @@ const AddProduct = () => {
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
     const AddFile = (e) => {
-        setFiles([...files, e.target.files]);
+        setFiles([...files, e.target.files[0]]);
     };
     const dispatch = useDispatch();
     const name = useRef();
@@ -28,8 +28,9 @@ const AddProduct = () => {
         placeholder: "Start typings...",
     };
 
-    const ajouterProduct = () => {
+    const ajouterProduct = (e) => {
         console.log(files);
+        e.preventDefault()
         dispatch(
             addProduct({
                 name: name.current.value,
@@ -44,7 +45,7 @@ const AddProduct = () => {
 
     return (
         <div className="Addproduct">
-            <form encType="multipart/form-data">
+            <form   onSubmit={ajouterProduct} method='post'  encType='multipart/form-data'>
                 <div className="HProduct">Ajouter Produit</div>
 
                 <InputItem input={name} placeholder={"Titre"} type={"text"} />
@@ -106,8 +107,7 @@ const AddProduct = () => {
                     />
                 </div>
                 <button
-                    type="button"
-                    onClick={ajouterProduct}
+                    type="submit"
                     className="AjouterProduit"
                 >
                     Ajouter Produit
