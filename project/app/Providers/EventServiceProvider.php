@@ -2,10 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Brand;
+use App\Models\Spect;
+use App\Models\Categorie;
+use App\Events\VerifyEvent;
+use App\Observers\BrandObserver;
+use App\Observers\SpectObserver;
+use App\Listeners\VerifyListener;
+use App\Observers\CategorieObserver;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +26,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        VerifyEvent::class=>[
+            VerifyListener::class
+        ]
+
     ];
 
     /**
@@ -25,7 +37,9 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Categorie::observe(CategorieObserver::class);
+        Brand::observe(BrandObserver::class);
+        Spect::observe(SpectObserver::class);
     }
 
     /**
