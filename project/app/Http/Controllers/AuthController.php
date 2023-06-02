@@ -13,10 +13,11 @@ class AuthController extends Controller
     function Register(Request $request){
         try {
             $data = $request->validate(['name'=>'required','email'=>'email|unique:users,email','password'=>'min:8']);
-            $data['code']=rand(100000,900000);
+            $data['code']=rand(100000,999999);
             $user=User::create($data);
             event(new VerifyEvent($data));
-            return response()->json(['Satus'=>'User Created ']) ;
+            $token = $user->createToken('token')->plainTextToken;
+            return response()->json(['Status'=>'User Created ','AUTH_TOKEN'=>$token]) ;
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);
         }

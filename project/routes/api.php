@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SpectController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('Register',[AuthController::class,'Register']);
-Route::post('Login',[AuthController::class,'Login']);
+Route::post('register',[AuthController::class,'Register']);
+Route::post('login',[AuthController::class,'Login']);
 Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::post('VerifyEmail',[AuthController::class,'Verify']);
 
@@ -36,5 +37,8 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
 
     Route::post('spect/{id}',[SpectController::class,'update']);
     Route::apiResource('spect',SpectController::class)->except('update');
+
+    Route::post('product/{id}',[ProductController::class,'update']);
+    Route::apiResource('product',ProductController::class)->except('update');
 
 });

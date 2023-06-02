@@ -18,8 +18,8 @@ return new class extends Migration
             $table->float('price');
             $table->float('discount');
             $table->integer('stock');
-            $table->integer('rate');
-            $table->enum('status',['new','promo']);
+            $table->integer('rate')->default(0);
+            $table->enum('status',['new','standard','promo'])->default('new');
             $table->foreignId('brand_id')->constrained();
             $table->foreignId('categorie_id')->constrained();
             $table->timestamps();

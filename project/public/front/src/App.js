@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MainRoute from "./features/MainRoute";
 import AdminRoute from "./features/AdminRoute";
 import SinglePage from "./components/Single page/SinglePage";
@@ -16,7 +16,14 @@ function App() {
                 <Route path="/*" element={<MainRoute />} />
                 <Route path="/Admin/*" element={<AdminRoute />} />
                 <Route path="register" element={<Register />} />
-                <Route path="*" element={<ErrorPage errorType={404} />} />
+                <Route path="tzst" element={<ConfirmationCode />} />
+                <Route path="*" element={<Navigate to="/notFound" />} />
+                <Route
+                    path="notfound"
+                    element={<ErrorPage errorType={404} />}
+                />
+                <Route path="profile" element={<Profile />} />
+                <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>
         </div>
     );
