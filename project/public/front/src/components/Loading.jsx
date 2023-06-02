@@ -3,7 +3,7 @@ export default function Loading(){
     return <div className="loading-wrapper">
         {/* <div className="image"></div> */}
         <div className="loading">
-            <img src="../images/pixel.gif" alt="" className="image"  />
+            <img src="../../images/pixel.gif" alt="" className="image"  />
             <div className="circles">
                 <div className="circle circle-1"></div>
                 <div className="circle circle-2"></div>
