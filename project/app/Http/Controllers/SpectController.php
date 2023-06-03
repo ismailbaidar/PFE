@@ -14,6 +14,7 @@ class SpectController extends Controller
     public function index()
     {
         $allspects = Spects::all();
+        return response()->json(['data'=>$allspects]);
     }
 
     /**

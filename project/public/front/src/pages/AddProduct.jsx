@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo,useEffect } from "react";
 import JoditEditor from "jodit-react";
 import "../styles/AddProduct.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,14 +7,16 @@ import ImageCard from "../components/Admin/ImageCard";
 import OptionsSelect from "../components/Admin/OptionsSelect";
 import InputItem from "../components/Admin/InputItem";
 import FileIntem from "../components/Admin/FileIntem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../features/Products";
+import { getCategories } from "../features/CategorieSlice";
 const AddProduct = () => {
     let option = { key: "", value: "" };
     const [options, setOptions] = useState([option]);
     const editor = useRef(null);
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
+    const [categorie,setCategorie]=useState(null) 
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
@@ -27,6 +29,12 @@ const AddProduct = () => {
         readonly: false,
         placeholder: "Start typings...",
     };
+
+    const categorieOption = useSelector(state=>state.Categorie.categories)
+
+    useEffect(()=>{
+        dispatch(getCategories())
+    },[])
 
     const ajouterProduct = (e) => {
         console.log(files);
@@ -63,7 +71,7 @@ const AddProduct = () => {
                     />
                 </div>
                 <div className="ContainerInputProduct">
-                    <InputItem placeholder={"Categorie"} type={"select"} />
+                    <InputItem  input={setCategorie} options={categorieOption} placeholder={"Categorie"} type={"select"} />
                     <InputItem
                         input={discount}
                         placeholder={"Discount"}

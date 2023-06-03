@@ -14,7 +14,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::withCount('products')->get();
-        dd($categories);
+        return response()->json(['data'=>$categories]);
     }
 
     /**
