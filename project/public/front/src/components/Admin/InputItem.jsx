@@ -7,9 +7,9 @@ const InputItem = ({ placeholder, type, value, input ,options}) => {
             {type != "select" ? (
                 <input value={value} ref={input}  type={type} />
             ) : (
-                <select  onChange={(e)=>console.log(e.target.options[e.target.selectedIndex].value)} >
+                <select  onChange={(e)=>input(e.target.options[e.target.selectedIndex].value)} >
                 <option value={''} >choisir une categorie ---</option>
-                {options.map(e=><option value={e.id} >{`${e.name} (${e.products_count})`}</option>)}
+                {options.map(e=><option value={e.id} >{`${e.name}`}</option>)}
                 </select>
             )}
         </div>

@@ -11,8 +11,9 @@ export const addProduct = createAsyncThunk(
         form.append("price", data.price);
         form.append("discount", data.discount);
         form.append("stock", data.stock);
-        form.append("brand", 1);
-        form.append("categorie", 1);
+        form.append("brand", data.brand);
+        form.append("categorie", data.categorie);
+        form.append('options',JSON.stringify(data.options))
         data.images.forEach((e) => form.append("images[]", e));
         console.log(form.get("images[1]"))
 
@@ -23,6 +24,15 @@ export const addProduct = createAsyncThunk(
     }
 );
 
+
+
+
+export const getProducts = createAsyncThunk('getProducts',async()=>{
+    return axios.get('http://localhost:8000/api/product')
+    .then(res => res.data)
+    .catch(err  => console.log(err))
+})
+
 const Product = createSlice({
     name: "products",
     initialState: { products: [], status: "uyr" },
@@ -31,12 +41,9 @@ const Product = createSlice({
             console.log(payload);
             state.status = payload.status;
         });
-        /* builder.addCase(addProduct.pending, (state, { payload }) => {
-            state.status = payload.status;
-        });
-        builder.addCase(addProduct.rejected, (state, { payload }) => {
-            console.log(state.status, payload);
-        }); */
+        builder.addCase(getProducts.fulfilled,(state,{payload})=>{
+            state.products=payload.products
+        })
     },
 });
 

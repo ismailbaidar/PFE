@@ -13,7 +13,7 @@ class SpectController extends Controller
      */
     public function index()
     {
-        $allspects = Spects::all();
+        $allspects = Spect::all();
         return response()->json(['data'=>$allspects]);
     }
 
@@ -30,7 +30,7 @@ class SpectController extends Controller
             $spect=Spect::create($data);
             return response()->json(['status'=>'spect bien cree #'.$spect->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -63,7 +63,7 @@ class SpectController extends Controller
 
 
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -78,7 +78,7 @@ class SpectController extends Controller
             Storage::delete('public/images/'.$Spect->img);
             return response()->json(['status'=>'spect bien supprimer #'.$Spect->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 }

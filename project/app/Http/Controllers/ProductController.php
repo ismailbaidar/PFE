@@ -12,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products= Product::with(['categorie:id,name','brand:id,name'])->get();
+        $products=$products->makeHidden(['brand_id','categorie_id','description']);
+        return response()->json(['products'=>$products]);
     }
 
     /**
@@ -32,6 +34,9 @@ class ProductController extends Controller
                 'brand_id'=>$request->brand,
                 'categorie_id'=>$request->categorie
             ]);
+            foreach(json_decode($request->options) as $option){
+                $produit->spects()->attach($option->key,['value'=>$option->value]);
+            }
             foreach($request->file('images') as $img ){
                 $imgPath = time().'.'.$img->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
@@ -39,7 +44,7 @@ class ProductController extends Controller
             }
             return response()->json(['status'=>'produit bien ajouter #'.$produit->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -84,7 +89,7 @@ class ProductController extends Controller
         return response()->json(['status'=>'le produit est modifier #'.$produit->id]);
 
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
 
 
