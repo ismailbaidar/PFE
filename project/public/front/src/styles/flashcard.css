@@ -9,6 +9,7 @@
     right: 10px;
 }
 .flash-card-wrapper {
+    scale: 0.7;
     width: 340px;
     height: 150px;
     position: relative;
@@ -34,7 +35,7 @@
     background: var(--info);
 }
 .flash-card-wrapper svg {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: white;
     padding-bottom: 2rem;
     padding-inline: 0.5rem;
@@ -53,7 +54,7 @@
 }
 .flash-card-wrapper .content .description {
     text-align: start;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
 }
 .flash-card-wrapper .content h3 {
     color: white;
