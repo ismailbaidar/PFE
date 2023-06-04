@@ -11,6 +11,7 @@ import {
     faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export default function NavigationSidebar() {
     const [visible, setVisible] = useState(false);
     return (
@@ -22,11 +23,12 @@ export default function NavigationSidebar() {
                 <ul className="sidebar-list">
                     <li className="sidebar-list-item">
                         <FontAwesomeIcon icon={faUser} />
-                        Profile
+                        <Link to="">Profile</Link>
                     </li>
                     <li className="sidebar-list-item">
                         <FontAwesomeIcon icon={faBagShopping} />
-                        Orders
+
+                        <Link to="orders">Orders</Link>
                     </li>
                     <li className="sidebar-list-item">
                         <FontAwesomeIcon icon={faHeart} />

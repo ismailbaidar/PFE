@@ -1,0 +1,25 @@
+.mini-loading {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: transparent !important;
+    animation: rotate 500ms linear infinite;
+}
+
+.mini-loading.red {
+    border-color: var(--red);
+}
+.mini-loading.black {
+    border-color: black;
+}
+.mini-loading.white {
+    border-color: white;
+}
+
+@keyframe rotate {
+    100% {
+        rotate: 360deg;
+    }
+}

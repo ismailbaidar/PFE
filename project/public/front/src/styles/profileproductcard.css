@@ -1,0 +1,38 @@
+.profile-product-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+}
+.profile-product-card .image-info {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.profile-product-card .image-info .image {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px lightgray;
+}
+
+.profile-product-card .image-info .info .title {
+    font-weight: bold;
+    color: black;
+}
+.profile-product-card .image-info .info .brand {
+    font-size: 0.9rem;
+    color: gray;
+    font-weight: 600;
+}
+
+.profile-product-card .details-button {
+    width: max-content;
+    height: max-content;
+    padding: 0.75rem 1rem;
+    background-color: var(--red);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
