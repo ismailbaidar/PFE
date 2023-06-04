@@ -9,13 +9,13 @@ const Card = () => {
     return (
         <div className="card">
             <div className="catImages">
-                <img src={img1} />
-                <img src={img2} />
+                <img src={img1} alt="" />
+                <img src={img2} alt="" />
             </div>
-            <img src={img} width={300} />
+            <img src={img} width={300} alt="" />
             <p className="titleCard">
-                {"AMD RYZEN 5 4600G-VEGA 7".length > 20
-                    ? "AMD RYZEN 5 4600G-VEGA 7".substring(0, 20)
+                {"AMD RYZEN 5 4600G-VEGA 7".length > 15
+                    ? "AMD RYZEN 5 4600G-VEGA 7".substring(0, 15) + "..."
                     : "AMD RYZEN 5 4600G-VEGA 7"}
             </p>
             <div className="price">
@@ -23,7 +23,7 @@ const Card = () => {
                 <span className="lowPrice">2500.14 MAD</span>
             </div>
             <div className="hiddenButtons">
-                <button className="lireL">Lire la suite</button>
+                <button className="lireL">Add to cart</button>
                 <button className="Heart">
                     {" "}
                     <FontAwesomeIcon icon={faHeart} />{" "}

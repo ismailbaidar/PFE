@@ -1,0 +1,14 @@
+.wishlist {
+    height: 85vh;
+    display: grid;
+    gap: 3rem;
+
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
+.wishlist .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
