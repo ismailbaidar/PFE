@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import ConfirmationCode from "./components/confirmationcode/ConfirmationCode";
 import axios from "axios";
 import MiniLoading from "./components/mini-loading/MiniLoading";
+import Login from "./components/login/Login";
 function App() {
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/*" element={<MainRoute />} />
                 <Route path="/Admin/*" element={<AdminRoute />} />
                 <Route path="register" element={<Register />} />
+                <Route path="login" element={<Login />} />
                 <Route path="tzst" element={<ConfirmationCode />} />
                 <Route path="*" element={<Navigate to="/notFound" />} />
                 <Route
