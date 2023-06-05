@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo,useEffect } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import JoditEditor from "jodit-react";
 import "../styles/AddProduct.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ const AddProduct = () => {
     const editor = useRef(null);
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
-    const [categorie,setCategorie]=useState(null) 
+    const [categorie, setCategorie] = useState(null);
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
@@ -30,15 +30,15 @@ const AddProduct = () => {
         placeholder: "Start typings...",
     };
 
-    const categorieOption = useSelector(state=>state.Categorie.categories)
+    const categorieOption = useSelector((state) => state.Categorie.categories);
 
-    useEffect(()=>{
-        dispatch(getCategories())
-    },[])
+    useEffect(() => {
+        dispatch(getCategories());
+    }, []);
 
     const ajouterProduct = (e) => {
         console.log(files);
-        e.preventDefault()
+        e.preventDefault();
         dispatch(
             addProduct({
                 name: name.current.value,
@@ -53,7 +53,11 @@ const AddProduct = () => {
 
     return (
         <div className="Addproduct">
-            <form   onSubmit={ajouterProduct} method='post'  encType='multipart/form-data'>
+            <form
+                onSubmit={ajouterProduct}
+                method="post"
+                encType="multipart/form-data"
+            >
                 <div className="HProduct">Ajouter Produit</div>
 
                 <InputItem input={name} placeholder={"Titre"} type={"text"} />
@@ -71,7 +75,12 @@ const AddProduct = () => {
                     />
                 </div>
                 <div className="ContainerInputProduct">
-                    <InputItem  input={setCategorie} options={categorieOption} placeholder={"Categorie"} type={"select"} />
+                    <InputItem
+                        input={setCategorie}
+                        options={categorieOption}
+                        placeholder={"Categorie"}
+                        type={"select"}
+                    />
                     <InputItem
                         input={discount}
                         placeholder={"Discount"}
@@ -114,10 +123,7 @@ const AddProduct = () => {
                         }}
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="AjouterProduit"
-                >
+                <button type="submit" className="AjouterProduit">
                     Ajouter Produit
                 </button>
             </form>

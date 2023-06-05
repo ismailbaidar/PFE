@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/login.css";
+import "../../styles/register.css";
 import { useState, useEffect } from "react";
 
 function Login() {
@@ -24,7 +24,7 @@ function Login() {
         setCurrentState(c);
     };
     return (
-        <section className="register">
+        <section className="register-wrapper">
             <div className="slider">
                 <div className="img-slider">
                     <img
@@ -70,21 +70,14 @@ function Login() {
                             <span>Keep me logged in </span>
                         </label>
                     </div>
-                    <button type="submit">Log in</button>
-                    <a href="">
+
+                    <button type="submit">Sign Up</button>
+                    <a href="" className="google">
                         <div className="google-sign-in">
                             <img src="./img/google-logo.png" alt="#" />
-                            <a href="">Sign In With Google</a>
+                            <span>Sign In With Google</span>
                         </div>
                     </a>
-                    <div className="box-2">
-                        <p>
-                            Don't have an account?{" "}
-                            <span className="sign-up-span">
-                                <a href="">Sign up</a>
-                            </span>
-                        </p>
-                    </div>
                 </form>
             </div>
         </section>
