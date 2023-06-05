@@ -10,10 +10,16 @@ import {
     faBell,
     faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 export default function NavigationSidebar() {
     const [visible, setVisible] = useState(false);
+    const [selected, setSelected] = useState(document.location.pathname);
+    useEffect(() => {
+        setSelected(document.location.pathname);
+        console.log(document.location.pathname);
+    }, []);
+
     return (
         <div className="navigation-sidebar">
             <div className="logo">
@@ -21,18 +27,39 @@ export default function NavigationSidebar() {
             </div>
             <div className="sidebar">
                 <ul className="sidebar-list">
-                    <li className="sidebar-list-item">
+                    <li
+                        className="sidebar-list-item"
+                        data-selected={"/profile/" == selected}
+                    >
                         <FontAwesomeIcon icon={faUser} />
-                        <Link to="">Profile</Link>
+                        <Link to="" onClick={() => setSelected("/profile/")}>
+                            Profile
+                        </Link>
                     </li>
-                    <li className="sidebar-list-item">
+                    <li
+                        className="sidebar-list-item"
+                        data-selected={"/profile/orders" == selected}
+                    >
                         <FontAwesomeIcon icon={faBagShopping} />
 
-                        <Link to="orders">Orders</Link>
+                        <Link
+                            onClick={() => setSelected("/profile/orders")}
+                            to="orders"
+                        >
+                            Orders
+                        </Link>
                     </li>
-                    <li className="sidebar-list-item">
+                    <li
+                        className="sidebar-list-item"
+                        data-selected={"/profile/wishlist" == selected}
+                    >
                         <FontAwesomeIcon icon={faHeart} />
-                        Wishlist
+                        <Link
+                            to="wishlist"
+                            onClick={() => setSelected("/profile/wishlist")}
+                        >
+                            Wishlist
+                        </Link>
                     </li>
                     <li
                         className="sidebar-list-item account"

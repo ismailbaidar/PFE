@@ -266,7 +266,7 @@ li {
 
     white-space: nowrap;
 
-    padding: 10px 20px;
+    padding: 0.75rem 1rem;
     position: relative;
     border-radius: 5px;
     flex-direction: column;
@@ -671,6 +671,7 @@ li {
     position: absolute;
     width: 100%;
     top: 100%;
+    align-items: center;
 }
 .footer h3,
 h4 {
@@ -680,10 +681,31 @@ h4 {
     display: flex;
     gap: 20px;
 }
-.f1 p {
+.f1-first-part {
+    display: flex;
+    align-items: center;
+}
+.f1 span img {
+    width: max-content;
+    display: inline;
+}
+
+.f1-first-part p {
     max-width: 300px;
     color: #888;
     font-size: 12px;
+}
+.f1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    flex: 1;
+}
+.itemsFooter {
+    display: flex;
+
+    gap: 2rem;
 }
 .itemsFooter .items {
     display: flex;
@@ -691,6 +713,7 @@ h4 {
     color: #888;
     gap: 5px;
     font-size: 12px;
+    min-height: max-content;
 }
 
 .search {
