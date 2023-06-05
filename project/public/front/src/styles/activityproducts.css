@@ -1,0 +1,8 @@
+.activity-products {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.activity-products .activity-title {
+    font-weight: bold;
+}

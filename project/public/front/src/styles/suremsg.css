@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.full-display{
+    position: absolute;
+    top:10%;
+    left:50%;
+    background-color: white;
+    width: min-content;
+    box-shadow: 13px 7px 32px #e3dada;
+    border-radius: 10px;    
+}
+.suremsg{
+    
+    background-color: white;
+    margin: auto;
+    border-radius: 6px;
+    z-index: 10;
+}
+.msg-icon{
+    display: flex;
+    justify-content: right;
+    font-size: 1.5rem;
+    color: gray;
+    padding: 10px;
+}
+.msg-icon :hover{
+    color: #f93d3d;
+}
+.containe{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    padding: 10px;
+    gap: 20px;
+}
+.containe h1{
+    font-weight:400;
+}
+.containe p{
+    text-align: center;
+    color: rgb(99, 99, 99);
+}
+.icon-close{
+    font-size: 5rem;
+    color: #f93d3d;
+}
+/* buttons */
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.buttons button{
+    width: 110px;
+    height: 35px;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+.cancel-button{
+    background-color: rgb(181, 181, 181);
+}
+.delete-button{
+    background-color: #f93d3d;
+}

@@ -7,11 +7,12 @@ import {
     faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-export default function FlashCard({ type, title, content }) {
+export default function FlashCard({ type, title, content ,toogle }) {
     const [isVisible, setIsVisible] = useState(true);
     useEffect(() => {
         setTimeout(() => {
             setIsVisible(false);
+            toogle(false)
         }, 5000);
     });
     return (

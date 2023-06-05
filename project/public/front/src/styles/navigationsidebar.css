@@ -3,7 +3,6 @@
     flex-direction: column;
     /* justify-content: space-between; */
     gap: 6rem;
-
     width: max-content;
     padding: 1rem;
     font-size: 0.9rem;
@@ -15,7 +14,7 @@
     /* background: red; */
 }
 .navigation-sidebar .logo img {
-    width: 60 px;
+    width: 60px;
     object-fit: contain;
 }
 
@@ -45,7 +44,11 @@
     flex-direction: column;
     position: relative;
 }
-.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item:hover {
+.navigation-sidebar .sidebar .sidebar-list .sidebar-list-item:hover,
+.navigation-sidebar
+    .sidebar
+    .sidebar-list
+    .sidebar-list-item[data-selected="true"] {
     color: var(--red);
     background: var(--light-main);
 }

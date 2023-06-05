@@ -1,0 +1,17 @@
+.profile-home {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 85vh;
+    overflow: scroll;
+    gap: 3rem;
+}
+.profile-home .activities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: space-between;
+
+    gap: 2rem;
+    height: max-content;
+    padding: 1rem;
+}

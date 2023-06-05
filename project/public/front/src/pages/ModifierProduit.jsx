@@ -1,44 +1,127 @@
-import React, { useRef, useState } from 'react'
-import InputItem from '../components/Checkout/InputItem';
+import React, { useRef, useState,useEffect } from 'react'
+import {useParams} from 'react-router-dom'
+import InputItem from '../components/Admin/InputItem';
 import OptionsSelect from '../components/Admin/OptionsSelect';
 import JoditEditor from 'jodit-react';
 import FileIntem from '../components/Admin/FileIntem';
 import '../styles/AddProduct.css'
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../features/CategorieSlice";
+import { getSpects } from "../features/SpectSlice";
+import { getBrands } from "../features/BrandSlice";
+import { getoneproduct, ModifierProduct } from "../features/Products";
 
 const ModifierProduit=()=>{
     let option={key:'',value:''}
-    let [object,setObject] =useState ({titre:'azed',price:'1234$',qte:'324',Categorie:'laptop',options:[{key:'ram',value:'12gb'}],images:['../../../images/asusdisplay3.webp'],description:'<h1>OoO</h1>'})
     const [options,setOptions]=useState([option])
     const editor = useRef(null);
-	const [content, setContent] = useState(object.description);
-    const [files,setFiles]=useState(object.images)
-    const AddFile=(e)=>{
-        setFiles([...files,URL.createObjectURL(e.target.files[0])])
-    }
+	const [content, setContent] = useState();
     const config = {
-			readonly: false,
-			placeholder:  'Start typings...'}
+        readonly: false,
+        placeholder:  'Start typings...'
+    }
+    const dispatch = useDispatch();
+    {/*files---------*/}
+    const [files,setFiles]=useState([])
+    {/*id---------*/}
+
+    const {id}=useParams()
+
+    {/*items inputs---------*/}
+    const [brand,setBrand]=useState(null)
+    const [categorie,setCategorie]=useState(null)
+    const [titre,setTitre]=useState(null)
+    const [price,setPrice]=useState(null)
+    const [qte,setQte]=useState(null)
+    const [discount,setDiscount]=useState(null)
+    const [description,setDescription]=useState('')
+
+    {/*function pour ajouter img---------*/}
+
+    const AddFile=(e)=>{
+        setFiles([...files,e.target.files[0]])
+    }
+    
+
+    const categorieOption = useSelector(state=>state.Categorie.categories)
+    const Spects = useSelector(state=>state.Spect.spects)
+    const brands = useSelector(state=>state.Brand.brands)
+    const main = useSelector(state=>state.Product.main)
+    const [used,setUsed]=useState([])
+    useEffect(()=>{
+        dispatch(getoneproduct(id))
+        .unwrap()
+        .then((data)=>{
+            setUsed(data.produit.spects.map(e=>e.id))
+            setOptions(data.produit.spects.map(e=>({key:e.id,value:e.pivot.value})))
+            setCategorie(data.produit.categorie.id)
+            setBrand(data.produit.brand.id)
+            setTitre(data.produit.name)
+            setPrice(data.produit.price)
+            setQte(data.produit.stock)
+            setDiscount(data.produit.discount)
+            setDescription(data.produit.description)
+            setFiles(data.produit.images.map(e=>'http://localhost:8000/storage/images/'+e.url))
+        })
+        dispatch(getCategories())
+        dispatch(getSpects())
+        dispatch(getBrands())
+    },[])
+
+    console.log(description)
+    {/*pour chaque item de options on va filter les option deja exist dans used array ---------*/}
+
+    const filterByUsedSpects=(index)=>{
+                let ns = used.filter((e,i)=>i!==index)  
+                let nd = Spects.filter((e,i)=> !ns.includes(e.id))
+                return nd
+    }
+
+
+    const modify=()=>{
+        const obj = {
+            id:id,
+            name: titre,
+            price: price,
+            discount: discount,
+            stock: qte,
+            description: content,
+            images: files,
+            options:options,
+            categorie:categorie,
+            brand:brand
+        }
+        dispatch(ModifierProduct(obj))
+    }
+    
 
   return (
     <div className='Addproduct' >
     <div className='HProduct'  >Modifier Produit</div>
 
-
-    <InputItem placeholder={"Titre"} value={object.titre} full={true}  type={'text'}  />
+    <InputItem placeholder={"Titre"}  value={titre} input={(e)=>setTitre(e.target.value)}  type={'text'}  />
 
     <div className='ContainerInputProduct' >
-    <InputItem placeholder={"Price"}  value={object.price} type={'text'}  />
-    <InputItem placeholder={"Qte"}  value={object.qte} type={'number'}  />
+    <InputItem placeholder={"Price"} value={price} input={(e)=>setPrice(e.target.value)}   type={'number'}  />
+    <InputItem placeholder={"Qte"} value={qte} input={(e)=>setQte(e.target.value)}  type={'number'}  />
     </div>
-
-    <InputItem placeholder={"Categorie"} type={'select'}  />
+    <InputItem
+        placeholder={"Brand"}
+        type={"select"}
+        options={brands}
+        value={brand}
+        input={(v)=>setBrand(v)}
+        />
+    <div className='ContainerInputProduct' >
+    <InputItem placeholder={"Categorie"} type={'select'} value={categorie} options={categorieOption}  input={(v)=>setCategorie(v)}  />
+    <InputItem placeholder={"Discount"} value={discount} input={(e)=>setDiscount(e.target.value)} type={'number'}   />
+    </div>
 
 
     <div className='options' >
     <span className='placeholderPI' >Options</span>
     <div className='OptionsContainer' >
-    {options.map(e=><OptionsSelect data={e} />)}
+    {options.map((e,i)=><OptionsSelect setUsed={setUsed} setdata={setOptions} id={i}  item={options[i]}  data={()=>filterByUsedSpects(i)} />)}
     </div>
 
 
@@ -51,16 +134,16 @@ const ModifierProduit=()=>{
     <div className='placeholderPI' >Description</div>
     <JoditEditor
 			ref={editor}
-			value={content}
+			value={description}
 			config={config}
 			tabIndex={1}
 			onBlur={newContent => setContent(newContent)}
 			onChange={newContent => {
-            console.log(newContent)
+
             }}
 		/>
     </div>
-    <div className='AjouterProduit' >Modifier Produit</div>
+    <div className='AjouterProduit' onClick={modify} >Modifier Produit</div>
     </div>
   );}
 export default ModifierProduit

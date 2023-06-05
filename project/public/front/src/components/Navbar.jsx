@@ -22,7 +22,9 @@ const Navbar = () => {
                     icon={faBars}
                     onClick={() => setToogle(true)}
                 />
-                <img src="../images/logored.png" width={150} />
+                <Link to="/">
+                    <img src="../images/logored.png" width={150} />
+                </Link>
             </div>
 
             <div className="Tabs">
