@@ -23,10 +23,10 @@ const AddProduct = () => {
     };
     const [showError,setError] = useState(false)
     const dispatch = useDispatch();
-    const name = useRef();
-    const price = useRef();
-    const discount = useRef();
-    const stock = useRef();
+    const [titre,setTitre]=useState(null)
+    const [price,setPrice]=useState(null)
+    const [qte,setQte]=useState(null)
+    const [discount,setDiscount]=useState(null)
     const [used,setUsed]=useState([])
     const config = {
         readonly: false,
@@ -54,10 +54,10 @@ const AddProduct = () => {
     const ajouterProduct = (e) => {
         e.preventDefault()
         const obj = {
-            name: name.current.value,
-            price: price.current.value,
-            discount: discount.current.value,
-            stock: stock.current.value,
+            name: titre,
+            price: price,
+            discount: discount,
+            stock: qte,
             description: content,
             images: files,
             options:options,
@@ -74,18 +74,9 @@ const AddProduct = () => {
             return setError(true)
         }
         dispatch(
-            addProduct({
-                name: name.current.value,
-                price: price.current.value,
-                discount: discount.current.value,
-                stock: stock.current.value,
-                description: content,
-                images: files,
-                options:options,
-                categorie:categorie,
-                brand:brand
-            })
+            addProduct(obj)
         );
+        console.log('added')
     };
 
     return (
@@ -93,16 +84,16 @@ const AddProduct = () => {
             <form   onSubmit={ajouterProduct} method='post'  encType='multipart/form-data'>
                 <div className="HProduct">Ajouter Produit</div>
 
-                <InputItem input={name} placeholder={"Titre"} type={"text"} />
+                <InputItem input={(e)=>setTitre(e.target.value)} placeholder={"Titre"} type={"text"} />
 
                 <div className="ContainerInputProduct">
                     <InputItem
-                        input={price}
+                        input={(e)=>setPrice(e.target.value)}
                         placeholder={"Price"}
                         type={"text"}
                     />
                     <InputItem
-                        input={stock}
+                        input={(e)=>setQte(e.target.value)}
                         placeholder={"Qte"}
                         type={"number"}
                     />
@@ -118,7 +109,7 @@ const AddProduct = () => {
                 <div className="ContainerInputProduct">
                     <InputItem  input={(v)=>setCategorie(v)} options={categorieOption} placeholder={"Categorie"} type={"select"} />
                     <InputItem
-                        input={discount}
+                        input={(e)=>setDiscount(e.target.value)}
                         placeholder={"Discount"}
                         type={"number"}
                     />
@@ -128,7 +119,7 @@ const AddProduct = () => {
                     <span className="placeholderPI">Options</span>
                     <div className="OptionsContainer">
                         {options.map((e,i) => (
-                            <OptionsSelect setUsed={setUsed} setdata={setOptions} id={i} data={()=>filterByUsedSpects(i)} />
+                            <OptionsSelect   setUsed={setUsed} setdata={setOptions} id={i} item={options[i]}  data={()=>filterByUsedSpects(i)} />
                         ))}
                     </div>
 
@@ -172,7 +163,7 @@ const AddProduct = () => {
                 </button>
             </form>
             <div className='errorDi' >
-            {showError && <FlashCard toogle={setError} type='error' content='tous les champ doivent etre plein' title='Error' />}
+            {showError && <FlashCard   toogle={setError} type='error' content='tous les champ doivent etre plein' title='Error' />}
             </div>
         </div>
     );

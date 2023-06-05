@@ -1,8 +1,8 @@
 import React from "react";
-import InputItem from "./InputItem";
 
-const OptionsSelect = ({ data,setdata,id,setUsed }) => {
+const OptionsSelect = ({ data,setdata,id,setUsed,item }) => {
     const spects = data()
+    console.log(item)
     return (
         <div className="ContainerInputProduct">
             <div className="InputProduct">
@@ -22,11 +22,11 @@ const OptionsSelect = ({ data,setdata,id,setUsed }) => {
                     return [...ndata]
                 })} >
                     <option value='' >choisis une option</option>
-                    {spects.map(e=><option value={e.id} >{e.name}</option>)}
+                    {spects.map(e=><option selected={item.key==e.id}  value={e.id} >{e.name}</option>)}
                 </select>
             </div>
             <div className="InputProduct">
-                <input  onChange={(e)=>setdata(prev=>{
+                <input value={item.value}  onChange={(e)=>setdata(prev=>{
                     let ndata = prev
                     ndata[id] = {...ndata[id],value:e.target.value}
                     return [...ndata]
