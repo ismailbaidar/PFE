@@ -1,15 +1,15 @@
 import React, { useState, useRef, useMemo, useEffect } from "react";
 import JoditEditor from "jodit-react";
 import "../styles/AddProduct.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
-import ImageCard from "../components/Admin/ImageCard";
 import OptionsSelect from "../components/Admin/OptionsSelect";
 import InputItem from "../components/Admin/InputItem";
 import FileIntem from "../components/Admin/FileIntem";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../features/Products";
 import { getCategories } from "../features/CategorieSlice";
+import { getSpects } from "../features/SpectSlice";
+import { getBrands } from "../features/BrandSlice";
+import FlashCard from "../components/Flash card/FlashCard";
 const AddProduct = () => {
     let option = { key: "", value: "" };
     const [options, setOptions] = useState([option]);
@@ -17,38 +17,62 @@ const AddProduct = () => {
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
     const [categorie, setCategorie] = useState(null);
+    const [brand, setBrand] = useState(null);
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
+    const [showError, setError] = useState(false);
     const dispatch = useDispatch();
-    const name = useRef();
-    const price = useRef();
-    const discount = useRef();
-    const stock = useRef();
+    const [titre, setTitre] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [qte, setQte] = useState(null);
+    const [discount, setDiscount] = useState(null);
+    const [used, setUsed] = useState([]);
     const config = {
         readonly: false,
         placeholder: "Start typings...",
     };
 
     const categorieOption = useSelector((state) => state.Categorie.categories);
+    const Spects = useSelector((state) => state.Spect.spects);
+    const brands = useSelector((state) => state.Brand.brands);
 
     useEffect(() => {
         dispatch(getCategories());
+        dispatch(getSpects());
+        dispatch(getBrands());
     }, []);
 
+    const filterByUsedSpects = (index) => {
+        let ns = used.filter((e, i) => i !== index);
+        let nd = Spects.filter((e, i) => !ns.includes(String(e.id)));
+        return nd;
+    };
+
     const ajouterProduct = (e) => {
-        console.log(files);
         e.preventDefault();
-        dispatch(
-            addProduct({
-                name: name.current.value,
-                price: price.current.value,
-                discount: discount.current.value,
-                stock: stock.current.value,
-                description: content,
-                images: files,
+        const obj = {
+            name: titre,
+            price: price,
+            discount: discount,
+            stock: qte,
+            description: content,
+            images: files,
+            options: options,
+            categorie: categorie,
+            brand: brand,
+        };
+        if (
+            Object.entries(obj).some(([key, value]) => {
+                if (key === "options") {
+                    if (value.key === "" || value.value == "") return true;
+                } else if (value === "" || value == []) return true;
             })
-        );
+        ) {
+            return setError(true);
+        }
+        dispatch(addProduct(obj));
+        console.log("added");
     };
 
     return (
@@ -60,29 +84,41 @@ const AddProduct = () => {
             >
                 <div className="HProduct">Ajouter Produit</div>
 
-                <InputItem input={name} placeholder={"Titre"} type={"text"} />
+                <InputItem
+                    input={(e) => setTitre(e.target.value)}
+                    placeholder={"Titre"}
+                    type={"text"}
+                />
 
                 <div className="ContainerInputProduct">
                     <InputItem
-                        input={price}
+                        input={(e) => setPrice(e.target.value)}
                         placeholder={"Price"}
                         type={"text"}
                     />
                     <InputItem
-                        input={stock}
+                        input={(e) => setQte(e.target.value)}
                         placeholder={"Qte"}
                         type={"number"}
                     />
                 </div>
                 <div className="ContainerInputProduct">
                     <InputItem
-                        input={setCategorie}
+                        placeholder={"Brand"}
+                        type={"select"}
+                        options={brands}
+                        input={(v) => setBrand(v)}
+                    />
+                </div>
+                <div className="ContainerInputProduct">
+                    <InputItem
+                        input={(v) => setCategorie(v)}
                         options={categorieOption}
                         placeholder={"Categorie"}
                         type={"select"}
                     />
                     <InputItem
-                        input={discount}
+                        input={(e) => setDiscount(e.target.value)}
                         placeholder={"Discount"}
                         type={"number"}
                     />
@@ -91,14 +127,28 @@ const AddProduct = () => {
                 <div className="options">
                     <span className="placeholderPI">Options</span>
                     <div className="OptionsContainer">
-                        {options.map((e) => (
-                            <OptionsSelect />
+                        {options.map((e, i) => (
+                            <OptionsSelect
+                                setUsed={setUsed}
+                                setdata={setOptions}
+                                id={i}
+                                item={options[i]}
+                                data={() => filterByUsedSpects(i)}
+                            />
                         ))}
                     </div>
 
                     <div
                         className="AddBtnOption"
-                        onClick={() => setOptions([...options, option])}
+                        onClick={() => {
+                            console.log(options[options.length - 1]);
+                            if (
+                                options[options.length - 1].key !== "" &&
+                                options.length < Spects.length
+                            ) {
+                                setOptions([...options, option]);
+                            }
+                        }}
                     >
                         + Ajouter une autre option
                     </div>
@@ -127,6 +177,16 @@ const AddProduct = () => {
                     Ajouter Produit
                 </button>
             </form>
+            <div className="errorDi">
+                {showError && (
+                    <FlashCard
+                        toogle={setError}
+                        type="error"
+                        content="tous les champ doivent etre plein"
+                        title="Error"
+                    />
+                )}
+            </div>
         </div>
     );
 };

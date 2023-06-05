@@ -30,7 +30,7 @@ class CategorieController extends Controller
              $categorie = Categorie::create($data);
             return response()->json(['status'=>'categorie bien cree  #'.$categorie->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -58,7 +58,7 @@ class CategorieController extends Controller
             $categorie->update(['name'=>$request->name,'description'=>$request->description,'img'=>$img??$categorie->img]);
             return response()->json(['status'=>'categorie bien changer #'.$categorie->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -73,7 +73,7 @@ class CategorieController extends Controller
             Storage::delete('public/images/'.$categorie->img);
             return response()->json(['status'=>'categorie bien supprimer #'.$categorie->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 }

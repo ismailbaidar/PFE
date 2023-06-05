@@ -5,6 +5,11 @@
     flex-direction: column;
     gap: 10px;
 }
+.errorDi{
+    position:absolute;
+    right : 10px;
+    bottom:10px;
+}
 .InputFullProduct {
     width: 100%;
 }

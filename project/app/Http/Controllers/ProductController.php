@@ -12,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products= Product::with(['categorie:id,name','brand:id,name'])->get();
+        $products=$products->makeHidden(['brand_id','categorie_id','description']);
+        return response()->json(['products'=>$products]);
     }
 
     /**
@@ -32,6 +34,9 @@ class ProductController extends Controller
                 'brand_id'=>$request->brand,
                 'categorie_id'=>$request->categorie
             ]);
+            foreach(json_decode($request->options) as $option){
+                $produit->spects()->attach($option->key,['value'=>$option->value]);
+            }
             foreach($request->file('images') as $img ){
                 $imgPath = time().'.'.$img->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
@@ -39,7 +44,7 @@ class ProductController extends Controller
             }
             return response()->json(['status'=>'produit bien ajouter #'.$produit->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
     }
 
@@ -48,8 +53,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $produit = Product::with(['spects','images','categorie','brand'])->where('id',$id)->first();
+        return response()->json(['produit'=>$produit]);
+        }
 
     /**
      * Update the specified resource in storage.
@@ -69,6 +75,12 @@ class ProductController extends Controller
                 'brand_id'=>$request->brand,
                 'categorie_id'=>$request->categorie
         ]);
+
+        $produit->spects()->detach();
+        foreach(json_decode($request->options) as $option){
+            $produit->spects()->attach($option->key,['value'=>$option->value]);
+        }
+        
         $produitImages = $produit->images();
         foreach($produitImages as $img){
             Storage::delete('public/images'.$img->url);
@@ -84,7 +96,7 @@ class ProductController extends Controller
         return response()->json(['status'=>'le produit est modifier #'.$produit->id]);
 
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],404);
         }
 
 
@@ -95,6 +107,13 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $produit = Product::find($id);
+        $produitImages = $produit->images();
+        foreach($produitImages as $img){
+            Storage::delete('public/images'.$img->url);
+            $img->delete();
+        }
+        $produit->delete();
+        return response()->json(['status'=>'product deleted #'.$produit->id]);
     }
 }

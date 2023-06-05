@@ -1,24 +1,23 @@
 import React from "react";
 
-const InputItem = ({ placeholder, type, value, input, options }) => {
+const InputItem = ({ placeholder, type, value, options, input }) => {
     return (
         <div className="InputProduct">
             <div className="placeholderPI">{placeholder}</div>
             {type != "select" ? (
-                <input value={value} ref={input} type={type} />
+                <input value={value} onChange={input} type={type} />
             ) : (
                 <select
                     onChange={(e) =>
-                        console.log(
-                            e.target.options[e.target.selectedIndex].value
-                        )
+                        input(e.target.options[e.target.selectedIndex].value)
                     }
                 >
                     <option value={""}>choisir une categorie ---</option>
                     {options.map((e) => (
                         <option
+                            selected={value}
                             value={e.id}
-                        >{`${e.name} (${e.products_count})`}</option>
+                        >{`${e.name}`}</option>
                     ))}
                 </select>
             )}

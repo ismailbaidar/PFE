@@ -4,33 +4,72 @@ import AnalyseProduct from "../components/Admin/AnalyseProduct";
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash,faEdit } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import ModelItem from "../components/Admin/ModelItem";
-
+import {useDispatch,useSelector} from 'react-redux'
+import {getProducts} from '../features/Products'
+import {deleteProduct} from '../features/Products'
+import SureMsg from "../components/Suremsg/SureMsg";
+import FlashCard from '../components/Flash card/FlashCard'
 export default function Products() {
+    const [success,setSuccess]=useState(null); 
+    const dispatch = useDispatch()
+    const products = useSelector(state=>state.Product.products)
+    const status = useSelector(state=>state.Product.status)
+    useEffect(()=>{
+        dispatch(getProducts())
+    },[])
+    useEffect(()=>{
+        if(status!=='') setSuccess(true)
+
+    },[status])
+    console.log(status)
+    let Rows = useMemo(()=>{
+        let ne = products
+        let nr =  ne.map(e=>{
+        return  {...e,categorie:e?.categorie?.name,brand:e?.brand?.name}
+        })
+        return nr
+
+    },[products])
+
+    const deleteP=()=>{
+        dispatch(deleteProduct(Delete))
+        setDeleted(null)
+        dispatch(getProducts())
+
+    }
+
+    console.log(Rows)
+
+    const [Delete,setDeleted]=useState(null);
     const [iditem,setId]=useState(null);
+    console.log(Delete)
     const columns = [
         { field: "id", headerName: "ID", width: 70 },
-        { field: "Name", headerName: "Name", width: 130 },
-        { field: "Price", headerName: "Price", width: 130 },
+        { field: "name", headerName: "Name", width: 130 },
+        { field: "price", headerName: "Price", width: 130 },
         {
-            field: "Discount",
-            headerName: "Discount",
+            field: "discount",
+            headerName: "discount",
             type: "number",
-            width: 90,
         },
         {
-            field: "Rate",
+            field: "stock",
+            headerName: "stock",
+            type: "number",
+        },
+        {
+            field: "rate",
             headerName: "Rate",
             type: "number",
-            width: 90,
         },
-        { field: "Brand", headerName: "Brand", width: 130 },
-        { field: "Categorie", headerName: "Categorie", width: 140 },
+        { field: "brand", headerName: "Brand", width: 130 },
+        { field: "categorie", headerName: "Categorie", width: 140 },
         { field: "Action", headerName: "Action", width: 140 ,renderCell:(params)=>{
             return <div className="actionbtntable" >
-            <button onClick={(e)=>{e.stopPropagation();console.log(params)}} className="delete" ><FontAwesomeIcon icon={faTrash}/></button>
+            <button onClick={(e)=>{e.stopPropagation();setDeleted(params.id)}} className="delete" ><FontAwesomeIcon icon={faTrash}/></button>
             <button onClick={(e)=>e.stopPropagation()}  className="edite" ><FontAwesomeIcon icon={faEdit}/></button>
             </div>
         }},
@@ -38,16 +77,9 @@ export default function Products() {
 
     ];
 
-    const rows = [
-        { id: 1, Name: "Iphone14", Price: "1224", Discount: "35%",Rate:'4',Brand:'Apple',Categorie:'Phones' ,},
-        { id: 2, Name: "Iphone13", Price: "1024", Discount: "35%",Rate:'4',Brand:'Apple',Categorie:'Phones' },
-        { id: 3, Name: "Iphone12", Price: "924", Discount: "35%",Rate:'4',Brand:'Apple',Categorie:'Phones' },
-        { id: 4, Name: "Iphone11", Price: "824", Discount: "35%",Rate:'4',Brand:'Apple',Categorie:'Phones' },
-        { id: 5, Name: "IphoneX", Price: "724", Discount: "35%",Rate:'4',Brand:'Apple',Categorie:'Phones' },
+   
 
-    ];
-
-    const dataItem = useMemo(()=> iditem ? rows.filter(e=>e.id==iditem):'',[iditem])
+    const dataItem = useMemo(()=> iditem ? Rows.filter(e=>e.id==iditem):'',[iditem])
 
 
     return (
@@ -55,7 +87,7 @@ export default function Products() {
             <AnalyseProduct />
             <button  className="ajouterProduit" >Ajouter Produit</button>
             <DataGrid
-                rows={rows}
+                rows={Rows}
                 columns={columns}
                 onRowClick={(params)=>setId(params.id)}
                 initialState={{
@@ -63,9 +95,14 @@ export default function Products() {
                         paginationModel: { page: 0, pageSize: 5 },
                     },
                 }}
+                color='#fff'
                 pageSizeOptions={[5, 10]}
             />
-            {iditem && <ModelItem setIdNull={()=>setId(null)} />}
+            {iditem && <ModelItem   data={dataItem}  setIdNull={()=>setId(null)} />}
+            {Delete && <SureMsg   close={()=>setDeleted(null)} func={()=>deleteP()}   />}
+            <div className='errorDi' >
+            {success && <FlashCard  type='success'  content={status} title={'product deleted'} toogle={()=>setSuccess(null)} />}
+            </div>
         </div>
     );
 }
