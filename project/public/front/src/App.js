@@ -29,14 +29,13 @@ function App() {
                 <Route path="/Admin/*" element={<AdminRoute />} />
                 <Route path="register" element={<Register />} />
                 <Route path="login" element={<Login />} />
-                <Route path="tzst" element={<ConfirmationCode />} />
+
                 <Route path="*" element={<Navigate to="/notFound" />} />
                 <Route
                     path="notfound"
                     element={<ErrorPage errorType={404} />}
                 />
                 <Route path="/profile/*" element={<Profile />} />
-                <Route path="test" element={<SureMsg />} />
 
                 <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>

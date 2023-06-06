@@ -19,8 +19,8 @@ export default function ConfirmationCode({ type }) {
     const input5 = useRef();
     const input6 = useRef();
     useEffect(() => {
-        console.log(code);
-    }, [code]);
+        input1.current.focus();
+    }, []);
 
     return (
         <div className="confirmation-code-container">
@@ -52,7 +52,15 @@ export default function ConfirmationCode({ type }) {
                                         e.target.value.length - 1
                                     ),
                                 });
-                                input2.current.focus();
+                            }}
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input1.current.focus();
+                                    } else {
+                                        input2.current.focus();
+                                    }
+                                }, 50);
                             }}
                             value={code[1]}
                         ></input>
@@ -65,7 +73,15 @@ export default function ConfirmationCode({ type }) {
                                         e.target.value.length - 1
                                     ),
                                 });
-                                input3.current.focus();
+                            }}
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input1.current.focus();
+                                    } else {
+                                        input3.current.focus();
+                                    }
+                                }, 50);
                             }}
                             value={code[2]}
                         ></input>
@@ -78,7 +94,15 @@ export default function ConfirmationCode({ type }) {
                                         e.target.value.length - 1
                                     ),
                                 });
-                                input4.current.focus();
+                            }}
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input2.current.focus();
+                                    } else {
+                                        input4.current.focus();
+                                    }
+                                }, 50);
                             }}
                             value={code[3]}
                         ></input>
@@ -91,7 +115,15 @@ export default function ConfirmationCode({ type }) {
                                         e.target.value.length - 1
                                     ),
                                 });
-                                input5.current.focus();
+                            }}
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input3.current.focus();
+                                    } else {
+                                        input5.current.focus();
+                                    }
+                                }, 50);
                             }}
                             value={code[4]}
                         ></input>
@@ -104,7 +136,15 @@ export default function ConfirmationCode({ type }) {
                                         e.target.value.length - 1
                                     ),
                                 });
-                                input6.current.focus();
+                            }}
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input4.current.focus();
+                                    } else {
+                                        input6.current.focus();
+                                    }
+                                }, 50);
                             }}
                             value={code[5]}
                         ></input>
@@ -118,6 +158,15 @@ export default function ConfirmationCode({ type }) {
                                     ),
                                 })
                             }
+                            onKeyDown={(e) => {
+                                setTimeout(() => {
+                                    if (e.code == "Backspace") {
+                                        input5.current.focus();
+                                    } else {
+                                        input6.current.focus();
+                                    }
+                                }, 50);
+                            }}
                             value={code[6]}
                         ></input>
                     </div>
