@@ -13,6 +13,7 @@ import axios from "axios";
 import MiniLoading from "./components/mini-loading/MiniLoading";
 import Login from "./components/login/Login";
 import SureMsg from "./components/Suremsg/SureMsg";
+import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
 function App() {
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
@@ -36,6 +37,7 @@ function App() {
                     element={<ErrorPage errorType={404} />}
                 />
                 <Route path="/profile/*" element={<Profile />} />
+                <Route path="test" element={<SingleOrderDetails />} />
 
                 <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>

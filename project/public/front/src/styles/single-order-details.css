@@ -1,0 +1,166 @@
+.single-order-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 0.6rem;
+    z-index: 2000;
+}
+
+.single-order-details .background-opacity {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+}
+.single-order-details .details-modal {
+    position: relative;
+    background-color: white;
+    z-index: 100;
+    max-width: 60%;
+
+    padding: 2rem;
+    box-shadow: 0px 0px 3px gray;
+    z-index: 2000;
+}
+
+.single-order-details .details-modal .details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.single-order-details .details-modal .details .info-part {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.single-order-details .details-modal .details .info-part .account-details,
+.single-order-details .details-modal .details .info-part .order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.single-order-details .details-modal .details .info-part .account-details div,
+.single-order-details .details-modal .details .info-part .order-details div {
+    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
+    text-align: left;
+}
+.single-order-details
+    .details-modal
+    .details
+    .info-part
+    .account-details
+    div
+    span,
+.single-order-details
+    .details-modal
+    .details
+    .info-part
+    .order-details
+    div
+    span {
+    font-weight: normal;
+    white-space: pre-wrap;
+}
+
+.single-order-details .details-modal .details .products-part table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.single-order-details .details-modal .details .products-part table th,
+.single-order-details .details-modal .details .products-part table td {
+    padding: 0.5rem 0.7rem;
+}
+
+.single-order-details .buttons {
+    position: fixed;
+    bottom: 10px;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 999999;
+    right: 10px;
+}
+.single-order-details .buttons .print-button,
+.single-order-details .buttons .close-modal {
+    padding: 0.75rem 1rem;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    width: max-content;
+    border-radius: 5px;
+}
+.single-order-details .buttons .print-button {
+    background-color: var(--info);
+}
+.single-order-details .buttons .close-modal {
+    background-color: var(--error);
+}
+.single-order-details .buttons .print-button:hover,
+.single-order-details .buttons .close-modal:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media print {
+    body {
+        min-height: 100vh !important;
+    }
+    body * {
+        visibility: hidden;
+    }
+
+    .printable-div,
+    .printable-div * {
+        visibility: visible;
+    }
+
+    .printable-div {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    tr:nth-of-type(10n) {
+        page-break-after: always;
+    }
+
+    .single-order-details .details-modal {
+        min-width: 100%;
+        min-height: 50%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        z-index: 1000000000;
+        margin-top: 15rem;
+        /* background-color: yellow; */
+    }
+    .bg {
+        display: block;
+        z-index: -1;
+        background-color: red;
+        position: fixed;
+        top: 0;
+        right: 0;
+        right: 0;
+        left: 0;
+        position: fixed;
+        height: 100vh;
+        /* width: 100vw;/ */
+        /* background-image: url("../../public/images/bill3.png"); */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
