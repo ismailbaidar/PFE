@@ -35,6 +35,8 @@ function App() {
                     path="notfound"
                     element={<ErrorPage errorType={404} />}
                 />
+                <Route path="order/:id" element={<SingleOrderDetails />} />
+
                 <Route path="/profile/*" element={<Profile />} />
                 <Route path="test" element={<SingleOrderDetails />} />
 

@@ -11,8 +11,7 @@
     padding: 0.6rem;
     z-index: 2000;
 }
-
-.single-order-details .background-opacity {
+*/ .single-order-details .background-opacity {
     position: absolute;
     inset: 0;
     background-color: rgba(255, 255, 255, 0.7);
@@ -20,10 +19,10 @@
 }
 .single-order-details .details-modal {
     position: relative;
-    background-color: white;
-    z-index: 100;
-    max-width: 60%;
 
+    z-index: 100;
+    width: 60%;
+    height: 50%;
     padding: 2rem;
     box-shadow: 0px 0px 3px gray;
     z-index: 2000;
@@ -113,54 +112,47 @@
     opacity: 0.8;
     cursor: pointer;
 }
+.bg-bill {
+    display: none;
+}
 
 @media print {
+    @page {
+        margin: 0;
+        padding: 0;
+    }
     body {
-        min-height: 100vh !important;
-    }
-    body * {
-        visibility: hidden;
+        height: 100vh;
     }
 
-    .printable-div,
-    .printable-div * {
-        visibility: visible;
-    }
+    .single-order-details {
+        width: 100% !important;
+        max-height: 100% !important;
 
-    .printable-div {
+        z-index: 1000;
+    }
+    .bg-bill {
+        display: block;
+        position: fixed;
+        inset: 0;
+        object-fit: contain;
+        height: 100%;
+    }
+    .details-modal {
+        height: 500px;
+        width: 100% !important;
+        margin: auto;
         position: absolute;
-        left: 0;
-        top: 0;
+        top: 12rem;
+        box-shadow: 0px 0px 3px transparent !important;
+
+        background-color: transparent;
     }
 
-    tr:nth-of-type(10n) {
+    tr:nth-of-type(15n) {
         page-break-after: always;
     }
-
-    .single-order-details .details-modal {
-        min-width: 100%;
-        min-height: 50%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        z-index: 1000000000;
-        margin-top: 15rem;
-        /* background-color: yellow; */
-    }
-    .bg {
-        display: block;
-        z-index: -1;
-        background-color: red;
-        position: fixed;
-        top: 0;
-        right: 0;
-        right: 0;
-        left: 0;
-        position: fixed;
-        height: 100vh;
-        /* width: 100vw;/ */
-        /* background-image: url("../../public/images/bill3.png"); */
-        background-repeat: no-repeat;
-        background-size: cover;
+    .buttons {
+        visibility: hidden;
     }
 }
