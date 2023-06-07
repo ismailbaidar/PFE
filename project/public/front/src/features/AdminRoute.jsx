@@ -18,6 +18,8 @@ import Products from "../pages/Products";
 import Categories from "../pages/Categories";
 import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
+import Brands from '../pages/Brands'
+import Spects from '../pages/Spects'
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
 
@@ -64,6 +66,8 @@ const AdminRoute = () => {
                     />
                     <Route path="/Products" element={<Products />} />
                     <Route path='/categories' element={<Categories/>} />
+                    <Route path='/brands' element={<Brands/>} />
+                    <Route path='/spects' element={<Spects/>} />
                     <Route path="/collections" element={<Collection/>}/>
                     <Route path="/collections/:id" element={<EditeCollection/>}/>
                 </Routes>

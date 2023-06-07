@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('discount');
             $table->integer('stock');
             $table->integer('rate')->default(0);
-            $table->enum('status',['new','standard','promo'])->default('new');
+            $table->enum('status',['new','standard','coming Soon','promo'])->default('new');
             $table->foreignId('brand_id')->constrained();
             $table->foreignId('categorie_id')->constrained();
             $table->timestamps();

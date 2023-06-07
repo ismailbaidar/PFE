@@ -42,3 +42,8 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::apiResource('product',ProductController::class)->except('update');
 
 });
+
+
+
+
+

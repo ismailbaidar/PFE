@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -38,26 +39,28 @@ class BrandController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Brand::findOrFail($id);
+        return response()->json(['brand'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
-     */
+    */
+
     public function update(Request $request, string $id)
     {
         try {
             $data = $request->validate(['name'=>'required']);
             $Brand = Brand::findOrFail($id);
-            if($request->has('img')){
-                Storage::delete('public/images/'.$Brand->img);
-                $img = time().'.'.$request->file('img')->getClientOriginalExtension();
-                $request->file('img')->storeAs('images',$img,'public');
+            if(isset($request->file)){
+                Storage::delete('public/images/'.$Brand->file);
+                $img = time().'.'.$request->file('file')->getClientOriginalExtension();
+                $request->file('file')->storeAs('images',$img,'public');
             }
             $Brand->update(['name'=>$request->name,'img'=>$img??$Brand->img]);
             return response()->json(['status'=>'brand bien changer #'.$Brand->id]);
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()]);
+            return response()->json(['error'=>$th->getMessage()],500);
         }
     }
 

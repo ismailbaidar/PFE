@@ -13,7 +13,7 @@ import {deleteProduct} from '../features/Products'
 import SureMsg from "../components/Suremsg/SureMsg";
 import FlashCard from '../components/Flash card/FlashCard'
 export default function Products() {
-    const [success,setSuccess]=useState(null); 
+    const [success,setSuccess]=useState(null);
     const dispatch = useDispatch()
     const products = useSelector(state=>state.Product.products)
     const status = useSelector(state=>state.Product.status)
@@ -77,7 +77,7 @@ export default function Products() {
 
     ];
 
-   
+
 
     const dataItem = useMemo(()=> iditem ? Rows.filter(e=>e.id==iditem):'',[iditem])
 
@@ -101,8 +101,9 @@ export default function Products() {
             {iditem && <ModelItem   data={dataItem}  setIdNull={()=>setId(null)} />}
             {Delete && <SureMsg   close={()=>setDeleted(null)} func={()=>deleteP()}   />}
             <div className='errorDi' >
-            {success && <FlashCard  type='success'  content={status} title={'product deleted'} toogle={()=>setSuccess(null)} />}
+            {success && <FlashCard  type='success'  content={status} title={'producta actions'} toogle={()=>setSuccess(null)} />}
             </div>
         </div>
     );
+
 }

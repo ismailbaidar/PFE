@@ -1,5 +1,6 @@
 import React, { useState, useRef, useMemo,useEffect } from "react";
 import JoditEditor from "jodit-react";
+import { useNavigate} from 'react-router-dom'
 import "../styles/AddProduct.css";
 import OptionsSelect from "../components/Admin/OptionsSelect";
 import InputItem from "../components/Admin/InputItem";
@@ -10,6 +11,8 @@ import { getCategories } from "../features/CategorieSlice";
 import { getSpects } from "../features/SpectSlice";
 import { getBrands } from "../features/BrandSlice";
 import FlashCard from '../components/Flash card/FlashCard'
+import MiniLoading from '../components/mini-loading/MiniLoading'
+import { Navigate } from "react-router-dom";
 const AddProduct = () => {
     let option = { key: "", value: "" };
     const [options, setOptions] = useState([option]);
@@ -22,20 +25,25 @@ const AddProduct = () => {
         setFiles([...files, e.target.files[0]]);
     };
     const [showError,setError] = useState(false)
+    const [isPending,setPending] = useState(false)
     const dispatch = useDispatch();
     const [titre,setTitre]=useState(null)
     const [price,setPrice]=useState(null)
     const [qte,setQte]=useState(null)
     const [discount,setDiscount]=useState(null)
+    const [dateRelease,setDateRelease]=useState(null)
     const [used,setUsed]=useState([])
+    console.log(new Date(dateRelease)>new Date())
     const config = {
         readonly: false,
         placeholder: "Start typings...",
     };
 
     const categorieOption = useSelector(state=>state.Categorie.categories)
+    const statusProduct = useSelector(state=>state.Product.status)
     const Spects = useSelector(state=>state.Spect.spects)
     const brands = useSelector(state=>state.Brand.brands)
+    const navigate= useNavigate()
 
     useEffect(()=>{
         dispatch(getCategories())
@@ -62,20 +70,25 @@ const AddProduct = () => {
             images: files,
             options:options,
             categorie:categorie,
+            date : dateRelease==null ? '' : new Date(dateRelease),
             brand:brand
         }
         if(Object.entries(obj).some(([key,value])=>{
             if(key==='options'){
                 if(value.key==='' || value.value=='') return true
             }
-            else if(value==='' || value==[]) return true
+            else if(key!='date' && (value==='' || value==[])) return true
+            return dateRelease!=null ? new Date(dateRelease) < Date.now() :false
         }))
         {
             return setError(true)
         }
         dispatch(
             addProduct(obj)
-        );
+        )
+        .unwrap()
+            .then(res=>navigate('/admin/products',{state:{ message : res.status}}))
+            .catch(err=>console.log(err),'dfghhgfdfghjjhgfd');
         console.log('added')
     };
 
@@ -134,11 +147,18 @@ const AddProduct = () => {
                     >
                         + Ajouter une autre option
                     </div>
-                </div>
+            </div>
+            <InputItem
+                        input={(e)=>setDateRelease(e.target.value)}
+                        value={dateRelease}
+                        placeholder={"Date Release"}
+                        type={"datetime-local"}
+            />
 
                 <FileIntem
                     placeholder={"poduct images"}
                     files={files}
+                    del={setFiles}
                     AddFile={AddFile}
                 />
 
@@ -160,6 +180,7 @@ const AddProduct = () => {
                     className="AjouterProduit"
                 >
                     Ajouter Produit
+                    {statusProduct==='pending' && <div className='pendinglayer' ><MiniLoading/></div> }
                 </button>
             </form>
             <div className='errorDi' >
@@ -170,3 +191,4 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+

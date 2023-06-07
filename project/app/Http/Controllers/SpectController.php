@@ -39,7 +39,8 @@ class SpectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Spect::findOrFail($id);
+        return response()->json(['spect'=>$data]);
     }
 
     /**
@@ -49,11 +50,14 @@ class SpectController extends Controller
     {
         try {
             $data = $request->validate(['name'=>'required']);
-            $spect = Spect::findOrFail($id);
-            if($request->has('img')){
-                Storage::delete('public/images/'.$spect->img);
-                $img = time().'.'.$request->file('img')->getClientOriginalExtension();
-                $request->file('img')->StoreAs('images',$img,'public');
+            $spect = Spect::find($id);
+            if(!$spect){
+                return response()->json(['error'=>'not found',404]);
+            }
+            if(isset($request->file)){
+                Storage::delete('public/images/'.$spect->file);
+                $img = time().'.'.$request->file('file')->getClientOriginalExtension();
+                $request->file('file')->storeAs('images',$img,'public');
             }
             $spect->update([
                 'name'=>$request->name,
@@ -63,7 +67,7 @@ class SpectController extends Controller
 
 
         } catch (\Throwable $th) {
-            return response()->json(['error'=>$th->getMessage()],404);
+            return response()->json(['error'=>$th->getMessage()],500);
         }
     }
 

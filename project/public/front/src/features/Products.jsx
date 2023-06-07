@@ -12,6 +12,7 @@ export const addProduct = createAsyncThunk(
         form.append("stock", data.stock);
         form.append("brand", data.brand);
         form.append("categorie", data.categorie);
+        form.append("date", data.date);
         form.append('options',JSON.stringify(data.options))
         data.images.forEach((e) => form.append("images[]", e));
 
@@ -23,9 +24,10 @@ export const addProduct = createAsyncThunk(
 );
 
 export const ModifierProduct = createAsyncThunk(
-    "AddProduct",
+    "ModifierProduct",
     async (data, handel) => {
         // try {
+
         const form = new FormData();
         form.append("name", data.name);
         form.append("description", data.description);
@@ -35,7 +37,8 @@ export const ModifierProduct = createAsyncThunk(
         form.append("brand", data.brand);
         form.append("categorie", data.categorie);
         form.append('options',JSON.stringify(data.options))
-        data.images.forEach((e) => form.append("images[]", e));
+        form.append('oldImages',JSON.stringify(data.Oldimages))
+        data.Newimages.forEach((e) => form.append("images[]", e));
 
         return axios
             .post("http://localhost:8000/api/product/"+data.id, form)
@@ -72,8 +75,10 @@ const Product = createSlice({
     initialState: { products: [], status: "", main:{} },
     extraReducers: (builder) => {
         builder.addCase(addProduct.fulfilled, (state, { payload }) => {
-            console.log(payload);
             state.status = payload.status;
+        });
+        builder.addCase(addProduct.pending, (state, { payload }) => {
+            state.status = 'pending';
         });
         builder.addCase(getProducts.fulfilled,(state,{payload})=>{
             state.products=payload.products
@@ -83,6 +88,12 @@ const Product = createSlice({
         })
         builder.addCase(getoneproduct.fulfilled,(state,{payload})=>{
             state.main=payload.produit
+        })
+        builder.addCase(ModifierProduct.fulfilled,(state,{payload})=>{
+            state.status=payload.status
+        })
+        builder.addCase(ModifierProduct.pending,(state,{payload})=>{
+            state.status='pending'
         })
     },
 });

@@ -23,7 +23,6 @@ const MainRoute = () => {
                 />
                 <Route path="Checkout" element={<Checkout />} />
                 <Route path="/product/:productId" element={<SinglePage />} />
-
                 <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>
             <Footer />

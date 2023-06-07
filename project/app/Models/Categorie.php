@@ -15,7 +15,14 @@ class Categorie extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function parent(){
+        return $this->belongsTo(Categorie::class,'categorie_id');
+    }
+
     public function logs(){
         return $this->morphMany(Log::class,'logable');
     }
 }
+
+
+

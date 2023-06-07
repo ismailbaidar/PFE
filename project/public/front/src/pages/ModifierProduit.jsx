@@ -1,10 +1,11 @@
 import React, { useRef, useState,useEffect } from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams,useNavigate} from 'react-router-dom'
 import InputItem from '../components/Admin/InputItem';
 import OptionsSelect from '../components/Admin/OptionsSelect';
 import JoditEditor from 'jodit-react';
 import FileIntem from '../components/Admin/FileIntem';
 import '../styles/AddProduct.css'
+import MiniLoading from '../components/mini-loading/MiniLoading'
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../features/CategorieSlice";
 import { getSpects } from "../features/SpectSlice";
@@ -23,6 +24,8 @@ const ModifierProduit=()=>{
     const dispatch = useDispatch();
     {/*files---------*/}
     const [files,setFiles]=useState([])
+    const [images, setImages] = useState([]);
+
     {/*id---------*/}
 
     const {id}=useParams()
@@ -34,14 +37,13 @@ const ModifierProduit=()=>{
     const [price,setPrice]=useState(null)
     const [qte,setQte]=useState(null)
     const [discount,setDiscount]=useState(null)
-    const [description,setDescription]=useState('')
 
     {/*function pour ajouter img---------*/}
 
     const AddFile=(e)=>{
         setFiles([...files,e.target.files[0]])
     }
-    
+
 
     const categorieOption = useSelector(state=>state.Categorie.categories)
     const Spects = useSelector(state=>state.Spect.spects)
@@ -60,23 +62,23 @@ const ModifierProduit=()=>{
             setPrice(data.produit.price)
             setQte(data.produit.stock)
             setDiscount(data.produit.discount)
-            setDescription(data.produit.description)
-            setFiles(data.produit.images.map(e=>'http://localhost:8000/storage/images/'+e.url))
+            setContent(data.produit.description)
+            setImages(data.produit.images)
         })
         dispatch(getCategories())
         dispatch(getSpects())
         dispatch(getBrands())
     },[])
 
-    console.log(description)
     {/*pour chaque item de options on va filter les option deja exist dans used array ---------*/}
 
     const filterByUsedSpects=(index)=>{
-                let ns = used.filter((e,i)=>i!==index)  
+                let ns = used.filter((e,i)=>i!==index)
                 let nd = Spects.filter((e,i)=> !ns.includes(e.id))
                 return nd
     }
 
+    const navigate=useNavigate()
 
     const modify=()=>{
         const obj = {
@@ -86,14 +88,18 @@ const ModifierProduit=()=>{
             discount: discount,
             stock: qte,
             description: content,
-            images: files,
+            Oldimages: images,
+            Newimages: files,
             options:options,
             categorie:categorie,
             brand:brand
         }
         dispatch(ModifierProduct(obj))
+        .unwrap()
+        .then(res=>navigate('/admin/products'))
     }
-    
+    const statusProduct = useSelector(state=>state.Product.status)
+
 
   return (
     <div className='Addproduct' >
@@ -128,13 +134,19 @@ const ModifierProduit=()=>{
     <div className='AddBtnOption' onClick={()=>setOptions([...options,option])} >+ Ajouter une autre option</div>
     </div>
 
-    <FileIntem   placeholder={'poduct images'} files={files} AddFile={AddFile} />
+    <FileIntem   placeholder={'poduct images'}
+     files={files}
+      AddFile={AddFile}
+      images={images}
+      delFiles={setFiles}
+      delImages={setImages}
+      />
 
     <div className='descriptionAddProduct' >
     <div className='placeholderPI' >Description</div>
     <JoditEditor
 			ref={editor}
-			value={description}
+			value={content}
 			config={config}
 			tabIndex={1}
 			onBlur={newContent => setContent(newContent)}
@@ -143,7 +155,13 @@ const ModifierProduit=()=>{
             }}
 		/>
     </div>
-    <div className='AjouterProduit' onClick={modify} >Modifier Produit</div>
+    <div className='AjouterProduit' onClick={modify} >
+    Modifier Produit
+    {statusProduct==='pending' && <div className='pendinglayer' ><MiniLoading/></div> }
+    </div>
     </div>
   );}
 export default ModifierProduit
+
+
+

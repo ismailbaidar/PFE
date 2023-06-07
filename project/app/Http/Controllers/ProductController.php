@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -34,6 +36,11 @@ class ProductController extends Controller
                 'brand_id'=>$request->brand,
                 'categorie_id'=>$request->categorie
             ]);
+            if(isset($request->date)){
+                $produit->releaseDate=$request->date;
+                $produit->status='coming Soon';
+                $produit->save();
+            }
             foreach(json_decode($request->options) as $option){
                 $produit->spects()->attach($option->key,['value'=>$option->value]);
             }
@@ -80,17 +87,27 @@ class ProductController extends Controller
         foreach(json_decode($request->options) as $option){
             $produit->spects()->attach($option->key,['value'=>$option->value]);
         }
-        
-        $produitImages = $produit->images();
-        foreach($produitImages as $img){
-            Storage::delete('public/images'.$img->url);
-            $img->delete();
-        }
 
-        foreach($request->images as $img ){
-            $imgPath = time().'.'.$img->getClientOriginalExtension();
-            $img->StoreAs('images',$imgPath,'public');
-            $produit->images()->create(['url'=>$imgPath]);
+        $produitImages = $produit->images->toArray();
+        $nr =json_decode($request->oldImages);
+        array_map(function($e) use($request,$nr){
+            $p=false;
+            foreach($nr as $item){
+                if($e['id']==$item->id){
+                    $p=true;
+                }
+            }
+            if($p===false){
+                Storage::delete('public/images'.$e['url']);
+                Image::find($e['id'])->delete();
+            }
+        },$produitImages);
+        if(isset($request->images)){
+            foreach($request->images as $img ){
+                $imgPath = time().'.'.$img->getClientOriginalExtension();
+                $img->StoreAs('images',$imgPath,'public');
+                $produit->images()->create(['url'=>$imgPath]);
+            }
         }
 
         return response()->json(['status'=>'le produit est modifier #'.$produit->id]);
@@ -117,3 +134,6 @@ class ProductController extends Controller
         return response()->json(['status'=>'product deleted #'.$produit->id]);
     }
 }
+
+
+

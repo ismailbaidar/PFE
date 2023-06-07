@@ -82,6 +82,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+#dimgcard{
+    position:absolute;
+    right : -5px;
+    top:-5px;
+    background:#d33;
+    color:#fff;
+    width:15px;
+    height:15px;
+    border-radius: 50%;
 }
 .placeholderPI {
     margin: 7px 0;
@@ -108,7 +119,12 @@
     color: #fff;
     width: fit-content;
     margin-left: auto;
+    position:relative ;
+    overflow:hidden;
     font-size: 14px;
+    border-radius: 5px;
+    border:none;
+
 }
 
 .HProduct {
