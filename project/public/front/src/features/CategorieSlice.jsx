@@ -1,4 +1,4 @@
-import {createAsyncThunk,createSlice} from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
@@ -75,3 +75,4 @@ const CategorieSlice = createSlice({
 })
 
 export default CategorieSlice.reducer
+

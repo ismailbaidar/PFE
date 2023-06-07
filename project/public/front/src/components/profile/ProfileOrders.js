@@ -4,8 +4,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import "../../styles/profileorders.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-
+import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
 export default function ProfileOrders() {
+    const [detailsVisible, setDetailsVisible] = useState(false);
     const columns = [
         { field: "id", headerName: "Order Id", width: 215 },
         { field: "TotalPrice", headerName: "Total Price", width: 215 },
@@ -23,7 +24,7 @@ export default function ProfileOrders() {
                     <div className="actionbtntable">
                         <button
                             onClick={(e) => {
-                                console.log(e);
+                                setDetailsVisible(true);
                             }}
                             className="delete"
                         >
@@ -49,17 +50,24 @@ export default function ProfileOrders() {
         { id: 12, TotalPrice: "9999", PlacedOn: "01/01/2023" },
     ];
     return (
-        <div className="profile-orders">
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: { page: 0, pageSize: 10 },
-                    },
-                }}
-                pageSizeOptions={[10, 15]}
-            />
-        </div>
+        <>
+            <div className="profile-orders">
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            paginationModel: { page: 0, pageSize: 10 },
+                        },
+                    }}
+                    pageSizeOptions={[10, 15]}
+                />
+            </div>
+            {detailsVisible && (
+                <SingleOrderDetails
+                    setDetailsVisible={setDetailsVisible}
+                ></SingleOrderDetails>
+            )}
+        </>
     );
 }

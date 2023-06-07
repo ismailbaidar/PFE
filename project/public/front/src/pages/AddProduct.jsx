@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo,useEffect } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import JoditEditor from "jodit-react";
 import { useNavigate} from 'react-router-dom'
 import "../styles/AddProduct.css";
@@ -13,14 +13,15 @@ import { getBrands } from "../features/BrandSlice";
 import FlashCard from '../components/Flash card/FlashCard'
 import MiniLoading from '../components/mini-loading/MiniLoading'
 import { Navigate } from "react-router-dom";
+
 const AddProduct = () => {
     let option = { key: "", value: "" };
     const [options, setOptions] = useState([option]);
     const editor = useRef(null);
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
-    const [categorie,setCategorie]=useState(null)
-    const [brand,setBrand]=useState(null)
+    const [categorie, setCategorie] = useState(null);
+    const [brand, setBrand] = useState(null);
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
@@ -34,6 +35,7 @@ const AddProduct = () => {
     const [dateRelease,setDateRelease]=useState(null)
     const [used,setUsed]=useState([])
     console.log(new Date(dateRelease)>new Date())
+
     const config = {
         readonly: false,
         placeholder: "Start typings...",
@@ -45,22 +47,21 @@ const AddProduct = () => {
     const brands = useSelector(state=>state.Brand.brands)
     const navigate= useNavigate()
 
-    useEffect(()=>{
-        dispatch(getCategories())
-        dispatch(getSpects())
-        dispatch(getBrands())
-    },[])
 
+    useEffect(() => {
+        dispatch(getCategories());
+        dispatch(getSpects());
+        dispatch(getBrands());
+    }, []);
 
-
-    const filterByUsedSpects=(index)=>{
-        let ns = used.filter((e,i)=>i!==index)
-        let nd = Spects.filter((e,i)=> !ns.includes(String(e.id)   ))
-        return nd
-    }
+    const filterByUsedSpects = (index) => {
+        let ns = used.filter((e, i) => i !== index);
+        let nd = Spects.filter((e, i) => !ns.includes(String(e.id)));
+        return nd;
+    };
 
     const ajouterProduct = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const obj = {
             name: titre,
             price: price,
@@ -90,23 +91,32 @@ const AddProduct = () => {
             .then(res=>navigate('/admin/products',{state:{ message : res.status}}))
             .catch(err=>console.log(err),'dfghhgfdfghjjhgfd');
         console.log('added')
+
     };
 
     return (
         <div className="Addproduct">
-            <form   onSubmit={ajouterProduct} method='post'  encType='multipart/form-data'>
+            <form
+                onSubmit={ajouterProduct}
+                method="post"
+                encType="multipart/form-data"
+            >
                 <div className="HProduct">Ajouter Produit</div>
 
-                <InputItem input={(e)=>setTitre(e.target.value)} placeholder={"Titre"} type={"text"} />
+                <InputItem
+                    input={(e) => setTitre(e.target.value)}
+                    placeholder={"Titre"}
+                    type={"text"}
+                />
 
                 <div className="ContainerInputProduct">
                     <InputItem
-                        input={(e)=>setPrice(e.target.value)}
+                        input={(e) => setPrice(e.target.value)}
                         placeholder={"Price"}
                         type={"text"}
                     />
                     <InputItem
-                        input={(e)=>setQte(e.target.value)}
+                        input={(e) => setQte(e.target.value)}
                         placeholder={"Qte"}
                         type={"number"}
                     />
@@ -116,13 +126,18 @@ const AddProduct = () => {
                         placeholder={"Brand"}
                         type={"select"}
                         options={brands}
-                        input={(v)=>setBrand(v)}
+                        input={(v) => setBrand(v)}
                     />
                 </div>
                 <div className="ContainerInputProduct">
-                    <InputItem  input={(v)=>setCategorie(v)} options={categorieOption} placeholder={"Categorie"} type={"select"} />
                     <InputItem
-                        input={(e)=>setDiscount(e.target.value)}
+                        input={(v) => setCategorie(v)}
+                        options={categorieOption}
+                        placeholder={"Categorie"}
+                        type={"select"}
+                    />
+                    <InputItem
+                        input={(e) => setDiscount(e.target.value)}
                         placeholder={"Discount"}
                         type={"number"}
                     />
@@ -131,19 +146,28 @@ const AddProduct = () => {
                 <div className="options">
                     <span className="placeholderPI">Options</span>
                     <div className="OptionsContainer">
-                        {options.map((e,i) => (
-                            <OptionsSelect   setUsed={setUsed} setdata={setOptions} id={i} item={options[i]}  data={()=>filterByUsedSpects(i)} />
+                        {options.map((e, i) => (
+                            <OptionsSelect
+                                setUsed={setUsed}
+                                setdata={setOptions}
+                                id={i}
+                                item={options[i]}
+                                data={() => filterByUsedSpects(i)}
+                            />
                         ))}
                     </div>
 
                     <div
                         className="AddBtnOption"
-                        onClick={() =>{
-                            console.log(options[options.length-1])
-                            if(options[options.length-1].key!=='' && options.length<Spects.length){
-                                setOptions([...options, option])
+                        onClick={() => {
+                            console.log(options[options.length - 1]);
+                            if (
+                                options[options.length - 1].key !== "" &&
+                                options.length < Spects.length
+                            ) {
+                                setOptions([...options, option]);
                             }
-                            }}
+                        }}
                     >
                         + Ajouter une autre option
                     </div>
@@ -175,16 +199,20 @@ const AddProduct = () => {
                         }}
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="AjouterProduit"
-                >
+                <button type="submit" className="AjouterProduit">
                     Ajouter Produit
                     {statusProduct==='pending' && <div className='pendinglayer' ><MiniLoading/></div> }
                 </button>
             </form>
-            <div className='errorDi' >
-            {showError && <FlashCard   toogle={setError} type='error' content='tous les champ doivent etre plein' title='Error' />}
+            <div className="errorDi">
+                {showError && (
+                    <FlashCard
+                        toogle={setError}
+                        type="error"
+                        content="tous les champ doivent etre plein"
+                        title="Error"
+                    />
+                )}
             </div>
         </div>
     );

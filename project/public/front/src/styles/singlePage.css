@@ -170,9 +170,9 @@
 }
 
 .similar-products {
-    overflow: scroll;
+    overflow-y: scroll;
     display: grid;
-    gap: 1rem;
+
     height: max-content;
 }
 .similar-products .title {
@@ -188,6 +188,7 @@
     overflow: scroll;
     width: 100%;
     height: max-content;
+    flex-wrap: nowrap;
     padding: 3rem;
 }
 

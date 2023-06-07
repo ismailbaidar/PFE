@@ -1,0 +1,17 @@
+.status {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    display: inline;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+}
+.status.warning {
+    background-color: var(--warning);
+}
+.status.success {
+    background-color: var(--success);
+}
+.status.error {
+    background-color: var(--error);
+}

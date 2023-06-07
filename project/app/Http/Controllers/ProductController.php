@@ -88,6 +88,7 @@ class ProductController extends Controller
             $produit->spects()->attach($option->key,['value'=>$option->value]);
         }
 
+
         $produitImages = $produit->images->toArray();
         $nr =json_decode($request->oldImages);
         array_map(function($e) use($request,$nr){

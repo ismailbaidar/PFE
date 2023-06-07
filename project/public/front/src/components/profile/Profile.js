@@ -6,16 +6,19 @@ import ProfileHome from "./ProfileHome";
 import ProfileOrders from "./ProfileOrders";
 import { Route, Routes, Switch } from "react-router-dom";
 import Wishlist from "../wishlist/Wishlist";
+import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
 export default function Profile() {
     return (
         <div className="profile">
             <NavigationSidebar></NavigationSidebar>
-            <div className="profile-content">
+            <div>
                 <ProfileNavbar></ProfileNavbar>
 
                 <Routes>
                     <Route path="/" element={<ProfileHome />} />
                     <Route path="orders" element={<ProfileOrders />} />
+                    <Route path="order/id" element={<SingleOrderDetails />} />
+
                     <Route path="wishlist" element={<Wishlist />} />
                 </Routes>
             </div>
