@@ -19,7 +19,7 @@ function App() {
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem("auth_token");
-        config.headers.Authorization ="Bearer 1|quPRK2TjnxsSMupr3XlDUyNEY9VHazeC6gRiALRE";
+        config.headers.Authorization ="Bearer 4|vJKCv7S6rsUH1uw7ZW1S9K9Y0ymU4mQfC93Fqkng";
         return config;
     });
     return (
@@ -30,7 +30,6 @@ function App() {
                 <Route path="register" element={<Register />} />
                 <Route path="login" element={<Login />} />
 
-                <Route path="*" element={<Navigate to="/notFound" />} />
                 <Route
                     path="notfound"
                     element={<ErrorPage errorType={404} />}
@@ -38,7 +37,6 @@ function App() {
                 <Route path="/profile/*" element={<Profile />} />
                 <Route path="test" element={<SingleOrderDetails />} />
 
-                <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>
         </div>
     );

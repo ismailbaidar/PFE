@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaimentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/checkout',[PaimentController::class,'checkout']);
+Route::get('/success',function(){
+    dd(request());
+})->name('r');
+Route::get('/cancel',function(){
+    return 'cc';
+})->name('c');

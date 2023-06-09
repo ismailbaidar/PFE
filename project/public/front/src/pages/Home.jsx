@@ -16,6 +16,7 @@ import '../styles/Home.css'
     <SectionProducts/>
     <SliderSection/>
     <SectionProducts switchSection={true}/>
+    
     </>
   );
 }

@@ -22,7 +22,7 @@ const SideNavigation = ({set}) => {
   return (
     <div className='side' >
     <FontAwesomeIcon   onClick={()=>set(false)}   id='close' icon={faAngleLeft} />
-    {list.map(e=><ItemSideNavigation gap={20} name={e.name} children={e.children} img={e.name} />)}
+    {list.map(e=><ItemSideNavigation gap={20} name={e.name} children={e.children} img={'../../icons/casque.jpg'} />)}
     </div>
   );
 }
