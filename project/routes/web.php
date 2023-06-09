@@ -16,7 +16,7 @@ use App\Http\Controllers\PaimentController;
 
 Route::get('/checkout',[PaimentController::class,'checkout']);
 Route::get('/success',function(){
-    dd(request());
+    return 'success';
 })->name('r');
 Route::get('/cancel',function(){
     return 'cc';

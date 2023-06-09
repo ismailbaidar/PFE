@@ -19,7 +19,8 @@ function App() {
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem("auth_token");
-        config.headers.Authorization ="Bearer 4|vJKCv7S6rsUH1uw7ZW1S9K9Y0ymU4mQfC93Fqkng";
+        config.headers.Authorization =
+            "Bearer 1|qYZXj1fpDrdEBTGdrR2ns9CISVxsvFiGFQi6Tk3H";
         return config;
     });
     return (
@@ -38,7 +39,6 @@ function App() {
 
                 <Route path="/profile/*" element={<Profile />} />
                 <Route path="test" element={<SingleOrderDetails />} />
-
             </Routes>
         </div>
     );

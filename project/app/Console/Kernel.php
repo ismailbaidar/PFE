@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             $data = Product::all();
+            var_dump('rrr');
             foreach ($data as $product) {
                 if ($product->releaseDate != null) {
                     $dateNow = new DateTime();
