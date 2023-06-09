@@ -1,15 +1,18 @@
 import CartProductCard from "./CartProductCard";
 import "../../styles/cart.css";
+import { useSelector } from "react-redux";
+
 export default function Cart() {
+    const cart = useSelector((state) => state.cartReducer.cart);
+
     return (
         <div className="cart-wrapper">
             <div className="title-content-container">
                 <span className="section-name">Cart</span>
                 <div className="cart-products">
-                    <CartProductCard></CartProductCard>
-                    <CartProductCard></CartProductCard>
-                    <CartProductCard></CartProductCard>
-                    <CartProductCard></CartProductCard>
+                    {cart.map((product) => {
+                        return <CartProductCard {...product} />;
+                    })}
                     <button className="empty-cart-button">Empty Cart</button>
                 </div>
             </div>
@@ -19,11 +22,21 @@ export default function Cart() {
                     <div className="info-wrapper">
                         <div className="info">
                             <span className="key">Total Items</span>
-                            <span className="value items">9</span>
+                            <span className="value items">{cart.length}</span>
                         </div>
                         <div className="info">
                             <span className="key">Total Price</span>
-                            <span className="value">999MAD</span>
+                            <span className="value">
+                                {cart.reduce((t, p) => {
+                                    if (p.discount) {
+                                        return (
+                                            t + (p.price - p.discount) * p.qte
+                                        );
+                                    }
+                                    return t + p.price * p.qte;
+                                }, 0)}
+                                MAD
+                            </span>
                         </div>
                         <button className="checkout-button">checkout</button>
                     </div>

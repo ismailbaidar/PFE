@@ -19,7 +19,12 @@ function App() {
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem("auth_token");
+<<<<<<< Updated upstream
         config.headers.Authorization ="Bearer 4|vJKCv7S6rsUH1uw7ZW1S9K9Y0ymU4mQfC93Fqkng";
+=======
+        config.headers.Authorization =
+            "Bearer 1|qPRwlontc6gOYujSaOI5wp3cspQEdGXv1HBTj1Yg";
+>>>>>>> Stashed changes
         return config;
     });
     return (

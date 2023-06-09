@@ -10,10 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SectionSideNavigation from "../components/Home/SectionSideNavigation";
 import Search from "./Search";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
     const [toogle, setToogle] = useState(false);
     const [search, setSearch] = useState(false);
+    const cart = useSelector((state) => state.cartReducer.cart);
+    const dispatch = useDispatch();
     return (
         <div className={"Navbar"}>
             <div className="logo">
@@ -31,8 +34,11 @@ const Navbar = () => {
                 <Link to={"Products"}>Products</Link>
                 <Link to={"Promotions"}>Promotions</Link>
                 <div className="count">
-                    <span>5</span>
-                    <FontAwesomeIcon icon={faCartShopping} />
+                    <span>{cart.length}</span>
+                    <Link to="/cart">
+                        {" "}
+                        <FontAwesomeIcon icon={faCartShopping} />
+                    </Link>
                 </div>
                 <div className="count">
                     <span>4</span>

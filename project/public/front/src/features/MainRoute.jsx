@@ -9,6 +9,7 @@ import Register from "../components/register/Register";
 import SinglePage from "../components/Single page/SinglePage";
 import ErrorPage from "../pages/ErrorPage";
 import { Navigate } from "react-router-dom";
+import Cart from "../components/cart/Cart";
 const MainRoute = () => {
     const location = useLocation();
     console.log(location);
@@ -21,6 +22,7 @@ const MainRoute = () => {
                     path="Categorie/:idCategorie"
                     element={<AllProducts />}
                 />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="Checkout" element={<Checkout />} />
                 <Route path="/product/:productId" element={<SinglePage />} />
                 <Route path="*" element={<Navigate to="/notFound" />} />

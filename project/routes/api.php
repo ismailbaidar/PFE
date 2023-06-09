@@ -32,6 +32,8 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::post('categorie/{id}',[CategorieController::class,'update']);
     Route::apiResource('categorie',CategorieController::class)->except('update');
 
+
+
     Route::post('brand/{id}',[BrandController::class,'update']);
     Route::apiResource('brand',BrandController::class)->except('update');
 

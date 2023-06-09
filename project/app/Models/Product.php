@@ -12,7 +12,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
+<<<<<<< Updated upstream
     protected $fillable = ["name","price","stock","discount","description","brand_id","categorie_id",'releaseDate'];
+=======
+    protected $fillable = ["name","price","stock","discount","description","brand_id","categorie_id","images"];
+>>>>>>> Stashed changes
     protected $guarded=[];
     public function categorie(){
         return $this->belongsTo(Categorie::class);

@@ -4,6 +4,7 @@
     padding: 1rem;
     margin-block: 4rem;
     gap: 1rem;
+    margin-bottom: 10rem;
 }
 .cart-wrapper .cart-products {
     display: flex;

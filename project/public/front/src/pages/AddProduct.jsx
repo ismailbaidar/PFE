@@ -1,17 +1,17 @@
 import React, { useState, useRef, useMemo,useEffect } from "react";
 import JoditEditor from "jodit-react";
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import "../styles/AddProduct.css";
 import OptionsSelect from "../components/Admin/OptionsSelect";
 import InputItem from "../components/Admin/InputItem";
 import FileIntem from "../components/Admin/FileIntem";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../features/Products";
+import { addProduct } from "../features/productSlice";
 import { getCategories } from "../features/CategorieSlice";
 import { getSpects } from "../features/SpectSlice";
 import { getBrands } from "../features/BrandSlice";
-import FlashCard from '../components/Flash card/FlashCard'
-import MiniLoading from '../components/mini-loading/MiniLoading'
+import FlashCard from "../components/Flash card/FlashCard";
+import MiniLoading from "../components/mini-loading/MiniLoading";
 import { Navigate } from "react-router-dom";
 const AddProduct = () => {
     let option = { key: "", value: "" };
@@ -24,9 +24,10 @@ const AddProduct = () => {
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
-    const [showError,setError] = useState(false)
-    const [isPending,setPending] = useState(false)
+    const [showError, setError] = useState(false);
+    const [isPending, setPending] = useState(false);
     const dispatch = useDispatch();
+<<<<<<< Updated upstream
     const [titre,setTitre]=useState(null)
     const [price,setPrice]=useState(null)
     const [qte,setQte]=useState(null)
@@ -34,11 +35,22 @@ const AddProduct = () => {
     const [dateRelease,setDateRelease]=useState(null)
     const [used,setUsed]=useState([])
     console.log(new Date(dateRelease)>new Date())
+=======
+    const [titre, setTitre] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [qte, setQte] = useState(null);
+    const [discount, setDiscount] = useState(null);
+    const [dateRelease, setDateRelease] = useState(null);
+    const [used, setUsed] = useState([]);
+    console.log(new Date(dateRelease) > new Date());
+
+>>>>>>> Stashed changes
     const config = {
         readonly: false,
         placeholder: "Start typings...",
     };
 
+<<<<<<< Updated upstream
     const categorieOption = useSelector(state=>state.Categorie.categories)
     const statusProduct = useSelector(state=>state.Product.status)
     const Spects = useSelector(state=>state.Spect.spects)
@@ -50,6 +62,13 @@ const AddProduct = () => {
         dispatch(getSpects())
         dispatch(getBrands())
     },[])
+=======
+    const categorieOption = useSelector((state) => state.Categorie.categories);
+    const statusProduct = useSelector((state) => state.productReducer.status);
+    const Spects = useSelector((state) => state.Spect.spects);
+    const brands = useSelector((state) => state.Brand.brands);
+    const navigate = useNavigate();
+>>>>>>> Stashed changes
 
 
     function getCurrentDateTime(now) {
@@ -93,6 +112,7 @@ const AddProduct = () => {
             stock: qte,
             description: content,
             images: files,
+<<<<<<< Updated upstream
             options:options,
             categorie:categorie,
             date : dateRelease==null ? '' : getCurrentDateTime(new Date(dateRelease)),
@@ -115,6 +135,33 @@ const AddProduct = () => {
             .then(res=>navigate('/admin/products',{state:{ message : res.status}}))
             .catch(err=>console.log(err),'dfghhgfdfghjjhgfd');
         console.log('added')
+=======
+            options: options,
+            categorie: categorie,
+            date: dateRelease == null ? "" : new Date(dateRelease),
+            brand: brand,
+        };
+        if (
+            Object.entries(obj).some(([key, value]) => {
+                if (key === "options") {
+                    if (value.key === "" || value.value == "") return true;
+                } else if (key != "date" && (value === "" || value == []))
+                    return true;
+                return dateRelease != null
+                    ? new Date(dateRelease) < Date.now()
+                    : false;
+            })
+        ) {
+            return setError(true);
+        }
+        dispatch(addProduct(obj))
+            .unwrap()
+            .then((res) =>
+                navigate("/admin/products", { state: { message: res.status } })
+            )
+            .catch((err) => console.log(err), "dfghhgfdfghjjhgfd");
+        console.log("added");
+>>>>>>> Stashed changes
     };
 
     return (
@@ -172,13 +219,13 @@ const AddProduct = () => {
                     >
                         + Ajouter une autre option
                     </div>
-            </div>
-            <InputItem
-                        input={(e)=>setDateRelease(e.target.value)}
-                        value={dateRelease}
-                        placeholder={"Date Release"}
-                        type={"datetime-local"}
-            />
+                </div>
+                <InputItem
+                    input={(e) => setDateRelease(e.target.value)}
+                    value={dateRelease}
+                    placeholder={"Date Release"}
+                    type={"datetime-local"}
+                />
 
                 <FileIntem
                     placeholder={"poduct images"}
@@ -205,7 +252,11 @@ const AddProduct = () => {
                     className="AjouterProduit"
                 >
                     Ajouter Produit
-                    {statusProduct==='pending' && <div className='pendinglayer' ><MiniLoading/></div> }
+                    {statusProduct === "pending" && (
+                        <div className="pendinglayer">
+                            <MiniLoading />
+                        </div>
+                    )}
                 </button>
             </form>
             <div className='errorDi' >
@@ -216,4 +267,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
