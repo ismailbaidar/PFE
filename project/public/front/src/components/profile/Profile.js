@@ -17,7 +17,6 @@ export default function Profile() {
                 <Routes>
                     <Route path="/" element={<ProfileHome />} />
                     <Route path="orders" element={<ProfileOrders />} />
-                    <Route path="order/id" element={<SingleOrderDetails />} />
 
                     <Route path="wishlist" element={<Wishlist />} />
                 </Routes>

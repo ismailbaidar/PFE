@@ -5,10 +5,8 @@ import Status from "./Status";
 export default function SingleOrderDetails({ setDetailsVisible }) {
     return (
         <div className="single-order-details">
-            <div className="background-opacity"></div>
-
-            <div className="details-modal printable-div">
-                <div className="bg"> something</div>
+            <img className="bg-bill" src="../../images/bill3.png" alt="" />
+            <div className="details-modal printable-content">
                 <div className="details">
                     <div className="info-part">
                         <div className="account-details">
@@ -752,12 +750,6 @@ export default function SingleOrderDetails({ setDetailsVisible }) {
             <div className="buttons">
                 <button className="print-button" onClick={() => window.print()}>
                     print
-                </button>
-                <button
-                    className="close-modal"
-                    onClick={() => setDetailsVisible(false)}
-                >
-                    close
                 </button>
             </div>
         </div>

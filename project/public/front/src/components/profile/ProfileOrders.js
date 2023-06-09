@@ -5,10 +5,12 @@ import "../../styles/profileorders.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
+import { Link } from "react-router-dom";
+
 export default function ProfileOrders() {
     const [detailsVisible, setDetailsVisible] = useState(false);
     const columns = [
-        { field: "id", headerName: "Order Id", width: 215 },
+        { field: "id", headerName: "Order Id", width: 150 },
         { field: "TotalPrice", headerName: "Total Price", width: 215 },
         {
             field: "PlacedOn",
@@ -22,13 +24,8 @@ export default function ProfileOrders() {
             renderCell: (params) => {
                 return (
                     <div className="actionbtntable">
-                        <button
-                            onClick={(e) => {
-                                setDetailsVisible(true);
-                            }}
-                            className="delete"
-                        >
-                            Details
+                        <button>
+                            <Link to="../../order/1">Details</Link>
                         </button>
                     </div>
                 );
