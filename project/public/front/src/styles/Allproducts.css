@@ -14,6 +14,7 @@
     justify-content: space-between;
     padding: 20px 60px;
     margin: 65px 0 0 0;
+    margin-bottom: 10rem;
 }
 .itemSide {
     display: flex;

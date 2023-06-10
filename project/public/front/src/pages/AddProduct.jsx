@@ -6,7 +6,7 @@ import OptionsSelect from "../components/Admin/OptionsSelect";
 import InputItem from "../components/Admin/InputItem";
 import FileIntem from "../components/Admin/FileIntem";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../features/Products";
+import { addProduct } from "../features/productSlice";
 import { getCategories } from "../features/CategorieSlice";
 import { getSpects } from "../features/SpectSlice";
 import { getBrands } from "../features/BrandSlice";
@@ -26,6 +26,7 @@ const AddProduct = () => {
     };
     const [showError, setError] = useState(false);
     const [isPending, setPending] = useState(false);
+
     const dispatch = useDispatch();
     const [titre, setTitre] = useState(null);
     const [price, setPrice] = useState(null);
@@ -34,22 +35,17 @@ const AddProduct = () => {
     const [dateRelease, setDateRelease] = useState(null);
     const [used, setUsed] = useState([]);
     console.log(new Date(dateRelease) > new Date());
+
     const config = {
         readonly: false,
         placeholder: "Start typings...",
     };
 
     const categorieOption = useSelector((state) => state.Categorie.categories);
-    const statusProduct = useSelector((state) => state.Product.status);
+    const statusProduct = useSelector((state) => state.productReducer.status);
     const Spects = useSelector((state) => state.Spect.spects);
     const brands = useSelector((state) => state.Brand.brands);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch(getCategories());
-        dispatch(getSpects());
-        dispatch(getBrands());
-    }, []);
 
     function getCurrentDateTime(now) {
         // Get the year, month, and day
@@ -101,10 +97,7 @@ const AddProduct = () => {
             images: files,
             options: options,
             categorie: categorie,
-            date:
-                dateRelease == null
-                    ? ""
-                    : getCurrentDateTime(new Date(dateRelease)),
+            date: dateRelease == null ? "" : new Date(dateRelease),
             brand: brand,
         };
         if (

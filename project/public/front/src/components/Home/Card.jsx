@@ -4,26 +4,62 @@ import img1 from "../../images/RYZEN-q3crjgx5y3ilg06s3ndp3w88gofdfl2ckluo4w369g.
 import img2 from "../../images/VEGA-AMD-q3criqloicmx94fmxfx0ygzhq5lxkvuajt4k304h3k.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart, updateCart } from "../../features/cartSlice";
+const Card = ({ id, name, price, discount, images, brand }) => {
+    console.log(brand);
+    const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cartReducer.cart);
 
-const Card = () => {
+    function addOrUpdateProductInCart(p) {
+        const product = cart.find((prod) => prod.id == p.id);
+        console.log(product);
+        if (product == undefined) {
+            dispatch(addProductToCart({ ...p, qte: 1 }));
+        } else {
+            dispatch(updateCart({ ...product, qte: product.qte + 1 }));
+        }
+    }
     return (
         <div className="card">
             <div className="catImages">
                 <img src={img1} alt="" />
                 <img src={img2} alt="" />
             </div>
-            <img src={img} width={300} alt="" />
+            <img
+                src={`http://localhost:8000/storage/images/${images[0].url}`}
+                width={300}
+                alt=""
+            />
             <p className="titleCard">
-                {"AMD RYZEN 5 4600G-VEGA 7".length > 15
-                    ? "AMD RYZEN 5 4600G-VEGA 7".substring(0, 15) + "..."
-                    : "AMD RYZEN 5 4600G-VEGA 7"}
+                {name.length > 15 ? name.substring(0, 15) + "..." : name}
             </p>
             <div className="price">
-                <span className=" HightPrice">3500.78 MAD</span>
-                <span className="lowPrice">2500.14 MAD</span>
+                {discount ? (
+                    <>
+                        <span className=" HightPrice">{price}MAD</span>
+                        <span className="lowPrice">{price - discount}MAD</span>
+                    </>
+                ) : (
+                    <span className="lowPrice">{price}MAD</span>
+                )}
             </div>
             <div className="hiddenButtons">
-                <button className="lireL">Add to cart</button>
+                <button
+                    className="lireL"
+                    onClick={() =>
+                        addOrUpdateProductInCart({
+                            id,
+                            name,
+                            price,
+                            discount,
+                            images,
+                            brand: brand.name,
+                        })
+                    }
+                >
+                    Add to cart
+                </button>
                 <button className="Heart">
                     {" "}
                     <FontAwesomeIcon icon={faHeart} />{" "}

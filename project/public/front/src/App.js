@@ -19,8 +19,9 @@ function App() {
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem("auth_token");
+
         config.headers.Authorization =
-            "Bearer 1|qYZXj1fpDrdEBTGdrR2ns9CISVxsvFiGFQi6Tk3H";
+            "Bearer 3|Dq2xYuEgv4AYZA70PxiBOw0EsMQE3sun0uoHbUaQ";
         return config;
     });
     return (
