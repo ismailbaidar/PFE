@@ -21,7 +21,7 @@ function App() {
         const token = localStorage.getItem("auth_token");
 
         config.headers.Authorization =
-            "Bearer 3|Dq2xYuEgv4AYZA70PxiBOw0EsMQE3sun0uoHbUaQ";
+            "Bearer 4|w1IKv22mGuEepsognEhAKCjDli6goFhgo8MUfOPo";
         return config;
     });
     return (

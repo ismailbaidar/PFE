@@ -83,16 +83,19 @@
 .sideBarAdmin {
     width: 20%;
     background-color: #fff;
-    padding: 15px;
+
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    justify-content: flex-start;
     position: relative;
+    padding-inline: 1rem;
     transition: all 0.6s ease;
     height: 100vh;
     left: 0;
     position: fixed;
+    gap: 1.5rem;
     top: 0;
+    /* overflow-x: scroll; */
 }
 .SliderContentManagement::-webkit-scrollbar {
     display: none;
@@ -190,6 +193,7 @@
 
 .HomeDashboard {
     padding: 10px;
+
 }
 .FirstSectionDashbord {
     display: flex;
@@ -208,7 +212,7 @@
     color: #838181;
 }
 .AreaChartContent {
-    width: 80%;
+    width: max-content;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -274,6 +278,7 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
+
 }
 .H-ItemsStateComponent {
     display: flex;
@@ -285,8 +290,9 @@
     align-items: center;
 }
 .T-ItemsStateComponent {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 400;
+    padding: 5px;
 }
 .I-ItemsStateComponent {
     color: #fff;
@@ -297,4 +303,15 @@
 .NameState {
     font-size: 20px;
     color: #646060;
+}
+
+.sideBarAdmin .sidebar-items {
+    padding: 5px;
+    display: grid;
+    gap: 0.5rem;
+
+}
+.sideBarAdmin .logo{
+    padding: 1rem;
+    margin-inline:auto ;
 }
