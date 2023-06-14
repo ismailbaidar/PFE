@@ -18,15 +18,16 @@ import Products from "../pages/Products";
 import Categories from "../pages/Categories";
 import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
-import Brands from '../pages/Brands'
-import Spects from '../pages/Spects'
+import Brands from "../pages/Brands";
+import Spects from "../pages/Spects";
+import { useSelector } from "react-redux";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
-
+    const show = useSelector((state) => state.showReducer.show);
     return (
         <div className="DashbordMain  ">
             <SideBar />
-            <div className="WrapperAdmin">
+            <div className="WrapperAdmin" data-show={show}>
                 <Search />
                 <Routes>
                     <Route path="/" element={<DashboardHome />} />
@@ -65,11 +66,14 @@ const AdminRoute = () => {
                         element={<ContentManagement />}
                     />
                     <Route path="/Products" element={<Products />} />
-                    <Route path='/categories' element={<Categories/>} />
-                    <Route path='/brands' element={<Brands/>} />
-                    <Route path='/spects' element={<Spects/>} />
-                    <Route path="/collections" element={<Collection/>}/>
-                    <Route path="/collections/:id" element={<EditeCollection/>}/>
+                    <Route path="/categories" element={<Categories />} />
+                    <Route path="/brands" element={<Brands />} />
+                    <Route path="/spects" element={<Spects />} />
+                    <Route path="/collections" element={<Collection />} />
+                    <Route
+                        path="/collections/:id"
+                        element={<EditeCollection />}
+                    />
                 </Routes>
             </div>
         </div>

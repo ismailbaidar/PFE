@@ -15,19 +15,19 @@ export default function StatsSideBar() {
             <div className="stats-wrapper">
                 <div className="first-part">
                     <div className="stats">
-                        <div className="stat-title blue">something</div>
+                        <div className="stat-title blue">browsed items</div>
                         <span className="stats-count">999</span>
                     </div>
                     <div className="stats">
-                        <div className="stat-title green">something</div>
+                        <div className="stat-title green">order count</div>
                         <span className="stats-count">999</span>
                     </div>
                     <div className="stats">
-                        <div className="stat-title red">something</div>
+                        <div className="stat-title red">loved items</div>
                         <span className="stats-count">999</span>
                     </div>
                     <div className="stats">
-                        <div className="stat-title purple">something</div>
+                        <div className="stat-title purple">reviewed</div>
                         <span className="stats-count">999</span>
                     </div>
                 </div>

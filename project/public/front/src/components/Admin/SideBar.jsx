@@ -9,16 +9,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/AdminSideBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector, useDispatch } from "react-redux";
+import { toggle } from "../../features/ShowSlice";
 const SideBar = () => {
-    const [show, setShow] = useState(false);
+    const show = useSelector((state) => state.showReducer.show);
+    const dispatch = useDispatch();
     return (
         <div
             className={`sideBarAdmin  ${
-                show ? "minSidbarAdmin" : "fullSideBarAdmin"
+                show || window.innerWidth < 700
+                    ? "minSidbarAdmin"
+                    : "fullSideBarAdmin"
             }`}
         >
             <div className="logo">
-                <img src="../../images/logored.png" alt="" width={show?40:90} />
+                <img
+                    src="../../images/logored.png"
+                    alt=""
+                    width={show || window.innerWidth ? 40 : 90}
+                />
             </div>
             <div className="sidebar-items">
                 <ItemSideBar icon={faBox} title={"Dashbord"} />
@@ -33,7 +42,7 @@ const SideBar = () => {
             </div>
             <FontAwesomeIcon
                 id="iconToogleDashboardM"
-                onClick={() => setShow(!show)}
+                onClick={() => dispatch(toggle())}
                 icon={show ? faAngleRight : faAngleLeft}
             />
         </div>
