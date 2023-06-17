@@ -17,6 +17,13 @@ export const register = createAsyncThunk("user/register", async (data) => {
         .catch((err) => console.log(err));
 });
 
+export const login = createAsyncThunk("user/login", async (data) => {
+    return axios
+        .post("http://127.0.0.1:8000/api/login", data)
+        .then((res) => res.data)
+        .catch((err) => console.log(err));
+});
+
 const initialState = {
     user: null,
 };
@@ -26,8 +33,11 @@ const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [updateUser.fulfilled]: (state, { payload }) => {
-            localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
+        [updateUser.fulfilled]: (state, { payload }) => {},
+        [login.fulfilled]: (state, { payload }) => {
+            console.log(payload.AUTH_TOKEN);
+            payload.AUTH_TOKEN &&
+                localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
         },
     },
 });

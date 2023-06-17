@@ -14,14 +14,21 @@ import MiniLoading from "./components/mini-loading/MiniLoading";
 import Login from "./components/login/Login";
 import SureMsg from "./components/Suremsg/SureMsg";
 import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
+import { useEffect } from "react";
 function App() {
+    useEffect(() => {
+        if (!localStorage.getItem("AUTH_TOKEN")) {
+            localStorage.setItem("AUTH_TOKEN", null);
+        }
+    }, []);
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem("auth_token");
 
-        config.headers.Authorization =
-            "Bearer 5|alcpndAw4Xr6LSJJlPje49Pb4thcdLIsgeDYHKPd";
+        config.headers.Authorization = `Bearer ${localStorage.getItem(
+            "AUTH_TOKEN"
+        )}`;
         return config;
     });
     return (

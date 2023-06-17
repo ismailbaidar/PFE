@@ -1,11 +1,19 @@
 import React from "react";
 import "../../styles/register.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/userSlice";
 
 function Login() {
-    const form = (e) => {
-        e.preventDefault();
-    };
+    const email = useRef();
+    const password = useRef();
+    const dispatch = useDispatch();
+    function submitLogin(e) {
+        const data = new FormData();
+        data.append("email", email.current.value);
+        data.append("password", password.current.value);
+        dispatch(login(data));
+    }
     const [currentState, setCurrentState] = useState(0);
     const image = [{ url: "../img/1.png" }, { url: "../img/2.png" }];
     useEffect(() => {
@@ -51,18 +59,20 @@ function Login() {
             </div>
             <div className="form">
                 <h2>Log in </h2>
-                <form onSubmit={form} method="post">
+                <form method="post">
                     <input
                         type="text"
                         name="first_name"
-                        placeholder="Email addres"
+                        placeholder="example@example.com"
                         required
+                        ref={email}
                     />
                     <input
                         type="password"
                         name="password"
                         placeholder="Password"
                         required
+                        ref={password}
                     />
                     <div className="checkbox">
                         <label className="rememberLabel">
@@ -71,7 +81,9 @@ function Login() {
                         </label>
                     </div>
 
-                    <button type="submit">Sign Up</button>
+                    <button type="button" onClick={() => submitLogin()}>
+                        Sign Up
+                    </button>
                     <a href="" className="google">
                         <div className="google-sign-in">
                             <img src="./img/google-logo.png" alt="#" />
