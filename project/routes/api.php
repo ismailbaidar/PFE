@@ -7,6 +7,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SpectController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,11 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
 
     Route::post('product/{id}',[ProductController::class,'update']);
     Route::apiResource('product',ProductController::class)->except('update');
+    Route::post("/updateUser",[UserController::class,"update"]);
 
 });
+
+
 
 
 

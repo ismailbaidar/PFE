@@ -26,7 +26,7 @@ const Navbar = () => {
                     onClick={() => setToogle(true)}
                 />
                 <Link to="/">
-                    <img src="../images/logored.png" width={150} />
+                    <img src="../images/logored.png" width={50} />
                 </Link>
             </div>
 

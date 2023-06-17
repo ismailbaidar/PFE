@@ -21,7 +21,8 @@ const SideNavigation = ({set}) => {
 ]
   return (
     <div className='side' >
-    <FontAwesomeIcon   onClick={()=>set(false)}   id='close' icon={faAngleLeft} />
+        <span className='close-button-container'>
+    <FontAwesomeIcon   onClick={()=>set(false)}   id='close' icon={faAngleLeft} /></span>
     {list.map(e=><ItemSideNavigation gap={20} name={e.name} children={e.children} img={'../../icons/casque.jpg'} />)}
     </div>
   );

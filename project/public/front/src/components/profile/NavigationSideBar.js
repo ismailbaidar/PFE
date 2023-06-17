@@ -74,7 +74,14 @@ export default function NavigationSidebar() {
                         <ul className="sublist" data-visible={visible}>
                             <li>
                                 <FontAwesomeIcon icon={faUserPen} />
-                                Edit Profile
+                                <Link
+                                    to="editProfile"
+                                    onClick={() =>
+                                        setSelected("/profile/editProfile")
+                                    }
+                                >
+                                    Edit Profile
+                                </Link>
                             </li>
                             <li>
                                 <FontAwesomeIcon icon={faKey} />

@@ -5,6 +5,7 @@ import Spect from "./features/SpectSlice";
 import Brand from "./features/BrandSlice";
 import cartReducer from "./features/cartSlice";
 import showReducer from "./features/ShowSlice";
+import userReducer from "./features/userSlice";
 const Store = configureStore({
     reducer: {
         productReducer,
@@ -13,6 +14,7 @@ const Store = configureStore({
         Brand,
         cartReducer,
         showReducer,
+        userReducer,
     },
 });
 export default Store;

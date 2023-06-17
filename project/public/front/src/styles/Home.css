@@ -97,12 +97,21 @@ li {
     color: var(--red);
 }
 
-#close {
+.close-button-container{
     width: 100%;
-    background: var(--red);
-    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    display: inline-block;
+}
+
+#close {
+    width: fit-content;
+    float: right;
+    color:var(--red);
+
     font-size: 20px;
-    padding: 5px;
+    padding: 1rem;
+
 }
 .Navbar a {
     text-decoration: none;
@@ -163,6 +172,7 @@ li {
     }
     #menu {
         display: block;
+        overflow-x: hidden;
     }
     .SliderAndContent2 {
         width: 100%;
@@ -664,6 +674,7 @@ li {
     overflow-y: scroll;
     height: 100%;
     background-color: #fff;
+    overflow-x: hidden;
 }
 .SectionSideNavigation .ItemSideNavigation {
     display: flex;

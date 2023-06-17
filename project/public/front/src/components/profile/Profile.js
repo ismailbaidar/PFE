@@ -4,9 +4,10 @@ import NavigationSidebar from "./NavigationSideBar";
 import ProfileNavbar from "./ProfileNavbar";
 import ProfileHome from "./ProfileHome";
 import ProfileOrders from "./ProfileOrders";
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Wishlist from "../wishlist/Wishlist";
 import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
+import EditProfile from "./EditProfile";
 export default function Profile() {
     return (
         <div className="profile">
@@ -17,7 +18,7 @@ export default function Profile() {
                 <Routes>
                     <Route path="/" element={<ProfileHome />} />
                     <Route path="orders" element={<ProfileOrders />} />
-
+                    <Route path="editProfile" element={<EditProfile />} />
                     <Route path="wishlist" element={<Wishlist />} />
                 </Routes>
             </div>
