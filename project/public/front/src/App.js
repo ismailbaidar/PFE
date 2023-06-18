@@ -15,6 +15,7 @@ import Login from "./components/login/Login";
 import SureMsg from "./components/Suremsg/SureMsg";
 import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
 import { useEffect } from "react";
+import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
 function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
@@ -36,8 +37,23 @@ function App() {
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
                 <Route path="/Admin/*" element={<AdminRoute />} />
-                <Route path="register" element={<Register />} />
-                <Route path="login" element={<Login />} />
+
+                <Route
+                    path="register"
+                    element={
+                        <PreventDirectAccess type="login">
+                            <Register />
+                        </PreventDirectAccess>
+                    }
+                />
+                <Route
+                    path="login"
+                    element={
+                        <PreventDirectAccess type="login">
+                            <Login />
+                        </PreventDirectAccess>
+                    }
+                />
 
                 <Route
                     path="notfound"
@@ -45,7 +61,14 @@ function App() {
                 />
                 <Route path="order/:id" element={<SingleOrderDetails />} />
 
-                <Route path="/profile/*" element={<Profile />} />
+                <Route
+                    path="/profile/*"
+                    element={
+                        <PreventDirectAccess type="auth">
+                            <Profile />
+                        </PreventDirectAccess>
+                    }
+                />
                 <Route path="test" element={<SingleOrderDetails />} />
             </Routes>
         </div>

@@ -7,15 +7,19 @@ import {
     faCartShopping,
     faHeart,
     faMagnifyingGlass,
+    faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import SectionSideNavigation from "../components/Home/SectionSideNavigation";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/userSlice";
 
 const Navbar = () => {
     const [toogle, setToogle] = useState(false);
     const [search, setSearch] = useState(false);
+    const [visible, setVisible] = useState(false);
     const cart = useSelector((state) => state.cartReducer.cart);
+
     const dispatch = useDispatch();
     return (
         <div className={"Navbar"}>
@@ -51,6 +55,29 @@ const Navbar = () => {
                     onClick={() => setSearch(true)}
                     icon={faMagnifyingGlass}
                 />
+                <div className="dropdown-menu-wrapper">
+                    <FontAwesomeIcon
+                        icon={faUser}
+                        onClick={() => setVisible(!visible)}
+                    />
+                    <ul className="dropdown-menu" data-visible={visible}>
+                        {localStorage.getItem("AUTH_TOKEN") == "null" ? (
+                            <>
+                                <li>Login</li>
+                                <li>Register</li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to="profile">Profile</Link>
+                                </li>
+                                <li onClick={() => dispatch(logout())}>
+                                    <div>Logout</div>
+                                </li>
+                            </>
+                        )}
+                    </ul>
+                </div>
             </div>
             {toogle && <SectionSideNavigation set={setToogle} />}
             {search && <Search hide={setSearch} />}

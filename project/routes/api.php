@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register',[AuthController::class,'Register']);
 Route::post('login',[AuthController::class,'Login']);
+Route::apiResource('product',ProductController::class)->except('update');
 Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::post('VerifyEmail',[AuthController::class,'Verify']);
 
@@ -42,8 +43,8 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::apiResource('spect',SpectController::class)->except('update');
 
     Route::post('product/{id}',[ProductController::class,'update']);
-    Route::apiResource('product',ProductController::class)->except('update');
     Route::post("/updateUser",[UserController::class,"update"]);
+    Route::post("logout",[AuthController::class,"Logout"]);
 
 });
 

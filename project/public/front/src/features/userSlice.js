@@ -24,6 +24,13 @@ export const login = createAsyncThunk("user/login", async (data) => {
         .catch((err) => console.log(err));
 });
 
+export const logout = createAsyncThunk("user/logout", async () => {
+    return axios
+        .post("http://127.0.0.1:8000/api/logout")
+        .then((res) => res.data)
+        .catch((err) => console.log(err));
+});
+
 const initialState = {
     user: null,
 };
@@ -38,6 +45,10 @@ const userSlice = createSlice({
             console.log(payload.AUTH_TOKEN);
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
+        },
+        [logout.fulfilled]: (state, { payload }) => {
+            console.log(state);
+            localStorage.setItem("AUTH_TOKEN", "null");
         },
     },
 });
