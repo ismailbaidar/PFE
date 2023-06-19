@@ -31,6 +31,31 @@ export const logout = createAsyncThunk("user/logout", async () => {
         .catch((err) => console.log(err));
 });
 
+export const loginGoogle = createAsyncThunk(
+    "user/loginGoogle",
+    async (data) => {
+        const accessToken = data.accessToken;
+        console.log(accessToken);
+        const dataFetch = await fetch(
+            `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`,
+            {
+                method: "GET",
+                redirect: "follow",
+            }
+        );
+        const responseFetch = await dataFetch.json();
+        if (responseFetch.email) {
+            const formData = new FormData();
+            formData.append("name", responseFetch.name);
+            formData.append("email", responseFetch.email);
+            return axios
+                .post("http://localhost:8000/api/loginGoogle", formData)
+                .then((res) => res.data)
+                .catch((err) => console.log(err));
+        }
+    }
+);
+
 const initialState = {
     user: null,
 };
@@ -49,6 +74,11 @@ const userSlice = createSlice({
         [logout.fulfilled]: (state, { payload }) => {
             console.log(state);
             localStorage.setItem("AUTH_TOKEN", "null");
+        },
+        [loginGoogle.fulfilled]: (state, { payload }) => {
+            console.log(payload.AUTH_TOKEN);
+            payload.AUTH_TOKEN &&
+                localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
         },
     },
 });

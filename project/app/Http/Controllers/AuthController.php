@@ -7,6 +7,7 @@ use App\Events\VerifyEvent;
 use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -33,6 +34,28 @@ class AuthController extends Controller
             } catch (\Throwable $th) {
                 return response()->json(['error'=>$th->getMessage()]);
             }
+    }
+
+    function LoginGoogle(Request $request){
+        $user = User::firstOrCreate(["email"=>$request->email],[
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>Hash::make($request->email.$request->name),
+            "code"=>rand(111111,999999),
+
+        ]);
+        // return response()->json($user);
+        try {
+
+                // $user = User::where('email',$request->email)->first();
+
+                $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
+                return response()->json(['AUTH_TOKEN'=>$token]);
+
+        } catch (\Throwable $th) {
+            return response()->json(['error'=>$th->getMessage()]);
+        }
+
     }
 
     function Logout(){

@@ -16,11 +16,13 @@ import SureMsg from "./components/Suremsg/SureMsg";
 import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
 import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
+
 function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
             localStorage.setItem("AUTH_TOKEN", null);
         }
+        /*global google */
     }, []);
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;

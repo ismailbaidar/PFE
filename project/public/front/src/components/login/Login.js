@@ -3,6 +3,8 @@ import "../../styles/register.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/userSlice";
+import jwt_decode from "jwt-decode";
+import SignUpButton from "./SignUpButton";
 
 function Login() {
     const email = useRef();
@@ -14,6 +16,7 @@ function Login() {
         data.append("password", password.current.value);
         dispatch(login(data));
     }
+
     const [currentState, setCurrentState] = useState(0);
     const image = [{ url: "../img/1.png" }, { url: "../img/2.png" }];
     useEffect(() => {
@@ -28,6 +31,7 @@ function Login() {
             clearInterval(Next);
         };
     }, [currentState]);
+
     const goToNext = (c) => {
         setCurrentState(c);
     };
@@ -84,12 +88,7 @@ function Login() {
                     <button type="button" onClick={() => submitLogin()}>
                         Sign Up
                     </button>
-                    <a href="" className="google">
-                        <div className="google-sign-in">
-                            <img src="./img/google-logo.png" alt="#" />
-                            <span>Sign In With Google</span>
-                        </div>
-                    </a>
+                    <SignUpButton></SignUpButton>
                 </form>
             </div>
         </section>
