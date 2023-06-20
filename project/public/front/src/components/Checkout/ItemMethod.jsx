@@ -5,7 +5,7 @@ const ItemMethod = ({ name, img }) => {
         <div className="ItemMethod">
             <div className="methodChois">
             <div className="customRadio" >
-            <input type="radio"  />
+            <input type="radio" name='item'  />
             <div className="radB" ></div>
             </div>
                 <div className="methodName">{name}</div>

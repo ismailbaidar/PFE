@@ -10,10 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Collection extends Model
 {
     use HasFactory;
+   protected $guarded=[];
     public function products(){
-        return $this->hasManyThrough(Product::class,Collectionitem::class);
-    }
-    public function collectionitems(){
-        return $this->hasMany(Collectionitem::class);
+        return $this->belongsToMany(Product::class);
     }
 }

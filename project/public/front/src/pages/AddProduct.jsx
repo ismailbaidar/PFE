@@ -27,7 +27,6 @@ const AddProduct = () => {
     const [showError, setError] = useState(false);
     const [isPending, setPending] = useState(false);
     const dispatch = useDispatch();
-<<<<<<< Updated upstream
     const [titre,setTitre]=useState(null)
     const [price,setPrice]=useState(null)
     const [qte,setQte]=useState(null)
@@ -35,24 +34,14 @@ const AddProduct = () => {
     const [dateRelease,setDateRelease]=useState(null)
     const [used,setUsed]=useState([])
     console.log(new Date(dateRelease)>new Date())
-=======
-    const [titre, setTitre] = useState(null);
-    const [price, setPrice] = useState(null);
-    const [qte, setQte] = useState(null);
-    const [discount, setDiscount] = useState(null);
-    const [dateRelease, setDateRelease] = useState(null);
-    const [used, setUsed] = useState([]);
-    console.log(new Date(dateRelease) > new Date());
 
->>>>>>> Stashed changes
     const config = {
         readonly: false,
         placeholder: "Start typings...",
     };
 
-<<<<<<< Updated upstream
     const categorieOption = useSelector(state=>state.Categorie.categories)
-    const statusProduct = useSelector(state=>state.Product.status)
+    const statusProduct = useSelector(state=>state.productReducer.status)
     const Spects = useSelector(state=>state.Spect.spects)
     const brands = useSelector(state=>state.Brand.brands)
     const navigate= useNavigate()
@@ -62,13 +51,7 @@ const AddProduct = () => {
         dispatch(getSpects())
         dispatch(getBrands())
     },[])
-=======
-    const categorieOption = useSelector((state) => state.Categorie.categories);
-    const statusProduct = useSelector((state) => state.productReducer.status);
-    const Spects = useSelector((state) => state.Spect.spects);
-    const brands = useSelector((state) => state.Brand.brands);
-    const navigate = useNavigate();
->>>>>>> Stashed changes
+
 
 
     function getCurrentDateTime(now) {
@@ -112,30 +95,6 @@ const AddProduct = () => {
             stock: qte,
             description: content,
             images: files,
-<<<<<<< Updated upstream
-            options:options,
-            categorie:categorie,
-            date : dateRelease==null ? '' : getCurrentDateTime(new Date(dateRelease)),
-            brand:brand
-        }
-        if(Object.entries(obj).some(([key,value])=>{
-            if(key==='options'){
-                if(value.key==='' || value.value=='') return true
-            }
-            else if(key!='date' && (value==='' || value==[])) return true
-            return dateRelease!=null ? new Date(dateRelease) < Date.now() :false
-        }))
-        {
-            return setError(true)
-        }
-        dispatch(
-            addProduct(obj)
-        )
-        .unwrap()
-            .then(res=>navigate('/admin/products',{state:{ message : res.status}}))
-            .catch(err=>console.log(err),'dfghhgfdfghjjhgfd');
-        console.log('added')
-=======
             options: options,
             categorie: categorie,
             date: dateRelease == null ? "" : new Date(dateRelease),
@@ -161,7 +120,6 @@ const AddProduct = () => {
             )
             .catch((err) => console.log(err), "dfghhgfdfghjjhgfd");
         console.log("added");
->>>>>>> Stashed changes
     };
 
     return (

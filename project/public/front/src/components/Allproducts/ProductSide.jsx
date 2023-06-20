@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import Card from "../Home/Card";
 import ItemFilters from "./ItemFilters";
-import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../features/productSlice";
-const ProductSide = ({ items, removeItem }) => {
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getProducts());
-    }, []);
-    const products = useSelector((state) => state.productReducer.products);
+const ProductSide = ({ items, removeItem,products }) => {
+
+
     return (
         <div className="ProductSide">
             <div className="Items">

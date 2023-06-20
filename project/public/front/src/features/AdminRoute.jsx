@@ -20,6 +20,8 @@ import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
 import Brands from '../pages/Brands'
 import Spects from '../pages/Spects'
+import AddCollection from '../pages/AddCollection'
+import UploadShippingCity from '../pages/UploadShippingCity'
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
 
@@ -70,6 +72,8 @@ const AdminRoute = () => {
                     <Route path='/spects' element={<Spects/>} />
                     <Route path="/collections" element={<Collection/>}/>
                     <Route path="/collections/:id" element={<EditeCollection/>}/>
+                    <Route path="/addcollection" element={<AddCollection/>}/>
+                    <Route path='/addShipping' element={<UploadShippingCity/>}/>
                 </Routes>
             </div>
         </div>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->String('code');
+            $table->String('code')->unique();
             $table->float('prc');
             $table->enum('status',['active','nonActive']);
             $table->timestamps();

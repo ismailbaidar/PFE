@@ -6,3 +6,15 @@
 .activity-products .activity-title {
     font-weight: bold;
 }
+
+.placeholder
+{
+    margin: 5px 0;
+}
+
+.inputSearch{
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #dbd7d7;
+    border-radius: 9px;
+}
