@@ -76,7 +76,7 @@ const userSlice = createSlice({
             localStorage.setItem("AUTH_TOKEN", "null");
         },
         [loginGoogle.fulfilled]: (state, { payload }) => {
-            console.log(payload.AUTH_TOKEN);
+            console.log(payload);
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
         },

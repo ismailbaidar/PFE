@@ -20,9 +20,10 @@ return new class extends Migration
             $table->String('tele');
             $table->enum('status',['ordered','processing','delivered','canceled']);
             $table->enum('satatus_payment',['paid','not paid']);
-            $table->foreignId('shipping_id')->constrained();
+            $table->foreignId('shipping_id')->nullable()->constrained();
             $table->foreignId('discount_id')->nullable()->constrained();
-            $table->foreignId('payment_id')->nullable()->constrained();
+            $table->string("payment_id");
+            $table->foreign("payment_id")->references("id")->on("payments");
             $table->timestamps();
         });
     }

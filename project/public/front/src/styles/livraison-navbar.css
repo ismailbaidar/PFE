@@ -1,0 +1,22 @@
+.livraison-navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* background-color: red; */
+    justify-content: space-between;
+
+    background-color: white;
+}
+.livraison-navbar .icon {
+    font-size: 1.5rem;
+    position: relative;
+}
+.livraison-navbar .icon-bell span {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--red);
+    border-radius: 50%;
+}

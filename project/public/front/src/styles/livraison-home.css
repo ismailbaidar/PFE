@@ -1,0 +1,161 @@
+.livraison-home-wrapper {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.livraison-home-wrapper .orders-part-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    box-shadow: 0px 0px 3px gray;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.livraison-home-wrapper .orders-part-wrapper .title-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.livraison-home-wrapper .orders-part-wrapper .order-cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ham-slider {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: translateX(-100%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 4rem;
+    transition: transform 500ms ease;
+}
+
+.ham-slider[data-visible="true"] {
+    transform: translateX(0);
+}
+
+.ham-slider .image {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+.ham-slider .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+.close-ham,
+.close-notification,
+.close-single-notification {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.2rem;
+    color: var(--red);
+}
+
+.livraison-notification {
+    position: absolute;
+
+    width: 100vw;
+    background: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 2rem 1rem;
+    transform: translateX(100%);
+    transition: transform 500ms ease;
+}
+.livraison-notification[data-visible="true"] {
+    transform: translateX(0);
+}
+
+.livraison-notification .upper-part {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.livraison-notification .upper-part span:nth-of-type(2) {
+    font-size: 0.9rem;
+    color: var(--red);
+}
+.livraison-notification .notifications-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.livraison-notification .notifications-wrapper .notification-card {
+    display: flex;
+    padding-inline: 1rem;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0px 0px 3px gray;
+    border-radius: 5px;
+}
+.livraison-notification .notifications-wrapper .notification-card svg {
+    font-size: 1.5rem;
+    color: var(--red);
+}
+.livraison-notification .notifications-wrapper .notification-card .info {
+    font-size: 0.9rem;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    white-space: nowrap;
+
+    width: 100%;
+}
+.livraison-notification .notifications-wrapper .notification-card .info .date {
+    font-size: 0.8rem;
+    color: gray;
+}
+.livraison-notification .notifications-wrapper .notification-card .info .title {
+    font-weight: bold;
+}
+.livraison-notification
+    .notifications-wrapper
+    .notification-card
+    .info
+    .title[data-title="read"] {
+    font-weight: normal;
+}
+
+.single-notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 5rem;
+    gap: 1rem;
+    z-index: 2929;
+}

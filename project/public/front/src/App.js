@@ -16,6 +16,7 @@ import SureMsg from "./components/Suremsg/SureMsg";
 import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
 import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
+import LivraisonHome from "./components/Livraison/LivraisonHome";
 
 function App() {
     useEffect(() => {
@@ -27,18 +28,16 @@ function App() {
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
-        const token = localStorage.getItem("auth_token");
+        const token = localStorage.getItem("AUTH_TOKEN");
 
-
-        config.headers.Authorization = `Bearer ${localStorage.getItem(
-            "AUTH_TOKEN"
-        )}`;
+        config.headers.Authorization = `Bearer ${token}`;
         return config;
     });
     return (
         <div className="App">
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
+                <Route path="test" element={<LivraisonHome />} />
                 <Route path="/Admin/*" element={<AdminRoute />} />
 
                 <Route
@@ -63,7 +62,6 @@ function App() {
                     element={<ErrorPage errorType={404} />}
                 />
                 <Route path="order/:id" element={<SingleOrderDetails />} />
-
 
                 <Route
                     path="/profile/*"

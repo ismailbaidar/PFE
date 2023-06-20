@@ -79,6 +79,11 @@ body {
 .google {
     width: 70%;
 }
+.google-sign-up-button {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
 .google-sign-in {
     display: flex;
     width: 100%;

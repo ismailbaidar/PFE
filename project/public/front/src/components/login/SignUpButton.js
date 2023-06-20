@@ -23,6 +23,7 @@ const SignUpButton = () => {
 
     return (
         <GoogleLogin
+            className="google-sign-up-button"
             clientId="130611290490-fu0cj8ae0va6l6djkgsnaa8eo2odqvgo.apps.googleusercontent.com"
             buttonText="Sign Up with Google"
             onSuccess={responseGoogle}

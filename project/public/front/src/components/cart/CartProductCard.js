@@ -25,6 +25,7 @@ export default function CartProductCard({
             console.log("not now");
         }
     }
+    console.log(images);
     return (
         <div className="cart-product-card">
             <div className="image-title-container">
