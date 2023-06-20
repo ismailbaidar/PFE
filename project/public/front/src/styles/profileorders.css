@@ -2,3 +2,12 @@
     height: 85vh;
     overflow-y: scroll;
 }
+.profile-orders .order-detail-button {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--red);
+    color: white;
+    border: none;
+}
+.profile-orders .order-detail-button:hover {
+    opacity: 0.9;
+}

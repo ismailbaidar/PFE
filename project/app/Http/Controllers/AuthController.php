@@ -29,7 +29,7 @@ class AuthController extends Controller
                 if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
                     $user = User::where('email',$request->email)->first();
                     $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
-                    return response()->json(['AUTH_TOKEN'=>$token]);
+                    return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user]);
                 }
             } catch (\Throwable $th) {
                 return response()->json(['error'=>$th->getMessage()]);
@@ -50,7 +50,7 @@ class AuthController extends Controller
                 // $user = User::where('email',$request->email)->first();
 
                 $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
-                return response()->json(['AUTH_TOKEN'=>$token]);
+                return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user]);
 
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);

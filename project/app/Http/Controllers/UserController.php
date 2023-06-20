@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 <<<<<<< Updated upstream
-    public function update(Request $request){
-
 =======
+
+>>>>>>> Stashed changes
     public function update(Request $request,$id){
         User::where('id',$id)->update([
             'name'=>$request->name,
@@ -18,6 +18,5 @@ class UserController extends Controller
             'password'=>$request->password,
             'code'=>$request->code ,
         ]);
->>>>>>> Stashed changes
     }
 }

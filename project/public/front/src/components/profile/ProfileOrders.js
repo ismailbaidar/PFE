@@ -24,7 +24,7 @@ export default function ProfileOrders() {
             renderCell: (params) => {
                 return (
                     <div className="actionbtntable">
-                        <button>
+                        <button className="order-detail-button">
                             <Link to="../../order/1">Details</Link>
                         </button>
                     </div>

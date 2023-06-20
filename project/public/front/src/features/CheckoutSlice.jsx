@@ -1,5 +1,5 @@
-import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const checkoutWithCardPaymant=createAsyncThunk('checkoutWithCardPaymant',async(data,{getState})=>{
         let form = new FormData()
@@ -31,7 +31,7 @@ export const checkoutLivresion=createAsyncThunk('checkoutLivresion',async(data,{
     form.append('postalCode',dataItems.postal)
     form.append('ville',dataItems.ville)
     form.append('coupon',data)
-    form.append('products',JSON.stringify(products))  
+    form.append('products',JSON.stringify(products))
 
     return axios.post('http://localhost:8000/api/paimentlivresion',form)
     .then(res=>res.data)
@@ -56,8 +56,7 @@ const CheckoutSlice=createSlice({
             console.log(payload)
         })
     }
+)
 
-})
-export default CheckoutSlice.reducer
-export const {changeData} = CheckoutSlice.actions
-
+export default CheckoutSlice.reducer;
+export const { changeData } = CheckoutSlice.actions;

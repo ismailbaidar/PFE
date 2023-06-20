@@ -40,20 +40,18 @@ const AddProduct = () => {
         readonly: false,
         placeholder: "Start typings...",
     };
+    useEffect(() => {
+        dispatch(getBrands());
+        dispatch(getCategories());
+        dispatch(getSpects());
+    }, []);
 
-    const categorieOption = useSelector(state=>state.Categorie.categories)
-    const statusProduct = useSelector(state=>state.productReducer.status)
-    const Spects = useSelector(state=>state.Spect.spects)
-    const brands = useSelector(state=>state.Brand.brands)
-    const navigate= useNavigate()
-
-    useEffect(()=>{
-        dispatch(getCategories())
-        dispatch(getSpects())
-        dispatch(getBrands())
-    },[])
-
-
+    const categorieOption = useSelector((state) => state.Categorie.categories);
+    const statusProduct = useSelector((state) => state.productReducer.status);
+    const Spects = useSelector((state) => state.Spect.spects);
+    const brands = useSelector((state) => state.Brand.brands);
+    console.log("brands", brands);
+    const navigate = useNavigate();
 
     function getCurrentDateTime(now) {
         // Get the year, month, and day

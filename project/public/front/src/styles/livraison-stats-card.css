@@ -1,0 +1,50 @@
+.livraison-stats-card {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    padding: 3rem 2rem;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+.livraison-stats-card .icon {
+    font-size: 5rem;
+
+    display: flex;
+    justify-content: center;
+}
+.livraison-stats-card .text {
+    font-size: 1.2rem;
+}
+.livraison-stats-card .stat {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.livraison-stats-card.delivered {
+    background-color: #effbf9;
+}
+.livraison-stats-card.delivered .icon {
+    color: #71d2bc;
+}
+
+.livraison-stats-card.canceled {
+    background-color: #fcebf1;
+}
+.livraison-stats-card.canceled .icon {
+    color: #e482a4;
+}
+
+.livraison-stats-card.pending {
+    background-color: #fef9ed;
+}
+.livraison-stats-card.pending .icon {
+    color: #e4c35a;
+}
+
+.livraison-stats-card.returned {
+    background-color: #f0f6fb;
+}
+.livraison-stats-card.returned .icon {
+    color: #7eb6e4;
+}
