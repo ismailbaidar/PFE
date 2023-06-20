@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
 import LivraisonHome from "./components/Livraison/LivraisonHome";
 import ToUpButton from "./components/Tools/ToUpButton";
+import PaymentSuccess from './components/Payment-success/PaymentSuccess'
 function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
@@ -73,6 +74,7 @@ function App() {
                     }
                 />
                 <Route path="test" element={<SingleOrderDetails />} />
+                <Route path='payment-success' element={<PaymentSuccess/>}/>
             </Routes>
             <ToUpButton />
         </div>
