@@ -17,7 +17,7 @@ import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetai
 import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
 import LivraisonHome from "./components/Livraison/LivraisonHome";
-
+import ToUpButton from "./components/Tools/ToUpButton";
 function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
@@ -35,6 +35,7 @@ function App() {
     });
     return (
         <div className="App">
+            <div id="top"></div>
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
                 <Route path="test" element={<LivraisonHome />} />
@@ -73,6 +74,7 @@ function App() {
                 />
                 <Route path="test" element={<SingleOrderDetails />} />
             </Routes>
+            <ToUpButton />
         </div>
     );
 }

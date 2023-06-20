@@ -115,6 +115,7 @@ body {
     left: 0;
     top: 0;
 }
+
 .slider-img {
     width: 90%;
     height: 50vh;
@@ -135,4 +136,20 @@ body {
 .slider-point.active {
     background-color: #dd3333;
     width: 20px;
+}
+
+@media screen and (width < 700px) {
+    .register-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        padding-top: 3.5rem;
+    }
+    .register-wrapper input,
+    .register-wrapper button {
+        width: 100%;
+    }
+    .slider {
+        display: none !important;
+    }
 }

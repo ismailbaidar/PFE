@@ -5,7 +5,9 @@ import LivraisionOrderCard from "./LivraisonOrderCard";
 import HamSlider from "./HamSlider";
 import { useState } from "react";
 import LivraisonNotification from "./LivraisonNotification";
+import LivraisonAllOrders from "./LivaisonAllOrders";
 export default function LivraisonHome() {
+    const [allOrdersVisible, setAllOrdersVisible] = useState(false);
     const [hamVisible, setHamVisible] = useState(false);
     const [notificationVisible, setNotificationVisible] = useState(false);
     return (
@@ -22,6 +24,9 @@ export default function LivraisonHome() {
                 notificationVisible={notificationVisible}
                 setNotificationVisible={setNotificationVisible}
             />
+            {allOrdersVisible && (
+                <LivraisonAllOrders setAllOrdersVisible={setAllOrdersVisible} />
+            )}
             <div className="stats-cards">
                 <LivraisonStatesCard type="delivered" count={12} />
                 <LivraisonStatesCard type="canceled" count={0} />
@@ -31,7 +36,13 @@ export default function LivraisonHome() {
             <div className="orders-part-wrapper">
                 <div className="title-control">
                     <div className="title">Orders</div>
-                    <div className="control">SHOW ALL</div>
+                    <div
+                        className="control"
+                        role="button"
+                        onClick={() => setAllOrdersVisible(true)}
+                    >
+                        SHOW ALL
+                    </div>
                 </div>
                 <div className="order-cards-container">
                     <LivraisionOrderCard />

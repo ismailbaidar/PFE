@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 0.5rem;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .stats-cards {
     display: grid;
@@ -69,7 +69,8 @@
 }
 .close-ham,
 .close-notification,
-.close-single-notification {
+.close-single-notification,
+.close-all-orders {
     position: absolute;
     top: 25px;
     right: 25px;
@@ -158,4 +159,20 @@
     padding-top: 5rem;
     gap: 1rem;
     z-index: 2929;
+}
+.livraison-home-wrapper .all-orders {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+}
+
+.livraison-home-wrapper .all-orders .all-orders-container {
+    margin-top: 4rem;
+    padding: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    overflow-y: scroll;
 }

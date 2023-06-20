@@ -96,12 +96,7 @@ function Register() {
                         required
                         ref={passwordConfirmation}
                     />
-                    <div className="checkbox">
-                        <label className="rememberLabel">
-                            <input type="checkbox" name="remember" />
-                            <span>Remember Me</span>
-                        </label>
-                    </div>
+
                     <button type="submit">Sign Up</button>
                     <SignUpButton></SignUpButton>
                 </form>
