@@ -57,6 +57,7 @@ export const loginGoogle = createAsyncThunk(
 );
 
 const initialState = {
+    token: null,
     user: null,
 };
 
@@ -67,16 +68,19 @@ const userSlice = createSlice({
     extraReducers: {
         [updateUser.fulfilled]: (state, { payload }) => {},
         [login.fulfilled]: (state, { payload }) => {
-            console.log(payload.AUTH_TOKEN);
+            state.user = payload.user;
+            state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
         },
         [logout.fulfilled]: (state, { payload }) => {
-            console.log(state);
+            state.user = null;
+            state.token = null;
             localStorage.setItem("AUTH_TOKEN", "null");
         },
         [loginGoogle.fulfilled]: (state, { payload }) => {
-            console.log(payload);
+            state.user = payload.user;
+            state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
         },

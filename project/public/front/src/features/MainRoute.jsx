@@ -10,9 +10,10 @@ import SinglePage from "../components/Single page/SinglePage";
 import ErrorPage from "../pages/ErrorPage";
 import { Navigate } from "react-router-dom";
 import Cart from "../components/cart/Cart";
+import ToUpButton from "../components/Tools/ToUpButton";
 const MainRoute = () => {
     const location = useLocation();
-    console.log(location);
+
     return (
         <>
             <Navbar />
@@ -25,6 +26,7 @@ const MainRoute = () => {
                 <Route path="*" element={<Navigate to="/notFound" />} />
             </Routes>
             <Footer />
+            <ToUpButton />
         </>
     );
 };

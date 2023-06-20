@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,8 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::post('product/{id}',[ProductController::class,'update']);
     Route::post("/updateUser",[UserController::class,"update"]);
     Route::post("logout",[AuthController::class,"Logout"]);
+    Route::post("toggleProducts",[WishlistController::class,"toggleProducts"]);
+    Route::get("getUserWishlist/{id}",[WishlistController::class,"getUserWishlist"]);
 
 });
 

@@ -74,7 +74,6 @@ function App() {
                 />
                 <Route path="test" element={<SingleOrderDetails />} />
             </Routes>
-            <ToUpButton />
         </div>
     );
 }
