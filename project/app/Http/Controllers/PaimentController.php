@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class PaimentController extends Controller
 {
+
+
+    function checkCoupon(Request $request){
+        $couponI  = Discount::where('code',$request->coupon)->first();
+        if($couponI){
+            return response()->json(['status'=>true,'coupon'=>$couponI]);
+        }
+        return response()->json(['status'=>false]);
+    }
+
+
     function checkout(Request $request){
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $products=json_decode($request->products);
@@ -45,11 +56,11 @@ class PaimentController extends Controller
                         'product_data'=>[
                             'name'=>$product->name
                         ],
-                        'unit_amount'=>intval($product->price-($product->discount*$product->price/100)),
+                        'unit_amount'=>intval($product->price-($product->discount*$product->price/100))*100,
                     ],
                     'quantity'=>intval($productItem->qte)
                         ];
-                        $order->total_price+=intval($product->price-($product->discount*$product->price/100))*intval($productItem->qte);
+                        $order->total_price+=intval($product->price-($product->discount*$product->price/100))*intval($productItem->qte)*100;
                         $order->save();
             }
             else{
@@ -60,11 +71,11 @@ class PaimentController extends Controller
                             'product_data'=>[
                                 'name'=>$product->name
                             ],
-                            'unit_amount'=>intval($product->price-($product->discount*$product->price/100))
+                            'unit_amount'=>intval($product->price-($product->discount*$product->price/100))*100
                         ],
                         'quantity'=>intval($product->stock)
                         ];
-                        $order->total_price+=intval($product->price-($product->discount*$product->price/100))*intval($productItem->qte);
+                        $order->total_price+=intval($product->price-($product->discount*$product->price/100))*intval($productItem->qte)*100;
                         $order->save();
                         session('qteIssue','we have only  '.$product->stock.'in product '.$product->id);
                 }
@@ -102,7 +113,6 @@ class PaimentController extends Controller
                           ],
                     ]
                 ]
-
 
             ]);
             session()->start();

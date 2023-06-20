@@ -1,7 +1,18 @@
 import React from "react";
 import ItemOrderList from "./ItemOrderList";
-
+import {useSelector,useDispatch} from 'react-redux'
 const SideSummary = () => {
+    const cart = useSelector((state) => state.cartReducer.cart);
+    const dispatch = useDispatch();
+    const totalOrdring = cart.reduce((t, p) => {
+        if (p.discount) {
+            return (
+                t + (p.price - p.discount*p.price/100) * p.qte
+            );
+        }
+        return t + p.price * p.qte;
+    }, 0)
+
     return (
         <div className="SideSummary">
             <div className="TitleREH">Order Summary</div>
@@ -14,15 +25,13 @@ const SideSummary = () => {
                 </div>
 
                 <div className="OrdersListm">
-                    <ItemOrderList />
-                    <ItemOrderList />
-                    <ItemOrderList />
+                    {cart.map(e=><ItemOrderList data={e} />)}
                 </div>
                 <div className="OrderShipOrder" >
 
                 <div className="ItemDataM" >
                     <span className="titleItemDataM" >Ordring</span>
-                    <span className="PriceData" >7000.00 MAD</span>
+                    <span className="PriceData" > {totalOrdring} MAD</span>
                 </div>
 
                 <div className="ItemDataM" >
