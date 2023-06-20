@@ -18,10 +18,7 @@ const MainRoute = () => {
             <Navbar />
             <Routes>
                 <Route index element={<Home />} />
-                <Route
-                    path="Categorie/:idCategorie"
-                    element={<AllProducts />}
-                />
+                <Route path="products" element={<AllProducts />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="Checkout" element={<Checkout />} />
                 <Route path="/product/:productId" element={<SinglePage />} />

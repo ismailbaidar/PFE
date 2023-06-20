@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../../styles/register.css";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../features/userSlice";
 
 function Register() {
+    const username = useRef();
+    const email = useRef();
+    const password = useRef();
+    const passwordConfirmation = useRef();
+    const dispatch = useDispatch();
     const form = (e) => {
         e.preventDefault();
+        if (password.current.value === passwordConfirmation.current.value) {
+            const data = new FormData();
+            data.append("name", username.current.value);
+            data.append("email", email.current.value);
+            data.append("password", password.current.value);
+            dispatch(register(data));
+        }
     };
     const [currentState, setCurrentState] = useState(0);
     const image = [{ url: "../img/1.png" }, { url: "../img/2.png" }];
@@ -55,38 +69,32 @@ function Register() {
                     <input
                         type="text"
                         name="first_name"
-                        placeholder="First Name"
+                        placeholder="Username"
                         required
+                        ref={username}
                     />
-                    <input
-                        type="text"
-                        name="last_name"
-                        placeholder="Last Name"
-                        required
-                    />
+
                     <input
                         type="email"
                         name="email"
                         placeholder="Email"
                         required
+                        ref={email}
                     />
-                    <input
-                        type="text"
-                        name="phone"
-                        placeholder="Phone"
-                        required
-                    />
+
                     <input
                         type="password"
                         name="password"
                         placeholder="Password"
                         required
+                        ref={password}
                     />
                     <input
                         type="password"
                         name="confirm_password"
                         placeholder="Confirm Password"
                         required
+                        ref={passwordConfirmation}
                     />
                     <div className="checkbox">
                         <label className="rememberLabel">

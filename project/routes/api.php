@@ -10,6 +10,7 @@ use App\Http\Controllers\PaimentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::apiResource('collection',CollectionController::class);
 Route::post('addShippingcities',[OtherController::class,'addCvc']);
 Route::post('register',[AuthController::class,'Register']);
 Route::post('login',[AuthController::class,'Login']);
+Route::post('loginGoogle',[AuthController::class,'LoginGoogle']);
+Route::apiResource('product',ProductController::class)->except('update');
 Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::post('VerifyEmail',[AuthController::class,'Verify']);
     Route::post('/checkout',[PaimentController::class,'checkout'])->middleware('web');
@@ -43,9 +46,12 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
     Route::apiResource('spect',SpectController::class)->except('update');
 
     Route::post('product/{id}',[ProductController::class,'update']);
-    Route::apiResource('product',ProductController::class)->except('update');
+    Route::post("/updateUser",[UserController::class,"update"]);
+    Route::post("logout",[AuthController::class,"Logout"]);
 
 });
+
+
 
 
 

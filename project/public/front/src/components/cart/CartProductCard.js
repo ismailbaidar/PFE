@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { useRef, useState } from "react";
 import "../../styles/cartproductcard.css";
+import { useDispatch } from "react-redux";
+import { updateCart, deleteProductFromCart } from "../../features/cartSlice";
+
 export default function CartProductCard({
     id,
     name,
@@ -10,6 +14,17 @@ export default function CartProductCard({
     brand,
     qte,
 }) {
+    const dispatch = useDispatch();
+
+    function updateOrDeleteProduct() {
+        if (qte <= 1) {
+            dispatch(deleteProductFromCart(id));
+            console.log("now");
+        } else {
+            dispatch(updateCart({ id, qte: qte - 1 }));
+            console.log("not now");
+        }
+    }
     return (
         <div className="cart-product-card">
             <div className="image-title-container">
@@ -40,16 +55,27 @@ export default function CartProductCard({
                 <div className="qte-control">
                     Qte :{" "}
                     <div className="qte-control-buttons">
-                        <button className="control-button">
+                        <button
+                            className="control-button"
+                            onClick={() =>
+                                dispatch(updateCart({ id, qte: qte + 1 }))
+                            }
+                        >
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                         <span>{qte}</span>
-                        <button className="control-button">
+                        <button
+                            className="control-button"
+                            onClick={() => updateOrDeleteProduct()}
+                        >
                             <FontAwesomeIcon icon={faMinus} />
                         </button>
                     </div>
                 </div>
-                <button className="delete-product">
+                <button
+                    className="delete-product"
+                    onClick={() => dispatch(deleteProductFromCart(id))}
+                >
                     {" "}
                     <FontAwesomeIcon icon={faX} />
                 </button>

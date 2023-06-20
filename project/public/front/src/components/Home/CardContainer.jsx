@@ -1,7 +1,11 @@
 import React from "react";
 import Card from "./Card";
+import { useSelector } from "react-redux";
 
 const CardContainer = () => {
+    const products = useSelector((state) => state.productReducer.products);
+    console.log("hello", products);
+
     return (
         <div className="cardAndFilter">
             <div className="filters  ">
@@ -10,11 +14,9 @@ const CardContainer = () => {
                 <span>PC PORTABLE</span>
             </div>
             <div className="cards">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {products.map((p) => {
+                    return <Card {...p} />;
+                })}
             </div>
         </div>
     );

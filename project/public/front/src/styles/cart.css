@@ -20,6 +20,7 @@
 .cart-wrapper .cart-summary {
     display: flex;
     flex-direction: column;
+
     gap: 0.5rem;
 }
 
@@ -27,6 +28,7 @@
     padding: 1rem;
     box-shadow: 0px 0px 3px darkgray;
     display: grid;
+
     grid-template-columns: 1fr;
 }
 .cart-summary .info-wrapper .info {
@@ -61,4 +63,13 @@
     color: var(--red);
     padding: 0.5rem 1rem;
     font-weight: bold;
+}
+
+@media screen and (width < 700px) {
+    .cart-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .title-content-container {
+        order: 2;
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo,useEffect } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import JoditEditor from "jodit-react";
 import { useNavigate } from "react-router-dom";
 import "../styles/AddProduct.css";
@@ -19,21 +19,22 @@ const AddProduct = () => {
     const editor = useRef(null);
     const [content, setContent] = useState("");
     const [files, setFiles] = useState([]);
-    const [categorie,setCategorie]=useState(null)
-    const [brand,setBrand]=useState(null)
+    const [categorie, setCategorie] = useState(null);
+    const [brand, setBrand] = useState(null);
     const AddFile = (e) => {
         setFiles([...files, e.target.files[0]]);
     };
     const [showError, setError] = useState(false);
     const [isPending, setPending] = useState(false);
+
     const dispatch = useDispatch();
-    const [titre,setTitre]=useState(null)
-    const [price,setPrice]=useState(null)
-    const [qte,setQte]=useState(null)
-    const [discount,setDiscount]=useState(null)
-    const [dateRelease,setDateRelease]=useState(null)
-    const [used,setUsed]=useState([])
-    console.log(new Date(dateRelease)>new Date())
+    const [titre, setTitre] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [qte, setQte] = useState(null);
+    const [discount, setDiscount] = useState(null);
+    const [dateRelease, setDateRelease] = useState(null);
+    const [used, setUsed] = useState([]);
+    console.log(new Date(dateRelease) > new Date());
 
     const config = {
         readonly: false,
@@ -55,7 +56,6 @@ const AddProduct = () => {
 
 
     function getCurrentDateTime(now) {
-
         // Get the year, month, and day
         var year = now.getFullYear();
         var month = padZero(now.getMonth() + 1); // Months are zero-indexed
@@ -67,27 +67,35 @@ const AddProduct = () => {
         var seconds = padZero(now.getSeconds());
 
         // Concatenate the date and time parts
-        var dateTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        var dateTime =
+            year +
+            "-" +
+            month +
+            "-" +
+            day +
+            " " +
+            hours +
+            ":" +
+            minutes +
+            ":" +
+            seconds;
 
         return dateTime;
-      }
-
-      // Helper function to pad a number with leading zeros if necessary
-      function padZero(number) {
-        return (number < 10 ? '0' : '') + number;
-      }
-
-
-
-
-    const filterByUsedSpects=(index)=>{
-        let ns = used.filter((e,i)=>i!==index)
-        let nd = Spects.filter((e,i)=> !ns.includes(String(e.id)   ))
-        return nd
     }
 
+    // Helper function to pad a number with leading zeros if necessary
+    function padZero(number) {
+        return (number < 10 ? "0" : "") + number;
+    }
+
+    const filterByUsedSpects = (index) => {
+        let ns = used.filter((e, i) => i !== index);
+        let nd = Spects.filter((e, i) => !ns.includes(String(e.id)));
+        return nd;
+    };
+
     const ajouterProduct = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const obj = {
             name: titre,
             price: price,
@@ -124,19 +132,27 @@ const AddProduct = () => {
 
     return (
         <div className="Addproduct">
-            <form   onSubmit={ajouterProduct} method='post'  encType='multipart/form-data'>
+            <form
+                onSubmit={ajouterProduct}
+                method="post"
+                encType="multipart/form-data"
+            >
                 <div className="HProduct">Ajouter Produit</div>
 
-                <InputItem input={(e)=>setTitre(e.target.value)} placeholder={"Titre"} type={"text"} />
+                <InputItem
+                    input={(e) => setTitre(e.target.value)}
+                    placeholder={"Titre"}
+                    type={"text"}
+                />
 
                 <div className="ContainerInputProduct">
                     <InputItem
-                        input={(e)=>setPrice(e.target.value)}
+                        input={(e) => setPrice(e.target.value)}
                         placeholder={"Price"}
                         type={"text"}
                     />
                     <InputItem
-                        input={(e)=>setQte(e.target.value)}
+                        input={(e) => setQte(e.target.value)}
                         placeholder={"Qte"}
                         type={"number"}
                     />
@@ -146,13 +162,18 @@ const AddProduct = () => {
                         placeholder={"Brand"}
                         type={"select"}
                         options={brands}
-                        input={(v)=>setBrand(v)}
+                        input={(v) => setBrand(v)}
                     />
                 </div>
                 <div className="ContainerInputProduct">
-                    <InputItem  input={(v)=>setCategorie(v)} options={categorieOption} placeholder={"Categorie"} type={"select"} />
                     <InputItem
-                        input={(e)=>setDiscount(e.target.value)}
+                        input={(v) => setCategorie(v)}
+                        options={categorieOption}
+                        placeholder={"Categorie"}
+                        type={"select"}
+                    />
+                    <InputItem
+                        input={(e) => setDiscount(e.target.value)}
                         placeholder={"Discount"}
                         type={"number"}
                     />
@@ -161,19 +182,28 @@ const AddProduct = () => {
                 <div className="options">
                     <span className="placeholderPI">Options</span>
                     <div className="OptionsContainer">
-                        {options.map((e,i) => (
-                            <OptionsSelect   setUsed={setUsed} setdata={setOptions} id={i} item={options[i]}  data={()=>filterByUsedSpects(i)} />
+                        {options.map((e, i) => (
+                            <OptionsSelect
+                                setUsed={setUsed}
+                                setdata={setOptions}
+                                id={i}
+                                item={options[i]}
+                                data={() => filterByUsedSpects(i)}
+                            />
                         ))}
                     </div>
 
                     <div
                         className="AddBtnOption"
-                        onClick={() =>{
-                            console.log(options[options.length-1])
-                            if(options[options.length-1].key!=='' && options.length<Spects.length){
-                                setOptions([...options, option])
+                        onClick={() => {
+                            console.log(options[options.length - 1]);
+                            if (
+                                options[options.length - 1].key !== "" &&
+                                options.length < Spects.length
+                            ) {
+                                setOptions([...options, option]);
                             }
-                            }}
+                        }}
                     >
                         + Ajouter une autre option
                     </div>
@@ -188,7 +218,7 @@ const AddProduct = () => {
                 <FileIntem
                     placeholder={"poduct images"}
                     files={files}
-                    del={setFiles}
+                    delFiles={setFiles}
                     AddFile={AddFile}
                 />
 
@@ -205,10 +235,7 @@ const AddProduct = () => {
                         }}
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="AjouterProduit"
-                >
+                <button type="submit" className="AjouterProduit">
                     Ajouter Produit
                     {statusProduct === "pending" && (
                         <div className="pendinglayer">
@@ -217,8 +244,15 @@ const AddProduct = () => {
                     )}
                 </button>
             </form>
-            <div className='errorDi' >
-            {showError && <FlashCard   toogle={setError} type='error' content='tous les champ doivent etre plein' title='Error' />}
+            <div className="errorDi">
+                {showError && (
+                    <FlashCard
+                        toogle={setError}
+                        type="error"
+                        content="tous les champ doivent etre plein"
+                        title="Error"
+                    />
+                )}
             </div>
         </div>
     );

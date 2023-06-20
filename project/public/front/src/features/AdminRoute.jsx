@@ -22,13 +22,14 @@ import Brands from '../pages/Brands'
 import Spects from '../pages/Spects'
 import AddCollection from '../pages/AddCollection'
 import UploadShippingCity from '../pages/UploadShippingCity'
+import { useSelector } from "react-redux";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
-
+    const show = useSelector((state) => state.showReducer.show);
     return (
         <div className="DashbordMain  ">
             <SideBar />
-            <div className="WrapperAdmin">
+            <div className="WrapperAdmin" data-show={show}>
                 <Search />
                 <Routes>
                     <Route path="/" element={<DashboardHome />} />

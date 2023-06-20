@@ -1,10 +1,11 @@
 import CartProductCard from "./CartProductCard";
 import "../../styles/cart.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../features/cartSlice";
 
 export default function Cart() {
     const cart = useSelector((state) => state.cartReducer.cart);
-
+    const dispatch = useDispatch();
     return (
         <div className="cart-wrapper">
             <div className="title-content-container">
@@ -13,7 +14,12 @@ export default function Cart() {
                     {cart.map((product) => {
                         return <CartProductCard {...product} />;
                     })}
-                    <button className="empty-cart-button">Empty Cart</button>
+                    <button
+                        className="empty-cart-button"
+                        onClick={() => dispatch(clearCart())}
+                    >
+                        Empty Cart
+                    </button>
                 </div>
             </div>
             <div className="cart-summary">

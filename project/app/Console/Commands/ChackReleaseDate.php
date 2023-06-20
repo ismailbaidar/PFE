@@ -25,10 +25,6 @@ class ChackReleaseDate extends Command
      */
     public function handle()
     {
-       $data = Product::where('releaseDate',Carbon\Carbon::now())->get();
-       foreach($data as $product){
-        $product->status='new';
-        $product->save();
-       }
+
     }
 }

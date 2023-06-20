@@ -55,7 +55,7 @@ const ModifierProduit = () => {
     const categorieOption = useSelector((state) => state.Categorie.categories);
     const Spects = useSelector((state) => state.Spect.spects);
     const brands = useSelector((state) => state.Brand.brands);
-    const main = useSelector((state) => state.Product.main);
+    const main = useSelector((state) => state.productReducer.main);
     const [used, setUsed] = useState([]);
     useEffect(() => {
         dispatch(getoneproduct(id))
@@ -112,7 +112,7 @@ const ModifierProduit = () => {
             .unwrap()
             .then((res) => navigate("/admin/products"));
     };
-    const statusProduct = useSelector((state) => state.Product.status);
+    const statusProduct = useSelector((state) => state.productReducer.status);
 
     return (
         <div className="Addproduct">

@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import Card from "../Home/Card";
+import { useSelector, useDispatch } from "react-redux";
 import ItemFilters from "./ItemFilters";
-
-const ProductSide = ({ items, removeItem,products }) => {
-
+import { getProducts } from "../../features/productSlice";
+const ProductSide = ({ items, removeItem, products }) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getProducts());
+    }, []);
 
     return (
         <div className="ProductSide">
@@ -18,11 +22,10 @@ const ProductSide = ({ items, removeItem,products }) => {
                 ))}
             </div>
             <div className="info">
-                Nombre de résultats: {products.lengh} Produits
+                Nombre de résultats: {products.length} Produits
             </div>
             <div className="products">
                 {products.map((p) => {
-                    console.log(p);
                     return <Card {...p} />;
                 })}
             </div>

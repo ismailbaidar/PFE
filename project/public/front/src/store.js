@@ -6,8 +6,20 @@ import Brand from "./features/BrandSlice";
 import cartReducer from "./features/cartSlice";
 import CheckoutSlice from "./features/CheckoutSlice";
 import CollectionReducer from "./features/CollectionSlice";
+import showReducer from "./features/ShowSlice";
+import userReducer from "./features/userSlice";
 
 const Store = configureStore({
-    reducer: { productReducer, Categorie, Spect, Brand, cartReducer,CollectionReducer,CheckoutSlice },
+    reducer: {
+        productReducer,
+        Categorie,
+        Spect,
+        Brand,
+        cartReducer,
+        showReducer,
+        userReducer,
+        CollectionReducer,
+        CheckoutSlice
+    },
 });
 export default Store;

@@ -29,8 +29,6 @@ li {
 }
 .App {
     background-color: var(--secondary);
-    display: grid;
-    align-items: space-between;
 }
 * {
     box-sizing: border-box;
@@ -71,6 +69,7 @@ li {
     height: 65px;
     width: 100%;
     position: fixed;
+
     top: 0;
     background-color: var(--main);
     transition: 0.3s ease-in;
@@ -81,14 +80,43 @@ li {
 .Navbar img {
     height: 100%;
 }
+.Navbar .dropdown-menu-wrapper {
+    position: relative;
+}
+.Navbar .dropdown-menu-wrapper .dropdown-menu {
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+    /* left: 0; */
+    transform: translateY(100%) translateX(-50%);
 
+    box-shadow: 0px 0px 3px gray;
+}
+.Navbar .dropdown-menu-wrapper .dropdown-menu[data-visible="false"] {
+    display: none;
+}
+
+.Navbar .dropdown-menu-wrapper .dropdown-menu li {
+    padding: 0.75rem 1rem;
+    background-color: white;
+}
+.Navbar .dropdown-menu-wrapper .dropdown-menu li * {
+    font-size: 0.9rem;
+}
+.Navbar .dropdown-menu-wrapper .dropdown-menu li:hover {
+    background-color: var(--red);
+}
+.Navbar .dropdown-menu-wrapper .dropdown-menu li:hover a,
+.Navbar .dropdown-menu-wrapper .dropdown-menu li:hover div {
+    cursor: pointer;
+    color: white;
+}
 .logo img {
     height: 100%;
     object-fit: contain;
 }
 .logo,
 .logo a {
-    height: 100%;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -99,12 +127,20 @@ li {
     color: var(--red);
 }
 
-#close {
+.close-button-container {
     width: 100%;
-    background: var(--red);
-    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    display: inline-block;
+}
+
+#close {
+    width: fit-content;
+    float: right;
+    color: var(--red);
+
     font-size: 20px;
-    padding: 5px;
+    padding: 1rem;
 }
 .Navbar a {
     text-decoration: none;
@@ -165,6 +201,7 @@ li {
     }
     #menu {
         display: block;
+        overflow-x: hidden;
     }
     .SliderAndContent2 {
         width: 100%;
@@ -666,6 +703,7 @@ li {
     overflow-y: scroll;
     height: 100%;
     background-color: #fff;
+    overflow-x: hidden;
 }
 .SectionSideNavigation .ItemSideNavigation {
     display: flex;
@@ -689,7 +727,8 @@ li {
     justify-content: space-around;
     position: relative;
     bottom: 0;
-    width: 100vw;
+    left: 0;
+    right: 0;
 
     align-items: center;
 }
@@ -806,4 +845,20 @@ h4 {
 }
 .Navbar svg:hover {
     color: var(--red);
+}
+@media (width<700px) {
+    .footer {
+        flex-direction: column;
+        transform: translateY(100%);
+        width: 100%;
+        gap: 3rem;
+    }
+    .footer .f1-first-part {
+        /* flex-direction: column; */
+        width: 100%;
+        /* align-items: flex-start; */
+    }
+    .footer .itemsFooter {
+        width: 100%;
+    }
 }

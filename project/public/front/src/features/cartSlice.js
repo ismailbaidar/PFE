@@ -19,14 +19,31 @@ const cartSlice = createSlice({
             state.cart = products;
         },
         updateCart: (state, { payload }) => {
-            console.log("update", payload);
             let products = state.cart;
-            products = products.map((p) => (p.id == payload.id ? payload : p));
+            products = products.map((p) =>
+                p.id == payload.id ? { ...p, qte: payload.qte } : p
+            );
             localStorage.setItem("cart", JSON.stringify(products));
             state.cart = products;
+        },
+        deleteProductFromCart: (state, { payload }) => {
+            let products = state.cart;
+            products = products.filter((p) => p.id !== payload);
+
+            localStorage.setItem("cart", JSON.stringify(products));
+            state.cart = products;
+        },
+        clearCart: (state) => {
+            localStorage.setItem("cart", JSON.stringify([]));
+            state.cart = [];
         },
     },
 });
 
-export const { updateCart, addProductToCart } = cartSlice.actions;
+export const {
+    updateCart,
+    addProductToCart,
+    deleteProductFromCart,
+    clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;
