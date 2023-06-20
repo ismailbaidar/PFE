@@ -5,17 +5,22 @@ import InputItem from './InputItem';
 import {useSelector} from 'react-redux'
 import FlashCard from "../Flash card/FlashCard";
 import axios from 'axios'
-const AdressItem = ({setToogle}) => {
+const AdressItem = ({setToogle,setPrcity}) => {
     const data=useSelector(state=>state.CheckoutSlice.data)
     const [showError,setError]=React.useState()
     const [cities,setCities]=React.useState([])
-
     React.useEffect(()=>{
         ( async()=>{
          axios.get('http://localhost:8000/api/getShippingcity')
          .then(res=>setCities(res.data.all));
         })()
      },[])
+
+     React.useEffect(()=>{
+        console.log(data)
+        console.log(cities.find(e=>e.id==data.city),data.ville)
+        setPrcity(cities.find(e=>e.id==data.ville))
+     },[data.ville,cities])
 
     const confirm=()=>{
         console.log(data,Object.entries(data).some(([key,value])=>value==''))

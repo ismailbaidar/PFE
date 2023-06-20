@@ -33,8 +33,12 @@ Route::post('addShippingcities',[OtherController::class,'addCvc']);
 Route::post('register',[AuthController::class,'Register']);
 Route::post('login',[AuthController::class,'Login']);
 Route::post('loginGoogle',[AuthController::class,'LoginGoogle']);
+Route::post('checkCoupon',[PaimentController::class,'checkCoupon']);
+Route::post('paimentlivresion',[PaimentController::class,'paimentlivresion']);
+
 Route::apiResource('product',ProductController::class)->except('update');
 Route::group(['middleware'=>"auth:sanctum"],function(){
+    Route::post('paimentlivresion',[PaimentController::class,'paimentlivresion']);
     Route::post('VerifyEmail',[AuthController::class,'Verify']);
     Route::post('/checkout',[PaimentController::class,'checkout'])->middleware('web');
     Route::post('categorie/{id}',[CategorieController::class,'update']);

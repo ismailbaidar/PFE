@@ -18,6 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+
+
+
+
+Route::get('/sd4',function(){
+    $order->livre();
+});
+
 Route::get('/success', function (Request $request) {
     \Stripe\Stripe::setApiKey(config('stripe.sk'));
     $sessionId = $request->session();
