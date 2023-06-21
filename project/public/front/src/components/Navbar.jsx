@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBars,
@@ -13,6 +13,7 @@ import SectionSideNavigation from "../components/Home/SectionSideNavigation";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/userSlice";
+import { getWishlist } from "../features/wishlistSlice";
 
 const Navbar = () => {
     const [toogle, setToogle] = useState(false);
@@ -20,7 +21,11 @@ const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const cart = useSelector((state) => state.cartReducer.cart);
     const token = useSelector((state) => state.userReducer.token);
+    const wishlist = useSelector((state) => state.wishlistReducer.wishlist);
     const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getWishlist(localStorage.getItem("UID")));
+    }, []);
     return (
         <div className={"Navbar"}>
             <div className="logo">
@@ -47,7 +52,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="count">
-                    <span>4</span>
+                    <span>{wishlist.length}</span>
                     <FontAwesomeIcon icon={faHeart} />
                 </div>
 

@@ -12,6 +12,9 @@
 
 .edit-profile legend {
     margin-bottom: 1.5rem;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 .edit-profile label {
     display: flex;
@@ -23,9 +26,13 @@
 .edit-profile label input {
     width: max-content;
     height: max-content;
-    padding: 0.45rem 0.75rem;
+    padding: 0.5rem 1rem;
     border: 1px solid gray;
     outline: transparent;
+}
+
+.edit-profile label input:focus {
+    border: 1px solid var(--red);
 }
 
 .edit-profile label input:focus {

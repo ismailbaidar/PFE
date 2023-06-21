@@ -11,6 +11,7 @@
     position: relative;
     border-radius: 1rem;
     justify-items: end;
+    height: 100vh;
 }
 
 .stats-sidebar .logout-icon {
@@ -74,13 +75,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.75rem;
+    font-size: 0.5rem !important;
+    white-space: nowrap;
 
     padding: 0.25rem 0.75rem;
     border-radius: 10px;
     color: #f5b2ab;
-    white-space: nowrap;
-    font-size: 0.7rem;
 }
 .stats-sidebar .stats-wrapper .first-part .stats .stats-count {
     padding-left: 0.25rem;

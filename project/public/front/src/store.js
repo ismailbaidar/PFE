@@ -15,12 +15,13 @@ const Store = configureStore({
         Categorie,
         Spect,
         Brand,
-        wishlistReducer,
+
         cartReducer,
         showReducer,
         userReducer,
         CollectionReducer,
         CheckoutSlice,
+        wishlistReducer,
     },
 });
 export default Store;

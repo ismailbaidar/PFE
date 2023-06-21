@@ -43,6 +43,7 @@ function Login() {
                         className="slider-img"
                         src={`${image[currentState].url}`}
                         alt="#"
+                        p
                     />
                 </div>
                 <div className="next-slide">

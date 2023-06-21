@@ -5,4 +5,5 @@
     height: 100vh;
     grid-template-columns: 1fr 4fr 1fr;
     justify-content: space-between;
+    font-size: 0.8rem;
 }
