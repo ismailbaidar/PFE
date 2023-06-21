@@ -21,7 +21,8 @@ const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const cart = useSelector((state) => state.cartReducer.cart);
     const token = useSelector((state) => state.userReducer.token);
-    const wishlist = useSelector((state) => state.wishlistReducer.wishlist);
+    const wishlist =
+        useSelector((state) => state.wishlistReducer.wishlist) || [];
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getWishlist(localStorage.getItem("UID")));

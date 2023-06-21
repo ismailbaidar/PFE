@@ -27,7 +27,7 @@ function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
             localStorage.setItem("AUTH_TOKEN", null);
-        } else {
+        } else if (localStorage.getItem("AUTH_TOKEN") != "null") {
             dispatch(setToken(localStorage.getItem("AUTH_TOKEN")));
         }
     }, []);
