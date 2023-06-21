@@ -19,6 +19,10 @@ class Categorie extends Model
         return $this->belongsTo(Categorie::class,'categorie_id');
     }
 
+    public function childes(){
+        return $this->hasMany(Categorie::class,'categorie_id');
+    }
+
     public function logs(){
         return $this->morphMany(Log::class,'logable');
     }

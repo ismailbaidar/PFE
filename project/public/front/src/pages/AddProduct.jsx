@@ -104,7 +104,10 @@ const AddProduct = () => {
             images: files,
             options: options,
             categorie: categorie,
-            date: dateRelease == null ? "" : new Date(dateRelease),
+            date:
+                dateRelease == null
+                    ? ""
+                    : getCurrentDateTime(new Date(dateRelease)),
             brand: brand,
         };
         if (

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\StatistiqueController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -31,11 +33,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('getShippingcity',[OtherController::class,'getShippingcity']);
 Route::apiResource('collection',CollectionController::class);
 Route::post('addShippingcities',[OtherController::class,'addCvc']);
+Route::get('childes',[OtherController::class,'childes']);
 Route::post('register',[AuthController::class,'Register']);
 Route::post('login',[AuthController::class,'Login']);
 Route::post('loginGoogle',[AuthController::class,'LoginGoogle']);
 Route::post('checkCoupon',[PaimentController::class,'checkCoupon']);
 Route::post('paimentlivresion',[PaimentController::class,'paimentlivresion']);
+Route::get('PaimentStastistique',[StatistiqueController::class,'PaimentStastistique']);
+Route::get('getStates',[StatistiqueController::class,'getStates']);
+
+Route::post('AddSliderImage',[SliderController::class,'AddSliderImage']);
+Route::post('deleteImage',[SliderController::class,'deleteImage']);
+Route::get('getSliders',[SliderController::class,'getSliders']);
 
 Route::apiResource('product',ProductController::class)->except('update');
 Route::group(['middleware'=>"auth:sanctum"],function(){

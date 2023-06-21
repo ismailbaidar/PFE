@@ -6,10 +6,10 @@ const ItemListCategorie = ({name,children,img}) => {
   return (
     <div  className='itemListCategorie' >
     <div className='infoItem'>
-    {img && <img src={img} />}
+    {img && <img src={"http://localhost:8000/storage/images/"+img} />}
       <p>{name}</p>
     </div>
-      {children && <FontAwesomeIcon  id='icon' fontSize={'15px'} icon={faCaretRight} />}
+      {children.length>0  && <FontAwesomeIcon  id='icon' fontSize={'15px'} icon={faCaretRight} />}
         {children &&   <div className='childsItem' >
             {children.map(e=><ItemListCategorie name={e.name}  children={e.children} />)}
         </div>}

@@ -1,59 +1,87 @@
-import axios from "axios";
-import Papa from "papaparse";
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
+import { read, utils } from 'xlsx';
+import axios from "axios"
+import FlashCard from '../components/Flash card/FlashCard';
 const UploadShippingCity = () => {
-    const [data, setData] = useState(null);
-    const [array, setArray] = useState([]);
-    const [fileI, setFile] = useState();
-    const button = useRef(null);
+  const [data, setData] = useState([]);
+  const [file, setFile] = useState();
+  const [success, setSuccess] = useState(false);
+  const [Error, setError] = useState(false);
 
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0];
-        setFile(file);
-        Papa.parse(file, {
-            header: true,
-            dynamicTyping: true,
-            skipEmptyLines: true,
-            delimiter: ";",
-            complete: (results) => {
-                setData(results.data);
-                console.log(results.data);
-            },
-        });
-        console.log(data);
-    };
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+  };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(fileI);
-            console.log(fileI);
-            const reader = response.body.getReader();
-            const result = await reader.read();
-            const decoder = new TextDecoder("utf-8");
-            const csvData = decoder.decode(result.value);
-            const parsedData = Papa.parse(csvData, {
-                header: true,
-                dynamicTyping: true,
-                skipEmptyLines: true,
-            }).data;
-            setData(parsedData);
+  const handelAddCities=()=>{
+    if(data.length>0){
+        axios.post('http://localhost:8000/api/addShippingcities',data)
+        .then(res=>{
+            if(res.status==200){
+                setSuccess(true)
+        }
+        else{
+            setError(true)
+        }
+    })
+    }
+
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const arrayBuffer = e.target.result;
+          const workbook = read(arrayBuffer, { type: 'array' });
+          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = utils.sheet_to_json(worksheet, { header: 1 });
+          const headers = jsonData[0];
+          const rows = jsonData.slice(1);
+          const parsedData = rows.map((row) => {
+            const obj = {};
+            row.forEach((value, index) => {
+              obj[headers[index]] = value;
+            });
+            return obj;
+          });
+          setData(parsedData);
         };
-        fetchData();
-        console.log(data);
-    }, [fileI]);
+        reader.readAsArrayBuffer(file);
+      }
+    };
+    fetchData()
+    console.log(data)
+  }, [file]);
 
-    // const AddShippings=()=>{
-    //     const form = new FormData()
-    //     form.append('csv',csvData)
-    //     console.log(csvData)
-    //     axios.post('http://localhost:8000/api/addShippingcities',form)
-    //     .then(res=>res.data)
-    // }
-    return (
-        <div className="UploadShippingCity">
-            <p className="SlidersContentManagement">Shipping cities</p>
-            <input type="file" onChange={handleFileUpload} />
-        </div>
-    );
+  return (
+    <div className="UploadShippingCity">
+      <p className="SlidersContentManagement">Shipping cities</p>
+      <div className='c-cities' >
+    <input type="file" onChange={handleFileUpload} />
+    <button  className='ajouterShipping' onClick={handelAddCities} >ADD Shipping cities</button>
+      </div>
+      <div className="errorDi">
+                {success && (
+                    <FlashCard
+                        type="success"
+                        content={'shipping cities bien ajouter'}
+                        title={"shipping cities actions"}
+                        toogle={() => setSuccess(null)}
+                    />
+                )}
+                {Error && (
+                    <FlashCard
+                        type="error"
+                        content={'somthing went wrong '}
+                        title={"shipping cities actions"}
+                        toogle={() => setError(null)}
+                    />
+                )}
+    </div>
+    </div>
+  );
 };
+
 export default UploadShippingCity;

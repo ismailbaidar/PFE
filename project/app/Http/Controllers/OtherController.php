@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use ZipArchive;
 use Illuminate\Support\Str;
 use App\Models\Shippingcity;
+use App\Models\Categorie;
+
 use Illuminate\Http\Request;
 
 class OtherController extends Controller
@@ -16,29 +18,23 @@ class OtherController extends Controller
     }
 
 
+    public function childes(){
+        $all = Categorie::with('childes.childes')->get();
+        return response()->json(['categories'=>$all]);
 
-
-
-
-
+    }
 
     public function addCvc(Request $request)
     {
-        $file = $request->file('csv');
-        $path = Str::random(5).'.'.$file->getClientOriginalExtension();
-        $file->storeAs('other', $path, 'public');
-        $zip = new ZipArchive;
-        if ($zip->open(public_path('storage').'\\other\\'.$path) === true) {
-            $extractedFilePath = file_get_contents(public_path('storage').'\\other\\'.$path);
-            dd($extractedFilePath);
-            if ($extr = $zip->extractTo(public_path('storage').'\\other\\', [$zip->getNameIndex(0)])) {
-                $zip->close();
-            } else {
-                echo 'Failed to extract the CSV file from the ZIP archive.';
+        try{
+            Shippingcity::truncate();
+            foreach($request->all() as $shipping){
+                Shippingcity::create(['city'=>$shipping['Villes'],'price'=>$shipping['Laivraison']]);
             }
-        } else {
-            echo 'Failed to open the ZIP archive.';
+            return response()->json(['status'=>'good']);
         }
-
+        catch(\Throwable $e){
+            return response()->json(['status'=>$e->getMessage()],400);
+        }
     }
 }

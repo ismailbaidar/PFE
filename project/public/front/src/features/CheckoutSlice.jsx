@@ -6,6 +6,7 @@ export const checkoutWithCardPaymant = createAsyncThunk(
     async (data, { getState }) => {
         let form = new FormData();
         const dataItems = getState().CheckoutSlice.data;
+        const products = getState().cartReducer.cart;
         console.log(dataItems);
         form.append("nom", dataItems.name);
         form.append("prenom", dataItems.prenom);
@@ -16,10 +17,7 @@ export const checkoutWithCardPaymant = createAsyncThunk(
         form.append("coupon", data);
         form.append(
             "products",
-            JSON.stringify([
-                { id: 2, qte: 4 },
-                { id: 3, qte: 5 },
-            ])
+            JSON.stringify(products)
         );
         return axios
             .post("http://localhost:8000/api/checkout", form)

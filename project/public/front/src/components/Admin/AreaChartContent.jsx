@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import InfoAreaChart from "./InfoAreaChart";
 import {
     AreaChart,
@@ -9,16 +9,25 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
+import axios from 'axios'
 
 const AreaChartContent = () => {
     const item = useRef();
+    const [dataI,setData]=useState([]);
+    const DataR=useMemo(()=>dataI.map(e=>({...e,total_amount:e.total_amount/100})),[dataI])
+    useEffect(()=>{
+        (async()=>{
+            axios.get('http://localhost:8000/api/PaimentStastistique')
+            .then(res=>setData(res.data.data))
+        })()
+    },[])
 
     console.log(item);
     const data = [
         {
             name: "10",
             uv: 4000,
-            pv: 2400,
+            pv: 234567890,
             amt: 2400,
         },
         {
@@ -88,7 +97,7 @@ const AreaChartContent = () => {
             <div className="charts">
                 <ResponsiveContainer width={"100%"} height={300}>
                     <AreaChart
-                        data={data}
+                        data={DataR}
                         margin={{
                             top: 40,
                             right: 30,
@@ -96,12 +105,12 @@ const AreaChartContent = () => {
                             bottom: 0,
                         }}
                     >
-                        <XAxis dataKey="name" />
+                        <XAxis dataKey="min" />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type="monotone"
-                            dataKey="uv"
+                            dataKey="total_amount"
                             stroke="#4bd0ae"
                             fill="#63e8ca"
                         />
