@@ -13,6 +13,7 @@ import { getBrands } from "../features/BrandSlice";
 import FlashCard from "../components/Flash card/FlashCard";
 import MiniLoading from "../components/mini-loading/MiniLoading";
 import { Navigate } from "react-router-dom";
+
 const AddProduct = () => {
     let option = { key: "", value: "" };
     const [options, setOptions] = useState([option]);
