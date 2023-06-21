@@ -18,7 +18,6 @@ export const toggleWishlist = createAsyncThunk(
 export const getWishlist = createAsyncThunk(
     "wishlist/getWishlist",
     async (data) => {
-        const cart = createAsyncThunk((state) => state.cartReducer.cart);
         return axios
             .get(`http://127.0.0.1:8000/api/getUserWishlist/${data}`)
             .then((res) => res.data)
