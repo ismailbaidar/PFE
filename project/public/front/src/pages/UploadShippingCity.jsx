@@ -60,7 +60,7 @@ const UploadShippingCity = () => {
       <p className="SlidersContentManagement">Shipping cities</p>
       <div className='c-cities' >
     <input type="file" onChange={handleFileUpload} />
-    <button  className='ajouterShipping' onClick={handelAddCities} >ADD Shipping cities</button>
+    <button  className='ajouterShipping' onClick={handelAddCities} >ADD Shipping cities.</button>
       </div>
       <div className="errorDi">
                 {success && (
