@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     public function update(Request $request,$id){
         User::where('id',$id)->update([
             'name'=>$request->name,

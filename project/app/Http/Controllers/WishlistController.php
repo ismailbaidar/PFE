@@ -12,7 +12,7 @@ class WishlistController extends Controller
         $productUser = Wishlist::where(["user_id"=>$request->user,"product_id"=>$request->product])->first();
         if($productUser){
             $productUser->delete();
-            return response()->json(["message"=>"products"]);
+            return response()->json(["message"=>"products","wishlist"=>Wishlist::where(["user_id"=>$request->user,"product_id"=>$request->product])->get()]);
         }
         Wishlist::create(["user_id"=>$request->user,"product_id"=>$request->product]);
         return response()->json(["message"=>"products added to wishlist"]);
