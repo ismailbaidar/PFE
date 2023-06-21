@@ -7,7 +7,7 @@ import Slider from "../components/Home/Slider";
 import "../styles/Home.css";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../features/productSlice";
-
+import ToUpButton from "../components/Tools/ToUpButton";
 const Home = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -22,6 +22,7 @@ const Home = () => {
             <SectionProducts />
             <SliderSection />
             <SectionProducts switchSection={true} />
+            <ToUpButton />
         </>
     );
 };

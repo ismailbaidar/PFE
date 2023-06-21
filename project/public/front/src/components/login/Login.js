@@ -78,12 +78,6 @@ function Login() {
                         required
                         ref={password}
                     />
-                    <div className="checkbox">
-                        <label className="rememberLabel">
-                            <input type="checkbox" name="remember" />
-                            <span>Keep me logged in </span>
-                        </label>
-                    </div>
 
                     <button type="button" onClick={() => submitLogin()}>
                         Sign Up

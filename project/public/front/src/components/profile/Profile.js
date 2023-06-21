@@ -7,6 +7,7 @@ import ProfileOrders from "./ProfileOrders";
 import { Route, Routes } from "react-router-dom";
 import Wishlist from "../wishlist/Wishlist";
 import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
+import ToUpButton from "../Tools/ToUpButton";
 import EditProfile from "./EditProfile";
 export default function Profile() {
     return (
@@ -23,6 +24,7 @@ export default function Profile() {
                 </Routes>
             </div>
             <StatsSideBar />
+            <ToUpButton />
         </div>
     );
 }

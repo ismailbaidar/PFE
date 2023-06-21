@@ -221,25 +221,38 @@ border-radius: 7px;
     background-color: #fff;
     margin: 20px 0;
     padding: 10px;
+    justify-content:space-between;
 }
 
 .LeftSide{
     width: 35%;
 }
-.MainImage img
-{
-    width: 100%;
+.MainImage{
+    position: relative;
+}
+.MainImage img {
+    width: 60%;
     object-fit: cover;
+    margin: auto;
+    display: block;
 }
 .imagesCol{
     display: flex;
     gap: 5px;
     width: fit-content;
+
 }
 
 .imgCol{
     width: 80px;
     height: 80px;
+    position: relative;
+}
+
+.imagesCol #dimgcard{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .imgCol img{
     width: 100%;
@@ -270,6 +283,7 @@ border-radius: 7px;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    height:55px;
 }
 
 

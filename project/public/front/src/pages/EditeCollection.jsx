@@ -3,22 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
+import InputItem from "../components/Admin/InputItem";
 
 const EditeCollection = () => {
     const ref=useRef()
     const [disabled,setDisabled]=useState({left:true,right:false});
+    const [name,setName]=useState();
+    const [description,setDescription]=useState();
 
-    const scrollRight=()=>{
-        if(ref.current.scrollLeft+ref.current.offsetWidth!==ref.current.scrollWidth){
-            ref.current.scrollLeft+=100
-        }
-    }
-
-    const scrollLeft=()=>{
-        if(ref.current.scrollLeft>0){
-            ref.current.scrollLeft-=100
-        }
-    }
   return (
     <div className='EditeCollection' >
 
@@ -55,7 +47,6 @@ const EditeCollection = () => {
     </div>
 
     <div className='AddproductToCollection' >
-    <p className="placeholder" >Ajouter Produit </p>
     <div className='inputSearch' >
     <input/>
     <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -86,13 +77,29 @@ const EditeCollection = () => {
             <p>Asus Ecran 22 pouce </p>
             <button><FontAwesomeIcon icon={faPlus} /></button>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
+    <div className='rightSide'>
+    <InputItem
+    placeholder={"Name"}
+    type={"text"}
+    input={(e)=>setName(e.target.value)}
+    />
+    <InputItem
+    placeholder={"Description"}
+    type={"textarea"}
+    input={(e)=>setName(e.target.value)}
+    />
+    <button className='AjouterProduit' style={
+    {margin: '10px 0',
+      marginLeft: 'auto',
+      display: 'block'
+    }} >Modify Collection </button>
+    </div>
 
-    </div>
-    </div>
-    </div>
-
-    </div>
     </div>
   );
 }

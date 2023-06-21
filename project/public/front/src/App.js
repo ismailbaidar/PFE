@@ -16,7 +16,9 @@ import SureMsg from "./components/Suremsg/SureMsg";
 import SingleOrderDetails from "./components/SingleOrderDetails/SingleOrderDetails";
 import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
-
+import LivraisonHome from "./components/Livraison/LivraisonHome";
+import ToUpButton from "./components/Tools/ToUpButton";
+import PaymentSuccess from './components/Payment-success/PaymentSuccess'
 function App() {
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
@@ -27,17 +29,17 @@ function App() {
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
-        const token = localStorage.getItem("auth_token");
+        const token = localStorage.getItem("AUTH_TOKEN");
 
-        config.headers.Authorization = `Bearer ${localStorage.getItem(
-            "AUTH_TOKEN"
-        )}`;
+        config.headers.Authorization = `Bearer ${token}`;
         return config;
     });
     return (
         <div className="App">
+            <div id="top"></div>
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
+                <Route path="test" element={<LivraisonHome />} />
                 <Route path="/Admin/*" element={<AdminRoute />} />
 
                 <Route
@@ -72,6 +74,7 @@ function App() {
                     }
                 />
                 <Route path="test" element={<SingleOrderDetails />} />
+                <Route path='payment-success' element={<PaymentSuccess/>}/>
             </Routes>
         </div>
     );

@@ -3,7 +3,7 @@ import "../../styles/register.css";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/userSlice";
-
+import SignUpButton from "../login/SignUpButton";
 function Register() {
     const username = useRef();
     const email = useRef();
@@ -96,19 +96,9 @@ function Register() {
                         required
                         ref={passwordConfirmation}
                     />
-                    <div className="checkbox">
-                        <label className="rememberLabel">
-                            <input type="checkbox" name="remember" />
-                            <span>Remember Me</span>
-                        </label>
-                    </div>
+
                     <button type="submit">Sign Up</button>
-                    <a href="" className="google">
-                        <div className="google-sign-in">
-                            <img src="./img/google-logo.png" alt="#" />
-                            <span>Sign In With Google</span>
-                        </div>
-                    </a>
+                    <SignUpButton></SignUpButton>
                 </form>
             </div>
         </section>

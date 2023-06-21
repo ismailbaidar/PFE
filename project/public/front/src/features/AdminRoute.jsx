@@ -18,8 +18,10 @@ import Products from "../pages/Products";
 import Categories from "../pages/Categories";
 import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
-import Brands from "../pages/Brands";
-import Spects from "../pages/Spects";
+import Brands from '../pages/Brands'
+import Spects from '../pages/Spects'
+import AddCollection from '../pages/AddCollection'
+import UploadShippingCity from '../pages/UploadShippingCity'
 import { useSelector } from "react-redux";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
@@ -66,14 +68,13 @@ const AdminRoute = () => {
                         element={<ContentManagement />}
                     />
                     <Route path="/Products" element={<Products />} />
-                    <Route path="/categories" element={<Categories />} />
-                    <Route path="/brands" element={<Brands />} />
-                    <Route path="/spects" element={<Spects />} />
-                    <Route path="/collections" element={<Collection />} />
-                    <Route
-                        path="/collections/:id"
-                        element={<EditeCollection />}
-                    />
+                    <Route path='/categories' element={<Categories/>} />
+                    <Route path='/brands' element={<Brands/>} />
+                    <Route path='/spects' element={<Spects/>} />
+                    <Route path="/collections" element={<Collection/>}/>
+                    <Route path="/collections/:id" element={<EditeCollection/>}/>
+                    <Route path="/addcollection" element={<AddCollection/>}/>
+                    <Route path='/addShipping' element={<UploadShippingCity/>}/>
                 </Routes>
             </div>
         </div>

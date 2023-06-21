@@ -19,7 +19,7 @@ const Navbar = () => {
     const [search, setSearch] = useState(false);
     const [visible, setVisible] = useState(false);
     const cart = useSelector((state) => state.cartReducer.cart);
-
+    const token = useSelector((state) => state.userReducer.token);
     const dispatch = useDispatch();
     return (
         <div className={"Navbar"}>
@@ -61,7 +61,7 @@ const Navbar = () => {
                         onClick={() => setVisible(!visible)}
                     />
                     <ul className="dropdown-menu" data-visible={visible}>
-                        {localStorage.getItem("AUTH_TOKEN") == "null" ? (
+                        {token == null ? (
                             <>
                                 <li>Login</li>
                                 <li>Register</li>

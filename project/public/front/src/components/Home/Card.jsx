@@ -27,7 +27,7 @@ const Card = ({ id, name, price, discount, images, brand }) => {
                 <img src={img2} alt="" />
             </div>
             <img
-                src={`http://localhost:8000/storage/images/${images[0].url}`}
+                src={`http://localhost:8000/storage/images/${images[0]?.url}`}
                 width={300}
                 alt=""
             />

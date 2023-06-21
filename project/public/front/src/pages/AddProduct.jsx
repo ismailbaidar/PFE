@@ -41,11 +41,17 @@ const AddProduct = () => {
         readonly: false,
         placeholder: "Start typings...",
     };
+    useEffect(() => {
+        dispatch(getBrands());
+        dispatch(getCategories());
+        dispatch(getSpects());
+    }, []);
 
     const categorieOption = useSelector((state) => state.Categorie.categories);
     const statusProduct = useSelector((state) => state.productReducer.status);
     const Spects = useSelector((state) => state.Spect.spects);
     const brands = useSelector((state) => state.Brand.brands);
+    console.log("brands", brands);
     const navigate = useNavigate();
 
     function getCurrentDateTime(now) {

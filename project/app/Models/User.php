@@ -24,6 +24,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Wishlist::class);
     }
 
+    public function livresions(){
+        return $this->hasMany(Livresion::class,'livreur_id','id');
+    }
+
+    public function scopeLivreurs($query){
+        return $query->where('role','livreur')->get();
+    }
+
 
     protected $fillable = [
         'name',
