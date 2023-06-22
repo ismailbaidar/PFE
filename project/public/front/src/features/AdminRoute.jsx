@@ -23,6 +23,7 @@ import Spects from "../pages/Spects";
 import AddCollection from "../pages/AddCollection";
 import UploadShippingCity from "../pages/UploadShippingCity";
 import { useSelector } from "react-redux";
+
 import Logs from "./Logs";
 import Admins from '../pages/Admins';
 import ShowLivreurs from '../pages/ShowLivreurs';
@@ -37,8 +38,8 @@ const AdminRoute = () => {
                 <Search />
                 <Routes>
                     <Route path="/" element={<DashboardHome />} />
-                    <Route path="/livreurs" element={<ShowLivreurs/>} />
-                    <Route path="/users" element={<Admins/>} />
+                    <Route path="/livreurs" element={<ShowLivreurs />} />
+                    <Route path="/users" element={<Admins />} />
                     <Route
                         path="/AjouterProduit"
                         element={

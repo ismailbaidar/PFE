@@ -12,9 +12,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaimentController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OtherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,33 +51,44 @@ Route::get('getStates',[StatistiqueController::class,'getStates']);
 Route::post('AddSliderImage',[SliderController::class,'AddSliderImage']);
 Route::post('deleteImage',[SliderController::class,'deleteImage']);
 Route::get('getSliders',[SliderController::class,'getSliders']);
-Route::apiResource('categorie',CategorieController::class)->except('update');
-Route::apiResource('product',ProductController::class)->except('update');
 
-Route::group(['middleware'=>"auth:sanctum"],function(){
-    Route::post('paimentlivresion',[PaimentController::class,'paimentlivresion']);
-    Route::post('VerifyEmail',[AuthController::class,'Verify']);
-    Route::post('/checkout',[PaimentController::class,'checkout'])->middleware('web');
+
+Route::post('register', [AuthController::class, 'Register']);
+Route::post('login', [AuthController::class, 'Login']);
+Route::post('loginGoogle', [AuthController::class, 'LoginGoogle']);
+Route::post('checkCoupon', [PaimentController::class, 'checkCoupon']);
+Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::post('categorie/{id}',[CategorieController::class,'update']);
     Route::post('brand/{id}',[BrandController::class,'update']);
     Route::apiResource('brand',BrandController::class)->except('update');
 
+
 Route::apiResource('product', ProductController::class)->except('update');
-});
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::post('VerifyEmail', [AuthController::class, 'Verify']);
     Route::post('/checkout', [PaimentController::class, 'checkout'])->middleware('web');
-    Route::post('categorie/{id}', [CategorieController::class, 'update']);
     Route::apiResource('categorie', CategorieController::class)->except('update');
     Route::post('brand/{id}', [BrandController::class, 'update']);
     Route::apiResource('brand', BrandController::class)->except('update');
+
+
+    Route::post('spect/{id}', [SpectController::class, 'update']);
+    Route::apiResource('spect', SpectController::class)->except('update');
+
+    Route::post('product/{id}', [ProductController::class, 'update']);
+    Route::post('/updateUser', [UserController::class, 'update']);
+    Route::post('logout', [AuthController::class, 'Logout']);
+    Route::post('toggleProducts', [WishlistController::class, 'toggleProducts']);
+    Route::get('getUserWishlist/{id}', [WishlistController::class, 'getUserWishlist']);
+
 
     Route::post('product/{id}',[ProductController::class,'update']);
     Route::post("/updateUser",[UserController::class,"update"]);
     Route::post("logout",[AuthController::class,"Logout"]);
     Route::post("toggleProducts",[WishlistController::class,"toggleProducts"]);
     Route::get("getUserWishlist/{id}",[WishlistController::class,"getUserWishlist"]);
-    Route::get("getUserOrders",[PaimentController::class,"getUserOrders"]);
-    Route::get("logs",LogController::class);
-});
+
+
+}
+);

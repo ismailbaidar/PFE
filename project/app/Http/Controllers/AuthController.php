@@ -29,7 +29,7 @@ class AuthController extends Controller
                 if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
                     $user = User::where('email',$request->email)->first();
                     $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
-                    return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user->except("role"),"role"=>md5($user->role)]);
+                        return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user,"role"=>md5($user->role)]);
                 }
             } catch (\Throwable $th) {
                 return response()->json(['error'=>$th->getMessage()]);

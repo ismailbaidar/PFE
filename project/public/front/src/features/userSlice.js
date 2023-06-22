@@ -73,6 +73,7 @@ const userSlice = createSlice({
         [updateUser.fulfilled]: (state, { payload }) => {},
         [login.fulfilled]: (state, { payload }) => {
             state.user = payload.user;
+            console.log(payload);
             state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
