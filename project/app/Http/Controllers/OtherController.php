@@ -59,6 +59,15 @@ class OtherController extends Controller
 
     }
 
+    public  function toogleAdmin(Request $request){
+        $user = User::find($request->id);
+        $role=$user->role;
+        $nrole=$role==='admin'?'user':'admin';
+        $user->role=$nrole;
+        $user->save();
+        return response()->json(['status'=>'bien ajouuter']);
+    }
+
     public function addCvc(Request $request)
     {
         try{

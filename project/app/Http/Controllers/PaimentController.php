@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Discount;
+use App\Models\Shipping;
 use App\Models\Shippingcity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,12 @@ class PaimentController extends Controller
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $products=json_decode($request->products);
         $ShippingCity = Shippingcity::find($request->ville);
+        $adress=['address' => [
+            'line1' => $request->adress,
+            'city' => $ShippingCity->city,
+            'postal_code' =>$request->postalCode,
+            'country' => 'MA',
+        ]];
 
         $order = Order::create([
             'user_id'=>$request->user()->id,

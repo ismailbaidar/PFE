@@ -52,6 +52,7 @@ function App() {
 
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
+                <Route path="/confirmationCode" element={<ConfirmationCode />} />
 
                 <>
                     <Route
