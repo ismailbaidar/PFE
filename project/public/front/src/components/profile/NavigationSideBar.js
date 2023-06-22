@@ -22,9 +22,9 @@ export default function NavigationSidebar() {
 
     return (
         <div className="navigation-sidebar">
-            <div className="logo">
+            <Link to="/" className="logo">
                 <img src="../images/logored.png" />
-            </div>
+            </Link>
             <div className="sidebar">
                 <ul className="sidebar-list">
                     <li
