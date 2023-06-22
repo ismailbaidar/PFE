@@ -53,6 +53,7 @@ Route::post('deleteImage',[SliderController::class,'deleteImage']);
 Route::get('getSliders',[SliderController::class,'getSliders']);
 
 
+
 Route::post('register', [AuthController::class, 'Register']);
 Route::post('login', [AuthController::class, 'Login']);
 Route::post('loginGoogle', [AuthController::class, 'LoginGoogle']);
@@ -68,7 +69,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::post('VerifyEmail', [AuthController::class, 'Verify']);
     Route::post('/checkout', [PaimentController::class, 'checkout'])->middleware('web');
-    Route::apiResource('categorie', CategorieController::class)->except('update');
+Route::apiResource('categorie', CategorieController::class)->except('update');
+
     Route::post('brand/{id}', [BrandController::class, 'update']);
     Route::apiResource('brand', BrandController::class)->except('update');
 
