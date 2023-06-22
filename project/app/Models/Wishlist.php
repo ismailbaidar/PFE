@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Wishlist extends Model
 {
     use HasFactory;
+    protected $fillable = ["user_id","product_id"];
     public function product(){
         return $this->belongsTo(Product::class);
     }

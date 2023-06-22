@@ -15,15 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('total_price');
-            $table->String('name');
-            $table->String('prenom');
-            $table->String('tele');
             $table->enum('status',['ordered','processing','delivered','canceled']);
             $table->enum('satatus_payment',['paid','not paid']);
             $table->foreignId('shipping_id')->nullable()->constrained();
             $table->foreignId('discount_id')->nullable()->constrained();
-            $table->string("payment_id");
-            $table->foreign("payment_id")->references("id")->on("payments");
+            $table->foreignId("payment_id")->nullable()->constrained();
             $table->timestamps();
         });
     }

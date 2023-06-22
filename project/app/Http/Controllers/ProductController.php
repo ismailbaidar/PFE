@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,7 +46,7 @@ class ProductController extends Controller
                 $produit->spects()->attach($option->key,['value'=>$option->value]);
             }
             foreach($request->file('images') as $img ){
-                $imgPath = time().'.'.$img->getClientOriginalExtension();
+                $imgPath = Str::random(12).'.'.$img->getClientOriginalExtension();
                 $img->StoreAs('images',$imgPath,'public');
                 $produit->images()->create(['url'=>$imgPath]);
             }

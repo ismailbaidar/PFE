@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCart } from "../../features/cartSlice";
+import { toggleWishlist } from "../../features/wishlistSlice";
 const Card = ({ id, name, price, discount, images, brand }) => {
     console.log(brand);
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cartReducer.cart);
+    const user = useSelector((state) => state.userReducer.user);
 
     function addOrUpdateProductInCart(p) {
         const product = cart.find((prod) => prod.id == p.id);
@@ -60,7 +62,17 @@ const Card = ({ id, name, price, discount, images, brand }) => {
                 >
                     Add to cart
                 </button>
-                <button className="Heart">
+                <button
+                    className="Heart"
+                    onClick={() =>
+                        dispatch(
+                            toggleWishlist({
+                                product: id,
+                                user: localStorage.getItem("UID"),
+                            })
+                        )
+                    }
+                >
                     {" "}
                     <FontAwesomeIcon icon={faHeart} />{" "}
                 </button>

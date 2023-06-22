@@ -8,18 +8,20 @@ import CheckoutSlice from "./features/CheckoutSlice";
 import CollectionReducer from "./features/CollectionSlice";
 import showReducer from "./features/ShowSlice";
 import userReducer from "./features/userSlice";
-
+import wishlistReducer from "./features/wishlistSlice";
 const Store = configureStore({
     reducer: {
         productReducer,
         Categorie,
         Spect,
         Brand,
+
         cartReducer,
         showReducer,
         userReducer,
         CollectionReducer,
-        CheckoutSlice
+        CheckoutSlice,
+        wishlistReducer,
     },
 });
 export default Store;

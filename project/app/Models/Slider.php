@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Slider extends Model
 {
     use HasFactory;
+    protected $guarded =[];
     public function sliderimages(){
         return $this->hasMany(Sliderimage::class);
     }

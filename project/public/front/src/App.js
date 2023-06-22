@@ -18,14 +18,20 @@ import { useEffect } from "react";
 import PreventDirectAccess from "./components/Tools/PreventDirectAccess";
 import LivraisonHome from "./components/Livraison/LivraisonHome";
 import ToUpButton from "./components/Tools/ToUpButton";
-import PaymentSuccess from './components/Payment-success/PaymentSuccess'
+import PaymentSuccess from "./components/Payment-success/PaymentSuccess";
+import md5 from "md5";
+import { useDispatch } from "react-redux";
+import { setToken } from "./features/userSlice";
 function App() {
+    const dispatch = useDispatch();
     useEffect(() => {
         if (!localStorage.getItem("AUTH_TOKEN")) {
             localStorage.setItem("AUTH_TOKEN", null);
+        } else if (localStorage.getItem("AUTH_TOKEN") != "null") {
+            dispatch(setToken(localStorage.getItem("AUTH_TOKEN")));
         }
-        /*global google */
     }, []);
+    useEffect(() => {});
     axios.defaults.headers.post["Accept"] = "application/json";
     axios.defaults.withCredentials = true;
     axios.interceptors.request.use(function (config) {
@@ -74,7 +80,7 @@ function App() {
                     }
                 />
                 <Route path="test" element={<SingleOrderDetails />} />
-                <Route path='payment-success' element={<PaymentSuccess/>}/>
+                <Route path="paymentSuccess" element={<PaymentSuccess />} />
             </Routes>
         </div>
     );

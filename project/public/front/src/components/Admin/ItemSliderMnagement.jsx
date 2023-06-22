@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-const ItemSliderMnagement = ({img,selected,id,setSelected,deleteItem}) => {
+const ItemSliderMnagement = ({img,selected,id,setSelected,deleteItem,isFile}) => {
     const [model,setModel]=useState(false)
+    console.log(img)
   return (
     <div className='ItemSliderMnagement'  onClick={()=>setSelected(id)} >
-            <img src={img} />
+            <img src={!isFile?'http://localhost:8000/storage/images/'+img.img:img} />
             { selected===id && <div className="LayerItemSliderMnagement">
            { !model && <FontAwesomeIcon  onClick={()=>setModel(true)} id='iconeDeleteSliderItem' icon={faTrash} />}
             {model &&

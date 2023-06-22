@@ -13,32 +13,18 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 const ContentManagement = () => {
     const [imgS,setImage]=useState([])
     const [show,setShow]=useState(false)
+
   return (
 
     <div className='ContentManagement' >
     <p className='SlidersContentManagement'>Sliders</p>
     <span className='PlaceholderSliders'>Home</span>
-    <SliderContentManagement />
+    <SliderContentManagement name={'Home'} key={1} />
+
     <span className='PlaceholderSliders'>Login</span>
-    <SliderContentManagement />
+    <SliderContentManagement  name='Login' key={2} />
     <span className='PlaceholderSliders'>Register</span>
-    <SliderContentManagement />
-    <p className='SlidersContentManagement'>Socials Links</p>
-    <div className='socialLinksConatiner' >
-       <ItemSocialLink img={img} />
-       <ItemSocialLink img={img1} />
-       <ItemSocialLink img={img2} />
-       <div className='AddSlink' onClick={()=>setShow(true)}  >
-       <p>+</p>
-       {show && <div className='AjouterSocialLink' >
-       <InputItem placeholder={'name'}  type={'text'} />
-        <InputItem placeholder={'Link'}  type={'text'} />
-        <FileIntem placeholder={'Social image'} files={imgS} AddFile={(e)=>{setImage([URL.createObjectURL(e.target.files[0])])}}  />
-        <button className='saveBtn' >Save</button>
-        <FontAwesomeIcon  id='iconeCloseS'   onClick={(e)=>{e.stopPropagation();setShow(false)}} icon={faXmark} />
-       </div>}
-       </div>
-    </div>
+    <SliderContentManagement name={'Register'} key={3} /> 
     </div>
   );
 }

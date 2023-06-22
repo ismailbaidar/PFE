@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\StatistiqueController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategorieController;
@@ -36,6 +39,21 @@ Route::post('getCitys', [OtherController::class, 'getCitys']);
 Route::post('AddLivreur', [OtherController::class, 'AddLivreur']);
 Route::post('DeletUser', [OtherController::class, 'DeletUser']);
 Route::post('getAllAdmins', [OtherController::class, 'getAllAdmins']);
+Route::get('getShippingcity',[OtherController::class,'getShippingcity']);
+Route::apiResource('collection',CollectionController::class);
+Route::post('addShippingcities',[OtherController::class,'addCvc']);
+Route::get('childes',[OtherController::class,'childes']);
+Route::post('register',[AuthController::class,'Register']);
+Route::post('login',[AuthController::class,'Login']);
+Route::post('loginGoogle',[AuthController::class,'LoginGoogle']);
+Route::post('checkCoupon',[PaimentController::class,'checkCoupon']);
+Route::post('paimentlivresion',[PaimentController::class,'paimentlivresion']);
+Route::get('PaimentStastistique',[StatistiqueController::class,'PaimentStastistique']);
+Route::get('getStates',[StatistiqueController::class,'getStates']);
+
+Route::post('AddSliderImage',[SliderController::class,'AddSliderImage']);
+Route::post('deleteImage',[SliderController::class,'deleteImage']);
+Route::get('getSliders',[SliderController::class,'getSliders']);
 
 Route::post('register', [AuthController::class, 'Register']);
 Route::post('login', [AuthController::class, 'Login']);

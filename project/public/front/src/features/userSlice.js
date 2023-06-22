@@ -64,7 +64,11 @@ const initialState = {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {},
+    reducers: {
+        setToken: (state, payload) => {
+            state.token = payload;
+        },
+    },
     extraReducers: {
         [updateUser.fulfilled]: (state, { payload }) => {},
         [login.fulfilled]: (state, { payload }) => {
@@ -72,19 +76,25 @@ const userSlice = createSlice({
             state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
+            localStorage.setItem("UID", payload.user.id);
+            localStorage.setItem("user", JSON.stringify(payload.user));
         },
         [logout.fulfilled]: (state, { payload }) => {
             state.user = null;
             state.token = null;
             localStorage.setItem("AUTH_TOKEN", "null");
+            localStorage.setItem("UID", "null");
+            localStorage.setItem("user", "null");
         },
         [loginGoogle.fulfilled]: (state, { payload }) => {
             state.user = payload.user;
             state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
+            localStorage.setItem("UID", payload.user.id);
+            localStorage.setItem("user", JSON.stringify(payload.user));
         },
     },
 });
-
+export const { setToken } = userSlice.actions;
 export default userSlice.reducer;

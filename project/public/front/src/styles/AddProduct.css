@@ -367,3 +367,14 @@
 .rightSide{
     width:60%;
 }
+
+.c-cities{
+    display: flex;
+    align-items: center;
+}
+.ajouterShipping{
+    padding: 8px 10px;
+    color: #fff;
+    background-color: #d33;
+    border-radius: 6px;
+}
