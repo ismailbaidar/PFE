@@ -22,11 +22,11 @@ class PaimentController extends Controller
         return response()->json([],404);
     }
 
-    function paimentlivresion(){
+    function paimentlivresion(Request $request){
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $products=json_decode($request->products);
         $ShippingCity = Shippingcity::find($request->ville);
-        
+
         $order = Order::create([
             'user_id'=>$request->user()->id,
             'total_price'=>'0',
@@ -69,6 +69,7 @@ class PaimentController extends Controller
             }
 
         }
+
         $shipping = Shipping::create([
             'shipping_adress' => $adress['address']['line1'],
             'shipping_zip' => $adress['address']['postal_code'],
@@ -78,7 +79,7 @@ class PaimentController extends Controller
 
         $order->shipping_id = $shipping->id;
         $order->save();
-        
+
     }
 
 
@@ -86,7 +87,7 @@ class PaimentController extends Controller
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $products=json_decode($request->products);
         $ShippingCity = Shippingcity::find($request->ville);
-        
+
         $adress=['address' => [
             'line1' => $request->adress,
             'city' => $ShippingCity->city,
@@ -108,6 +109,7 @@ class PaimentController extends Controller
         ]);
         $lineItems=[];
         $coupon=[];
+    //
         foreach($products as $productItem ){
             $product = Product::find($productItem->id);
             if($product->stock>$productItem->qte){
