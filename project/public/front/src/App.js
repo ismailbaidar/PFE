@@ -56,6 +56,10 @@ function App() {
                     path="/confirmationCode"
                     element={<ConfirmationCode />}
                 />
+                <Route
+                    path="/confirmationCode"
+                    element={<ConfirmationCode />}
+                />
 
                 <>
                     <Route

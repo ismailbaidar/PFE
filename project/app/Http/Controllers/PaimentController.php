@@ -27,6 +27,12 @@ class PaimentController extends Controller
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $products=json_decode($request->products);
         $ShippingCity = Shippingcity::find($request->ville);
+        $adress=['address' => [
+            'line1' => $request->adress,
+            'city' => $ShippingCity->city,
+            'postal_code' =>$request->postalCode,
+            'country' => 'MA',
+        ]];
 
         $order = Order::create([
             'user_id'=>$request->user()->id,
