@@ -69,8 +69,12 @@ const Navbar = () => {
                     <ul className="dropdown-menu" data-visible={visible}>
                         {token == null ? (
                             <>
-                                <li>Login</li>
-                                <li>Register</li>
+                                <li>
+                                    <Link to="/login">Login</Link>
+                                </li>
+                                <li>
+                                    <Link to="register">Register</Link>
+                                </li>
                             </>
                         ) : (
                             <>

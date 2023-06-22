@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import MainRoute from "./features/MainRoute";
 import AdminRoute from "./features/AdminRoute";
 import SinglePage from "./components/Single page/SinglePage";
@@ -22,6 +22,8 @@ import PaymentSuccess from "./components/Payment-success/PaymentSuccess";
 import md5 from "md5";
 import { useDispatch } from "react-redux";
 import { setToken } from "./features/userSlice";
+import AllProducts from "./pages/AllProducts";
+import Home from "./pages/Home";
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -29,6 +31,9 @@ function App() {
             localStorage.setItem("AUTH_TOKEN", null);
         } else if (localStorage.getItem("AUTH_TOKEN") != "null") {
             dispatch(setToken(localStorage.getItem("AUTH_TOKEN")));
+        }
+        if (!localStorage.getItem("browsing_history")) {
+            localStorage.setItem("browsing_history", JSON.stringify([]));
         }
     }, []);
     useEffect(() => {});
@@ -40,14 +45,60 @@ function App() {
         config.headers.Authorization = `Bearer ${token}`;
         return config;
     });
+    const navigate = useNavigate();
     return (
         <div className="App">
             <div id="top"></div>
+
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
-                <Route path="test" element={<LivraisonHome />} />
-                <Route path="/Admin/*" element={<AdminRoute />} />
 
+                <>
+                    <Route
+                        path="order/:id"
+                        element={
+                            md5("user") == localStorage.getItem("role") ? (
+                                <SingleOrderDetails />
+                            ) : (
+                                <ErrorPage errorType={401} />
+                            )
+                        }
+                    />
+                    <Route
+                        path="/profile/*"
+                        element={
+                            <PreventDirectAccess type="auth">
+                                <Profile />
+                            </PreventDirectAccess>
+                        }
+                    />
+                    <Route
+                        path="paymentSuccess"
+                        element={
+                            md5("user") == localStorage.getItem("role") ? (
+                                <PaymentSuccess />
+                            ) : (
+                                <ErrorPage errorType={401} />
+                            )
+                        }
+                    />
+
+                    <Route
+                        path="order/:id"
+                        element={
+                            md5("user") == localStorage.getItem("role") ? (
+                                <SingleOrderDetails />
+                            ) : (
+                                <ErrorPage errorType={401} />
+                            )
+                        }
+                    />
+                </>
+                {md5("admin") == localStorage.getItem("role") && (
+                    <>
+                        <Route path="/Admin/*" element={<AdminRoute />} />
+                    </>
+                )}
                 <Route
                     path="register"
                     element={
@@ -65,22 +116,13 @@ function App() {
                     }
                 />
 
+                {md5("livreur") == localStorage.getItem("role") && (
+                    <Route path="livreur" element={<LivraisonHome />} />
+                )}
                 <Route
                     path="notfound"
                     element={<ErrorPage errorType={404} />}
                 />
-                <Route path="order/:id" element={<SingleOrderDetails />} />
-
-                <Route
-                    path="/profile/*"
-                    element={
-                        <PreventDirectAccess type="auth">
-                            <Profile />
-                        </PreventDirectAccess>
-                    }
-                />
-                <Route path="test" element={<SingleOrderDetails />} />
-                <Route path="paymentSuccess" element={<PaymentSuccess />} />
             </Routes>
         </div>
     );

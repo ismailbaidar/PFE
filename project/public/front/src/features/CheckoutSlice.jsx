@@ -15,10 +15,7 @@ export const checkoutWithCardPaymant = createAsyncThunk(
         form.append("ville", dataItems.ville);
         form.append("tele", dataItems.tele);
         form.append("coupon", data);
-        form.append(
-            "products",
-            JSON.stringify(products)
-        );
+        form.append("products", JSON.stringify(products));
         return axios
             .post("http://localhost:8000/api/checkout", form)
             .then((res) => res.data)

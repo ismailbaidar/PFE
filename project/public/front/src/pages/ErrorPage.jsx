@@ -23,8 +23,8 @@ const ErrorPage = ({ errorType }) => {
         unauthoriozed: {
             image: unauthoriozed,
             status: 401,
-            description: "UH OH! You're lost.",
-            text: "The page vou are looking for does not exist. How you got here is a mystery. But you can click the button below to go back to the homepage.",
+            description: "Unauthorized.",
+            text: "You not authorized to the page you are trying to access. But you can click the button below to go back to the homepage.",
         },
         serverError: {
             image: serverError,

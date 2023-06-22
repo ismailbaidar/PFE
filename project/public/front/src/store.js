@@ -9,13 +9,15 @@ import CollectionReducer from "./features/CollectionSlice";
 import showReducer from "./features/ShowSlice";
 import userReducer from "./features/userSlice";
 import wishlistReducer from "./features/wishlistSlice";
+
+import orderReducer from "./features/orderSlice";
 const Store = configureStore({
     reducer: {
         productReducer,
         Categorie,
         Spect,
         Brand,
-
+        orderReducer,
         cartReducer,
         showReducer,
         userReducer,

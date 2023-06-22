@@ -15,8 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products= Product::with(['categorie:id,name','brand:id,name',"images"])->get();
-        $products=$products->makeHidden(['brand_id','categorie_id','description']);
+        $products= Product::with(['categorie:id,name','brand:id,name,img',"images"])->get();
+
         return response()->json(['products'=>$products]);
     }
 

@@ -18,13 +18,21 @@ import Products from "../pages/Products";
 import Categories from "../pages/Categories";
 import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
+<<<<<<< Updated upstream
 import Brands from '../pages/Brands'
 import Spects from '../pages/Spects'
 import AddCollection from '../pages/AddCollection'
 import UploadShippingCity from '../pages/UploadShippingCity'
 import ShowLivreurs from '../pages/ShowLivreurs'
 import Admins from '../pages/Admins'
+=======
+import Brands from "../pages/Brands";
+import Spects from "../pages/Spects";
+import AddCollection from "../pages/AddCollection";
+import UploadShippingCity from "../pages/UploadShippingCity";
+>>>>>>> Stashed changes
 import { useSelector } from "react-redux";
+import Logs from "./Logs";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
     const show = useSelector((state) => state.showReducer.show);
@@ -49,6 +57,7 @@ const AdminRoute = () => {
                         path="/produitmodifier/:id"
                         element={<ModifierProduit />}
                     />
+                    <Route path="/logs" element={<Logs />} />
                     <Route
                         path="/AjouterCategorie"
                         element={<AddCategorie />}
@@ -72,13 +81,19 @@ const AdminRoute = () => {
                         element={<ContentManagement />}
                     />
                     <Route path="/Products" element={<Products />} />
-                    <Route path='/categories' element={<Categories/>} />
-                    <Route path='/brands' element={<Brands/>} />
-                    <Route path='/spects' element={<Spects/>} />
-                    <Route path="/collections" element={<Collection/>}/>
-                    <Route path="/collections/:id" element={<EditeCollection/>}/>
-                    <Route path="/addcollection" element={<AddCollection/>}/>
-                    <Route path='/addShipping' element={<UploadShippingCity/>}/>
+                    <Route path="/categories" element={<Categories />} />
+                    <Route path="/brands" element={<Brands />} />
+                    <Route path="/spects" element={<Spects />} />
+                    <Route path="/collections" element={<Collection />} />
+                    <Route
+                        path="/collections/:id"
+                        element={<EditeCollection />}
+                    />
+                    <Route path="/addcollection" element={<AddCollection />} />
+                    <Route
+                        path="/addShipping"
+                        element={<UploadShippingCity />}
+                    />
                 </Routes>
             </div>
         </div>

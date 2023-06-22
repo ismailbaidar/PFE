@@ -7,6 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCart } from "../../features/cartSlice";
 import { toggleWishlist } from "../../features/wishlistSlice";
+import { Link } from "react-router-dom";
 const Card = ({ id, name, price, discount, images, brand }) => {
     console.log(brand);
     const dispatch = useDispatch();
@@ -24,28 +25,34 @@ const Card = ({ id, name, price, discount, images, brand }) => {
     }
     return (
         <div className="card">
-            <div className="catImages">
-                <img src={img1} alt="" />
-                <img src={img2} alt="" />
-            </div>
-            <img
-                src={`http://localhost:8000/storage/images/${images[0]?.url}`}
-                width={300}
-                alt=""
-            />
-            <p className="titleCard">
-                {name.length > 15 ? name.substring(0, 15) + "..." : name}
-            </p>
-            <div className="price">
-                {discount ? (
-                    <>
-                        <span className=" HightPrice">{price}MAD</span>
-                        <span className="lowPrice">{price - discount}MAD</span>
-                    </>
-                ) : (
-                    <span className="lowPrice">{price}MAD</span>
-                )}
-            </div>
+            <Link to={`product/${id}`}>
+                <div className="catImages">
+                    <img src={img1} alt="" />
+                    <img src={img2} alt="" />
+                </div>
+                <img
+                    src={`http://localhost:8000/storage/images/${
+                        images[0]?.url || ""
+                    }`}
+                    width={300}
+                    alt=""
+                />
+                <p className="titleCard">
+                    {name.length > 15 ? name.substring(0, 15) + "..." : name}
+                </p>
+                <div className="price">
+                    {discount ? (
+                        <>
+                            <span className=" HightPrice">{price}MAD</span>
+                            <span className="lowPrice">
+                                {price - discount}MAD
+                            </span>
+                        </>
+                    ) : (
+                        <span className="lowPrice">{price}MAD</span>
+                    )}
+                </div>
+            </Link>
             <div className="hiddenButtons">
                 <button
                     className="lireL"

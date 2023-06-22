@@ -14,7 +14,7 @@
     gap: 1rem;
 }
 .single-page-wrapper .product-part .product-image .all-images img {
-    width: 150px;
+    width: 70px;
 }
 .single-page-wrapper
     .product-part
@@ -141,6 +141,33 @@
     justify-content: space-between;
 }
 /* this style is for the rating component */
+.rating {
+    position: relative;
+}
+.review-checker {
+    display: none;
+    position: absolute;
+    top: 0;
+    padding: 1rem;
+    background-color: red;
+}
+.rating:hover .review-checker {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.75rem;
+    transform: translateY(10%);
+}
+.review-checker .review-part {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.review-checker .review-part span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 .icon {
     color: var(--gray);
 }
@@ -160,6 +187,12 @@
     display: flex;
     gap: 0.5rem;
 }
+
+/* .single-page-wrapper .description-content * {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+} */
 
 .description-review-wrapper .content-wrapper .content[data-visible="false"] {
     display: none;

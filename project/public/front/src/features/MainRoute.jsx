@@ -11,6 +11,8 @@ import ErrorPage from "../pages/ErrorPage";
 import { Navigate } from "react-router-dom";
 import Cart from "../components/cart/Cart";
 import ToUpButton from "../components/Tools/ToUpButton";
+import md5 from "md5";
+
 const MainRoute = () => {
     const location = useLocation();
 
@@ -21,6 +23,7 @@ const MainRoute = () => {
                 <Route index element={<Home />} />
                 <Route path="products" element={<AllProducts />} />
                 <Route path="/cart" element={<Cart />} />
+
                 <Route path="Checkout" element={<Checkout />} />
                 <Route path="/product/:productId" element={<SinglePage />} />
                 <Route path="*" element={<Navigate to="/notFound" />} />

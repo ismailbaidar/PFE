@@ -2,150 +2,172 @@ import mainImage from "../../images/pc-gamer-setup-game-min-1.webp";
 import "../../styles/singlePage.css";
 import SpecCard from "./SpecCard";
 import Rating from "./Rating";
-import { useState } from "react";
+
+import { useEffect, useState, useRef } from "react";
 import Card from "../Home/Card";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../features/productSlice";
+import ReviewChecker from "./ReviewChecker";
 export default function SinglePage() {
-    const productImages = [
-        "asusdisplay.webp",
-        "asusdisplay2.webp",
-        "asusdisplay3.webp",
-        "asusdisplay4.webp",
-    ];
+    const dispatch = useDispatch();
+
+    const { productId } = useParams();
+    const description = useRef();
+    useEffect(() => {
+        dispatch(getProducts());
+    }, []);
+    const products = useSelector((state) => state.productReducer.products);
+    const product = products.find((p) => {
+        return p.id == productId;
+    });
+
+    const productImages = product?.images;
     const [selectedImage, setSelectedImage] = useState(
-        `../../../images/${productImages[0]}`
+        `http://127.0.0.1:8000/storage/images/${productImages}`
     );
+    useEffect(() => {
+        if (productImages) {
+            setSelectedImage(
+                `http://127.0.0.1:8000/storage/images/${productImages[0].url}`
+            );
+        }
+    }, [product]);
 
     const [visibleItem, setVisibleItem] = useState("description");
     return (
         <div className="single-page-wrapper">
-            <div className="product-part">
-                <div className="product-image">
-                    <div className="main-image">
-                        <img src={selectedImage} alt="" width={400} />
-                    </div>
+            {product != undefined && (
+                <>
+                    {" "}
+                    <div className="product-part">
+                        <div className="product-image">
+                            <div className="main-image">
+                                <img src={selectedImage} alt="" width={400} />
+                            </div>
 
-                    <div className="all-images">
-                        {productImages.map((p) => {
-                            const imagePath = `../../images/${p}`;
-                            return (
-                                <img
-                                    className="image"
-                                    width={100}
-                                    src={imagePath}
-                                    onClick={() => setSelectedImage(imagePath)}
-                                />
-                            );
-                        })}
-                    </div>
-                </div>
-                <div className="product-info">
-                    <div className="brand">brand</div>
+                            <div className="all-images">
+                                {productImages?.map((p) => {
+                                    const imagePath = `http://127.0.0.1:8000/storage/images/${
+                                        p.url || ""
+                                    }`;
+                                    return (
+                                        <img
+                                            className="image"
+                                            width={60}
+                                            src={imagePath}
+                                            onClick={() =>
+                                                setSelectedImage(imagePath)
+                                            }
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <div className="product-info">
+                            <div className="brand">{product?.brand.name}</div>
 
-                    <div className="title-price-wrapper">
-                        <div className="product-title">Something</div>
-                        <div className="product-price">
-                            <div className="product-old-price">1,000MAD</div>
-                            <div className="product-new-price">9,999MAD</div>
+                            <div className="title-price-wrapper">
+                                <div className="product-title">
+                                    {product?.name}
+                                </div>
+                                <div className="product-price">
+                                    {product.discount ? (
+                                        <>
+                                            <div className="product-old-price">
+                                                {product.price}MAD
+                                            </div>
+                                            <div className="product-new-price">
+                                                {product.price -
+                                                    product.discount}
+                                                MAD
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {" "}
+                                            <div className="product-new-price">
+                                                {product.price}MAD
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="specs">
+                                <SpecCard />
+                                <SpecCard />
+                                <SpecCard />
+                                <SpecCard />
+                            </div>
+
+                            <div className="brand-icon-rating">
+                                <div className="brand-icon">brand icon</div>
+                                <Rating rate={3} />
+                            </div>
+                            <div className="qte-input-cart-button">
+                                <div className="qte-input">
+                                    <button className="qte-changer-button increment-qte">
+                                        -
+                                    </button>
+                                    <span>1</span>
+                                    <button className="qte-changer-button decrement-qte">
+                                        +
+                                    </button>
+                                </div>
+                                <button className="cart-button">
+                                    Add to cart
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className="specs">
-                        <SpecCard />
-                        <SpecCard />
-                        <SpecCard />
-                        <SpecCard />
-                    </div>
-
-                    <div className="brand-icon-rating">
-                        <div className="brand-icon">brand icon</div>
-                        <Rating rate={3} />
-                    </div>
-                    <div className="qte-input-cart-button">
-                        <div className="qte-input">
-                            <button className="qte-changer-button increment-qte">
-                                -
-                            </button>
-                            <span>1</span>
-                            <button className="qte-changer-button decrement-qte">
-                                +
-                            </button>
+                    <div className="description-review-wrapper">
+                        <div className="description-review-navigator">
+                            <div
+                                onClick={() => setVisibleItem("description")}
+                                data-visible={visibleItem == "description"}
+                                className="navigator-option"
+                            >
+                                Description
+                            </div>
+                            <div
+                                onClick={() => setVisibleItem("reviews")}
+                                data-visible={visibleItem == "reviews"}
+                                className="navigator-option"
+                            >
+                                Reviews
+                            </div>
                         </div>
-                        <button className="cart-button">Add to cart</button>
+                        <div className="content-wrapper">
+                            <div
+                                data-visible={visibleItem == "description"}
+                                className="description-content content"
+                                ref={description}
+                                dangerouslySetInnerHTML={{
+                                    __html: products.find(
+                                        (p) => p.id == productId
+                                    )?.description,
+                                }}
+                            ></div>
+                            <div
+                                data-visible={visibleItem == "reviews"}
+                                className="review-content content"
+                            >
+                                reviews
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="description-review-wrapper">
-                <div className="description-review-navigator">
-                    <div
-                        onClick={() => setVisibleItem("description")}
-                        data-visible={visibleItem == "description"}
-                        className="navigator-option"
-                    >
-                        Description
+                    <div className="similar-products">
+                        <div className="title">
+                            <h1>similar products</h1>
+                        </div>
+                        <div className="products">
+                            {products?.map((p) => {
+                                return <Card {...p} />;
+                            })}
+                        </div>
                     </div>
-                    <div
-                        onClick={() => setVisibleItem("reviews")}
-                        data-visible={visibleItem == "reviews"}
-                        className="navigator-option"
-                    >
-                        Reviews
-                    </div>
-                </div>
-                <div className="content-wrapper">
-                    <div
-                        data-visible={visibleItem == "description"}
-                        className="description-content content"
-                    >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolor perspiciatis aspernatur error dolores delectus vel
-                        minus dolorum cumque nesciunt numquam, velit
-                        necessitatibus voluptatem, eligendi sunt ratione nam ut
-                        dicta vitae. Culpa voluptatem laborum expedita, eum
-                        dicta hic dolorem natus sunt vel, doloribus, deleniti
-                        voluptate temporibus praesentium totam reiciendis magni?
-                        Nisi dolorem molestiae aut totam reiciendis
-                        reprehenderit sunt voluptatem veniam a. Fugiat at, animi
-                        culpa, quasi ipsa impedit debitis dolorem,
-                        exercitationem modi nemo eaque. Soluta ex quidem cumque
-                        laborum voluptatem. Cumque minus tempore corrupti, ullam
-                        necessitatibus nihil? Enim repellat rem officiis. Ipsa
-                        quaerat magnam id commodi, sequi facere harum recusandae
-                        voluptas cumque illum natus explicabo dignissimos.
-                        Nulla, facere exercitationem est alias perspiciatis enim
-                        aspernatur molestiae laborum, aut iusto dolorum modi
-                        beatae. Veritatis neque culpa minima quo vitae, illo
-                        accusantium libero dolor omnis earum quam hic alias
-                        cupiditate sed quidem voluptas asperiores necessitatibus
-                        velit dolores, quis delectus aliquam explicabo facilis
-                        soluta! Rem.
-                    </div>
-                    <div
-                        data-visible={visibleItem == "reviews"}
-                        className="review-content content"
-                    >
-                        reviews
-                    </div>
-                </div>
-            </div>
-            <div className="similar-products">
-                <div className="title">
-                    <h1>similar products</h1>
-                </div>
-                <div className="products">
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                </div>
-            </div>
+                </>
+            )}
         </div>
     );
 }

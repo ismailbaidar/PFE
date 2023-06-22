@@ -29,7 +29,7 @@ class AuthController extends Controller
                 if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
                     $user = User::where('email',$request->email)->first();
                     $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
-                    return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user]);
+                    return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user->except("role"),"role"=>md5($user->role)]);
                 }
             } catch (\Throwable $th) {
                 return response()->json(['error'=>$th->getMessage()]);
@@ -37,6 +37,7 @@ class AuthController extends Controller
     }
 
     function LoginGoogle(Request $request){
+
         $user = User::firstOrCreate(["email"=>$request->email],[
             "name"=>$request->name,
             "email"=>$request->email,
@@ -44,13 +45,13 @@ class AuthController extends Controller
             "code"=>rand(111111,999999),
 
         ]);
-        // return response()->json($user);
+
         try {
 
-                // $user = User::where('email',$request->email)->first();
+
 
                 $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
-                return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user]);
+                return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user,"role"=>md5($user->role)]);
 
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);

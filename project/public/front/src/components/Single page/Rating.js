@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import ReviewChecker from "./ReviewChecker";
 export default function Rating({ rate }) {
     return (
         <div className="rating">
@@ -28,6 +29,7 @@ export default function Rating({ rate }) {
                 className="icon"
                 icon={faStar}
             ></FontAwesomeIcon>
+            <ReviewChecker />
         </div>
     );
 }

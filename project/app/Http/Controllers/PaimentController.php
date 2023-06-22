@@ -69,7 +69,6 @@ class PaimentController extends Controller
             }
 
         }
-
         $shipping = Shipping::create([
             'shipping_adress' => $adress['address']['line1'],
             'shipping_zip' => $adress['address']['postal_code'],
@@ -109,7 +108,6 @@ class PaimentController extends Controller
         ]);
         $lineItems=[];
         $coupon=[];
-    //
         foreach($products as $productItem ){
             $product = Product::find($productItem->id);
             if($product->stock>$productItem->qte){
@@ -189,5 +187,9 @@ class PaimentController extends Controller
             $request->session()->put('adress',$adress);
             $request->session()->put('order_id',$order->id);
             return response()->json(['url'=>$session->url]);
+    }
+
+    public function getUserOrders(Request $request){
+        return Order::where("user_id",$request->id);
     }
 }

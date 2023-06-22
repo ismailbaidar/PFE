@@ -5,6 +5,7 @@ export const addProduct = createAsyncThunk(
     "AddProduct",
     async (data, handel) => {
         // try {
+        console.log("data", data.categorie);
         const form = new FormData();
         form.append("name", data.name);
         form.append("description", data.description);
@@ -80,6 +81,7 @@ const productSlice = createSlice({
             state.status = "pending";
         });
         builder.addCase(getProducts.fulfilled, (state, { payload }) => {
+            console.log(payload);
             state.products = payload.products;
         });
         builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {

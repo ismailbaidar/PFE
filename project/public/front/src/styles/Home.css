@@ -329,12 +329,15 @@ li {
     transition: 0.3s ease-in-out;
     z-index: 400;
     box-shadow: 0px 0px 10px #1111110f;
-    height: max-content;
-    width: max-content;
+
+    min-width: 250px;
+    min-height: 300px;
+    max-width: 250px;
+    max-height: 300px;
 }
 .card img {
     width: 100%;
-    object-fit: contain;
+    object-fit: COVER;
     aspect-ratio: 1;
 }
 .cardsContainer {
@@ -531,11 +534,13 @@ li {
 }
 .CategorieCard {
     min-width: 220px;
+    min-height: 550px;
+    max-height: 550px;
     background-size: contain;
     background-color: var(--red);
     flex: 1;
     background-repeat: no-repeat;
-    height: 350px;
+
     background-position: center center;
     padding: 25px 30px;
     border-radius: 4px;
@@ -626,6 +631,9 @@ li {
 
 .switch {
     flex-direction: row-reverse;
+}
+.swiper-wrapper {
+    padding: 150px;
 }
 .switch .filters {
     align-self: flex-start !important;
@@ -732,7 +740,7 @@ li {
     bottom: 0;
     left: 0;
     right: 0;
-
+    min-width: 100vw;
     align-items: center;
 }
 .footer h3,
@@ -849,12 +857,13 @@ h4 {
 .Navbar svg:hover {
     color: var(--red);
 }
-@media (width<700px) {
+@media (width<760px) {
     .footer {
         flex-direction: column;
         transform: translateY(100%);
         width: 100%;
         gap: 3rem;
+        display: none;
     }
     .footer .f1-first-part {
         /* flex-direction: column; */

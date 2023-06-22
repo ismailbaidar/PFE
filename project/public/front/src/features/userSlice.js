@@ -78,6 +78,7 @@ const userSlice = createSlice({
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
             localStorage.setItem("UID", payload.user.id);
             localStorage.setItem("user", JSON.stringify(payload.user));
+            localStorage.setItem("role", payload.role);
         },
         [logout.fulfilled]: (state, { payload }) => {
             state.user = null;
@@ -85,14 +86,17 @@ const userSlice = createSlice({
             localStorage.setItem("AUTH_TOKEN", "null");
             localStorage.setItem("UID", "null");
             localStorage.setItem("user", "null");
+            localStorage.setItem("role", "null");
         },
         [loginGoogle.fulfilled]: (state, { payload }) => {
+            console.log(payload);
             state.user = payload.user;
             state.token = payload.AUTH_TOKEN;
             payload.AUTH_TOKEN &&
                 localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
             localStorage.setItem("UID", payload.user.id);
             localStorage.setItem("user", JSON.stringify(payload.user));
+            localStorage.setItem("role", payload.role);
         },
     },
 });

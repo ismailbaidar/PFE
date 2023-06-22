@@ -12,7 +12,7 @@ class BrandObserver
     public function created(Brand $brand): void
     {
         $message = "l'utilisateur ".request()->user()->id." a ajouter une marque  #".$brand->id;
-        $brand->logs()->create(['content'=>$message,'action'=>'Ajouter']);
+        $brand->logs()->create(['content'=>$message,'action'=>'ajouter']);
     }
 
     /**
