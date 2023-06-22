@@ -18,21 +18,15 @@ import Products from "../pages/Products";
 import Categories from "../pages/Categories";
 import Collection from "../pages/Collection";
 import EditeCollection from "../pages/EditeCollection";
-<<<<<<< Updated upstream
-import Brands from '../pages/Brands'
-import Spects from '../pages/Spects'
-import AddCollection from '../pages/AddCollection'
-import UploadShippingCity from '../pages/UploadShippingCity'
-import ShowLivreurs from '../pages/ShowLivreurs'
-import Admins from '../pages/Admins'
-=======
 import Brands from "../pages/Brands";
 import Spects from "../pages/Spects";
 import AddCollection from "../pages/AddCollection";
 import UploadShippingCity from "../pages/UploadShippingCity";
->>>>>>> Stashed changes
 import { useSelector } from "react-redux";
 import Logs from "./Logs";
+import Admins from '../pages/Admins';
+import ShowLivreurs from '../pages/ShowLivreurs';
+
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
     const show = useSelector((state) => state.showReducer.show);
