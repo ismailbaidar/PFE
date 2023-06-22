@@ -37,6 +37,11 @@ const SideBar = () => {
                     title={"Products"}
                 />
                 <ItemSideBar
+                    to="/admin/livreurs"
+                    icon={faBoxArchive}
+                    title={"Livreurs"}
+                />
+                <ItemSideBar
                     to={"/admin/collections"}
                     icon={faBoxArchive}
                     title={"Collections"}
@@ -51,10 +56,21 @@ const SideBar = () => {
                     icon={faBoxArchive}
                     title={"spects"}
                 />
+                
+                <ItemSideBar
+                    to={"/admin/orders"}
+                    icon={faBoxArchive}
+                    title={"Orders"}
+                />
                 <ItemSideBar
                     to={"/admin/brands"}
                     icon={faBoxArchive}
                     title={"Brands"}
+                />
+                <ItemSideBar
+                    to={"/admin/logs"}
+                    icon={faBoxArchive}
+                    title={"Logs"}
                 />
                 <ItemSideBar
                     to={"/admin/categories"}

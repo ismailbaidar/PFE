@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('slider_id')->constrained();
             $table->String('img');
-            $table->String('Link');
             $table->timestamps();
         });
     }

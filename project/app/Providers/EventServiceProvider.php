@@ -2,18 +2,20 @@
 
 namespace App\Providers;
 
-use App\Models\Brand;
-use App\Models\Spect;
-use App\Models\Categorie;
+use App\Events\PointCreation as PointEvent;
 use App\Events\VerifyEvent;
-use App\Observers\BrandObserver;
-use App\Observers\SpectObserver;
+use App\Listeners\PointCreation as PointListener;
 use App\Listeners\VerifyListener;
+use App\Models\Brand;
+use App\Models\Categorie;
+use App\Models\Spect;
+use App\Observers\BrandObserver;
 use App\Observers\CategorieObserver;
-use Illuminate\Support\Facades\Event;
+use App\Observers\SpectObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -26,9 +28,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        VerifyEvent::class=>[
-            VerifyListener::class
-        ]
+        VerifyEvent::class => [
+            VerifyListener::class,
+        ],
+        PointEvent::class => [
+            PointListener::class,
+        ],
 
     ];
 

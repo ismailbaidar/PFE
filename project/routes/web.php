@@ -37,7 +37,7 @@ Route::get('/success', function (Request $request) {
     $paymentMethod = $paymentDetails->payment_method;
     $paymentEmail = $paymentDetails->customer_details->email;
     $paymentName = $paymentDetails->customer_details->name;
-    $amount = $paymentDetails->amount_total;
+    $amount = $paymentDetails->amount_total/100;
     $currency = $paymentDetails->currency;
     $transactionId = $paymentDetails->payment_intent;
     $paymentIntent = \Stripe\PaymentIntent::retrieve($transactionId);
@@ -46,6 +46,8 @@ Route::get('/success', function (Request $request) {
     $cardNumber = $paymentData->card->last4;
     $exp_date = $paymentData->card->exp_month.'/'.$paymentData->card->exp_year;
     $cvc = $paymentData->card->checks->cvc_check;
+    $user=$request->user()->points+=($amount/100)*0.02;
+    $user->save();
     $payment = Payment::create([
         'payment_method' => 'card',
         'payment_email' => $paymentEmail,
@@ -77,7 +79,7 @@ Route::get('/cancel', function () {
         'percent_off' => rand(4, 20),
         'duration' => 'repeating',
         'duration_in_months' => 3,
-        'name' => '20% Off Coupon',
+        'name' => 'Coupon',
         'id' => Str::random('12'),
     ]);
     dd($coupon->id);

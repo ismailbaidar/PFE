@@ -110,7 +110,6 @@ export default function Products() {
 
     return (
         <div className="ProductsDashboard">
-            <AnalyseProduct />
             <button
                 className="ajouterProduit"
                 onClick={() => navigate("/admin/AjouterProduit")}

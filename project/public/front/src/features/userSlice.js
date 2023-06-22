@@ -13,7 +13,7 @@ export const updateUser = createAsyncThunk("user/updateUser", async (data) => {
 export const register = createAsyncThunk("user/register", async (data) => {
     return axios
         .post("http://127.0.0.1:8000/api/register", data)
-        .then((res) => console.log(res.data))
+        .then((res) => res.data)
         .catch((err) => console.log(err));
 });
 
@@ -99,7 +99,9 @@ const userSlice = createSlice({
             localStorage.setItem("user", JSON.stringify(payload.user));
             localStorage.setItem("role", payload.role);
         },
-        [register.fulfilled]: (state, payload) => {
+        [register.fulfilled]: (state, {payload}) => {
+            console.log(payload)
+            localStorage.setItem('AUTH_TOKEN',payload.token)
             window.location.href = "http://localhost:3000/confirmationCode";
         },
     },

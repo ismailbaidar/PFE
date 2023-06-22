@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('sliderimages', function (Blueprint $table) {
+        Schema::create('pointusers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('level');
+            $table->boolean('used');
+            $table->timestamps();
         });
     }
 
@@ -20,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('sliderimages', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('pointusers');
     }
 };

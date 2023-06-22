@@ -24,6 +24,7 @@ import AddCollection from "../pages/AddCollection";
 import UploadShippingCity from "../pages/UploadShippingCity";
 import ShowLivreurs from "../pages/ShowLivreurs";
 import Admins from "../pages/Admins";
+import Orders from "../pages/Orders";
 
 import { useSelector } from "react-redux";
 
@@ -33,7 +34,7 @@ const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
     const show = useSelector((state) => state.showReducer.show);
     return (
-        <div className="DashbordMain  ">
+        <div className="DashbordMain dark  ">
             <SideBar />
             <div className="WrapperAdmin" data-show={show}>
                 <Search />
@@ -41,6 +42,7 @@ const AdminRoute = () => {
                     <Route path="/" element={<DashboardHome />} />
                     <Route path="/livreurs" element={<ShowLivreurs />} />
                     <Route path="/users" element={<Admins />} />
+                    <Route path="/orders" element={<Orders />} />
                     <Route
                         path="/AjouterProduit"
                         element={
