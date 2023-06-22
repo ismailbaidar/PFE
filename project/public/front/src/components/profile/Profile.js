@@ -9,11 +9,18 @@ import Wishlist from "../wishlist/Wishlist";
 import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
 import ToUpButton from "../Tools/ToUpButton";
 import EditProfile from "./EditProfile";
+import ShowProgress from "./ShowProgress";
+import { useState } from "react";
+
 export default function Profile() {
+    const [visible, setVisible] = useState(false);
     return (
         <div className="profile">
             <NavigationSidebar></NavigationSidebar>
             <div>
+                {visible && (
+                    <ShowProgress currentPoints={500} setVisible={setVisible} />
+                )}
                 <ProfileNavbar></ProfileNavbar>
 
                 <Routes>
@@ -23,7 +30,7 @@ export default function Profile() {
                     <Route path="wishlist" element={<Wishlist />} />
                 </Routes>
             </div>
-            <StatsSideBar />
+            <StatsSideBar setVisible={setVisible} />
             <ToUpButton />
         </div>
     );

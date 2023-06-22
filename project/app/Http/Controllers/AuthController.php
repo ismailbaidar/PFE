@@ -17,7 +17,7 @@ class AuthController extends Controller
             $data['code']=rand(100000,999999);
             $user=User::create($data);
             event(new VerifyEvent($data));
-            $token = $user->createToken('token')->plainTextToken;
+            $token = $user->createToken('AUTH_TOKEN')->plainTextToken;
             return response()->json(['Status'=>'User Created ','AUTH_TOKEN'=>$token]) ;
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);

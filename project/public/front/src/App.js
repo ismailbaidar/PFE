@@ -124,9 +124,8 @@ function App() {
                     }
                 />
 
-                {md5("livreur") == localStorage.getItem("role") && (
-                    <Route path="livreur" element={<LivraisonHome />} />
-                )}
+                <Route path="livreur" element={<LivraisonHome />} />
+
                 <Route
                     path="notfound"
                     element={<ErrorPage errorType={404} />}

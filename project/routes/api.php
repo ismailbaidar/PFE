@@ -8,10 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\OtherController;
-use App\Http\Controllers\PaimentController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SpectController;
+
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -77,14 +74,15 @@ Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::apiResource('brand',BrandController::class)->except('update');
 
 
-Route::apiResource('product', ProductController::class)->except('update');
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
-    Route::post('VerifyEmail', [AuthController::class, 'Verify']);
+    Route::apiResource('product', ProductController::class)->except('update');
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
+        Route::post('VerifyEmail', [AuthController::class, 'Verify']);
     Route::post('/checkout', [PaimentController::class, 'checkout'])->middleware('web');
     Route::post('categorie/{id}', [CategorieController::class, 'update']);
     Route::post('brand/{id}', [BrandController::class, 'update']);
     Route::apiResource('brand', BrandController::class)->except('update');
+    Route::apiResource('spect', SpectController::class)->except('update');
 
     Route::post('product/{id}',[ProductController::class,'update']);
     Route::post("/updateUser",[UserController::class,"update"]);
