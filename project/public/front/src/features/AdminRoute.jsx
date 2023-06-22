@@ -38,7 +38,7 @@ const AdminRoute = () => {
             <div className="WrapperAdmin" data-show={show}>
                 <Search />
                 <Routes>
-                    <Route path="/" element={<DashboardHome />} />
+                    <Route path="/" index element={<DashboardHome />} />
                     <Route path="/livreurs" element={<ShowLivreurs />} />
                     <Route path="/users" element={<Admins />} />
                     <Route

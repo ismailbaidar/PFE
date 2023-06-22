@@ -89,6 +89,9 @@ Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::post("logout",[AuthController::class,"Logout"]);
     Route::post("toggleProducts",[WishlistController::class,"toggleProducts"]);
     Route::get("getUserWishlist/{id}",[WishlistController::class,"getUserWishlist"]);
+    Route::get("getLivreurOrderse/",[PaimentController::class,"getLivreurOrders"]);
+    Route::get("getUserOrders/{id}",[PaimentController::class,"getUserOrders"]);
+    Route::get("logs",LogController::class);
 
 
 }
