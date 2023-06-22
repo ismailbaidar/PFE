@@ -4,7 +4,9 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserOrders } from "../../features/orderSlice";
-export default function StatsSideBar() {
+import PointsProgressBar from "./PointsProgressBar";
+import ShowProgress from "./ShowProgress";
+export default function StatsSideBar({ setVisible }) {
     const user = JSON.parse(localStorage.getItem("user"));
     const dispatch = useDispatch();
     const orders = useSelector((state) => state.orderReducer.orders) || [];
@@ -45,7 +47,13 @@ export default function StatsSideBar() {
                 </div>
                 <div className="second-part success">
                     <span className="title">Your points</span>
-                    <span className="value">999pts</span>
+                    <PointsProgressBar min={0} max={500} current={250} />
+                    <button
+                        className="show-progress"
+                        onClick={() => setVisible(true)}
+                    >
+                        show progress
+                    </button>
                 </div>
             </div>
         </div>
