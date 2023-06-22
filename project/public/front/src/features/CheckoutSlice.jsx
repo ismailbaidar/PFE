@@ -56,6 +56,7 @@ const CheckoutSlice=createSlice({
             console.log(payload)
         })
     }
+}
 )
 
 export default CheckoutSlice.reducer;

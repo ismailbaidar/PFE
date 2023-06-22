@@ -25,9 +25,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/sd4',function(){
-    $order->livre();
-});
 
 Route::get('/success', function (Request $request) {
     \Stripe\Stripe::setApiKey(config('stripe.sk'));
@@ -70,6 +67,7 @@ Route::get('/success', function (Request $request) {
     $order->shipping_id = $shipping->id;
     $order->satatus_payment='paid';
     $order->save();
+    $order->livre();
     return redirect()->away('http://localhost:3000/checkout');
 })->name('r');
 Route::get('/cancel', function () {

@@ -4,6 +4,16 @@
     --secondary: #fbfaf8;
     --red: #d33;
 }
+
+.btnAddLivresion{
+    background-color:#d33;
+    color:#fff;
+    padding:5px 10px;
+    margin:5px 0;
+    border-radius: 5px;
+    border:none;
+}
+
 * {
     box-sizing: border-box;
     padding: 0;

@@ -22,6 +22,8 @@ import Brands from '../pages/Brands'
 import Spects from '../pages/Spects'
 import AddCollection from '../pages/AddCollection'
 import UploadShippingCity from '../pages/UploadShippingCity'
+import ShowLivreurs from '../pages/ShowLivreurs'
+import Admins from '../pages/Admins'
 import { useSelector } from "react-redux";
 const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
@@ -33,6 +35,8 @@ const AdminRoute = () => {
                 <Search />
                 <Routes>
                     <Route path="/" element={<DashboardHome />} />
+                    <Route path="/livreurs" element={<ShowLivreurs/>} />
+                    <Route path="/users" element={<Admins/>} />
                     <Route
                         path="/AjouterProduit"
                         element={

@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputItem = ({placeholder,type,value,options=[],input}) => {
+const InputItem = ({placeholder,type,value,options=[],input,city=false}) => {
     if(type=='textarea'){
         return (
             <div className="InputProduct">
@@ -31,7 +31,7 @@ const InputItem = ({placeholder,type,value,options=[],input}) => {
                         <option
                             selected={value}
                             value={e.id}
-                        >{`${e.name}`}</option>
+                        >{`${!city?e.name:e.city}`}</option>
                     ))}
                 </select>
             )}
