@@ -2,6 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import "../styles/ProductsDashboard.css";
 import AnalyseProduct from "../components/Admin/AnalyseProduct";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
@@ -14,6 +15,7 @@ import SureMsg from "../components/Suremsg/SureMsg";
 import FlashCard from "../components/Flash card/FlashCard";
 export default function Products() {
     const [success, setSuccess] = useState(null);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector((state) => state.productReducer.products);
     const status = useSelector((state) => state.productReducer.status);
@@ -85,7 +87,12 @@ export default function Products() {
                             <FontAwesomeIcon icon={faTrash} />
                         </button>
                         <button
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(
+                                    "/admin/produitmodifier/" + params.row.id
+                                );
+                            }}
                             className="edite"
                         >
                             <FontAwesomeIcon icon={faEdit} />
@@ -104,7 +111,12 @@ export default function Products() {
     return (
         <div className="ProductsDashboard">
             <AnalyseProduct />
-            <button className="ajouterProduit">Ajouter Produit</button>
+            <button
+                className="ajouterProduit"
+                onClick={() => navigate("/admin/AjouterProduit")}
+            >
+                Ajouter Produit
+            </button>
             <DataGrid
                 rows={Rows}
                 columns={columns}

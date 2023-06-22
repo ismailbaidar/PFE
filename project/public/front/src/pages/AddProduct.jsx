@@ -12,7 +12,6 @@ import { getSpects } from "../features/SpectSlice";
 import { getBrands } from "../features/BrandSlice";
 import FlashCard from "../components/Flash card/FlashCard";
 import MiniLoading from "../components/mini-loading/MiniLoading";
-import { Navigate } from "react-router-dom";
 
 const AddProduct = () => {
     let option = { key: "", value: "" };
@@ -27,7 +26,6 @@ const AddProduct = () => {
     };
     const [showError, setError] = useState(false);
     const [isPending, setPending] = useState(false);
-
     const dispatch = useDispatch();
     const [titre, setTitre] = useState(null);
     const [price, setPrice] = useState(null);

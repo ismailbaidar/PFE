@@ -10,7 +10,7 @@ export const getUserOrders = createAsyncThunk(
     async (data) => {
         return axios
             .get(
-                `http://127.0.0.1:8000/api/getUserOrders${localStorage.getItem(
+                `http://127.0.0.1:8000/api/getUserOrders/${localStorage.getItem(
                     "UID"
                 )}`
             )
@@ -24,6 +24,7 @@ const orderSlice = createSlice({
     initialState,
     extraReducers: {
         [getUserOrders.fulfilled]: (state, { payload }) => {
+            console.log(payload);
             state.orders = payload;
         },
     },

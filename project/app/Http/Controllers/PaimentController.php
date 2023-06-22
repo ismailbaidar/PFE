@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Discount;
+use App\Models\Shipping;
 use App\Models\Shippingcity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -189,7 +190,7 @@ class PaimentController extends Controller
             return response()->json(['url'=>$session->url]);
     }
 
-    public function getUserOrders(Request $request){
-        return Order::where("user_id",$request->id);
+    public function getUserOrders(Request $request,$id){
+        return response()->json(Order::where("user_id",$id)->with("products",'shipping')->get());
     }
 }

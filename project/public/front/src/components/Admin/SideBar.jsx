@@ -30,15 +30,42 @@ const SideBar = () => {
                 />
             </div>
             <div className="sidebar-items">
-                <ItemSideBar icon={faBox} title={"Dashbord"} />
-                <ItemSideBar active icon={faBoxArchive} title={"Products"} />
-                <ItemSideBar icon={faList} title={"Orders"} />
-                <ItemSideBar icon={faBoxArchive} title={"Collections"} />
-                <ItemSideBar icon={faBoxArchive} title={"Users"} />
-                <ItemSideBar icon={faBoxArchive} title={"Transaction"} />
-                <ItemSideBar icon={faBoxArchive} title={"Brands"} />
-                <ItemSideBar icon={faBoxArchive} title={"Categories"} />
-                <ItemSideBar icon={faBoxArchive} title={"Content Management"} />
+                <ItemSideBar to="/admin/" icon={faBox} title={"Dashbord"} />
+                <ItemSideBar
+                    to="/admin/products"
+                    icon={faBoxArchive}
+                    title={"Products"}
+                />
+                <ItemSideBar
+                    to={"/admin/collections"}
+                    icon={faBoxArchive}
+                    title={"Collections"}
+                />
+                <ItemSideBar
+                    to={"/admin/users"}
+                    icon={faBoxArchive}
+                    title={"users"}
+                />
+                <ItemSideBar
+                    to={"/admin/spects"}
+                    icon={faBoxArchive}
+                    title={"spects"}
+                />
+                <ItemSideBar
+                    to={"/admin/brands"}
+                    icon={faBoxArchive}
+                    title={"Brands"}
+                />
+                <ItemSideBar
+                    to={"/admin/categories"}
+                    icon={faBoxArchive}
+                    title={"Categories"}
+                />
+                <ItemSideBar
+                    to={"/admin/ContentManagement"}
+                    icon={faBoxArchive}
+                    title={"Content Management"}
+                />
             </div>
             <FontAwesomeIcon
                 id="iconToogleDashboardM"
