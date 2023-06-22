@@ -81,7 +81,6 @@ const productSlice = createSlice({
             state.status = "pending";
         });
         builder.addCase(getProducts.fulfilled, (state, { payload }) => {
-            console.log(payload);
             state.products = payload.products;
         });
         builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {
