@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Discount;
+use App\Models\Livresion;
 use App\Models\Shipping;
 use App\Models\Shippingcity;
 use Illuminate\Http\Request;
@@ -199,5 +200,12 @@ class PaimentController extends Controller
 
     public function getUserOrders(Request $request,$id){
         return response()->json(Order::where("user_id",$id)->with("products",'shipping')->get());
+    }
+    public function getLivreurOrders(Request $request,$id){
+        return response()->json(Livresion::where("livreur_id",$id)->with('order.shipping')->get());
+    }
+
+    public function changeOrderStatus(Request $request,$id){
+        Order::find($id)->update(["status"=>"delivered"]);
     }
 }

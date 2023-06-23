@@ -91,5 +91,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post("/updateUser",[UserController::class,"update"]);
     Route::post("toggleProducts",[WishlistController::class,"toggleProducts"]);
     Route::post('getUserPoints',[OtherController::class,'getUserPoints']);
+    Route::get("getUserWishlist/{id}",[WishlistController::class,"getUserWishlist"]);
+    Route::get("getLivreurOrders/{id}",[PaimentController::class,"getLivreurOrders"]);
+    Route::get("getUserOrders/{id}",[PaimentController::class,"getUserOrders"]);
+    Route::get("logs",LogController::class);
+    Route::patch("changeOrderStatus/{id}",[PaimentController::class,"changeOrderStatus"]);
+
 }
 );
+
+Route::get("getLivreurOrders/{id}",[PaimentController::class,"getLivreurOrders"]);

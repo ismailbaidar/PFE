@@ -65,8 +65,9 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setToken: (state, payload) => {
+        setToken: (state, { payload }) => {
             state.token = payload;
+            console.log("hello", state.token);
         },
     },
     extraReducers: {
