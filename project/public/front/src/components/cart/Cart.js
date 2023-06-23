@@ -2,7 +2,7 @@ import CartProductCard from "./CartProductCard";
 import "../../styles/cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../features/cartSlice";
-
+import { Link } from "react-router-dom";
 export default function Cart() {
     const cart = useSelector((state) => state.cartReducer.cart);
     const dispatch = useDispatch();
@@ -44,7 +44,9 @@ export default function Cart() {
                                 MAD
                             </span>
                         </div>
-                        <button className="checkout-button">checkout</button>
+                        <button className="checkout-button">
+                            <Link to="/checkout">checkout</Link>
+                        </button>
                     </div>
                 </div>
             </div>

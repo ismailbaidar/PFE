@@ -79,7 +79,7 @@ class PaimentController extends Controller
         }
         $shipping = Shipping::create([
             'shipping_adress' => $adress['address']['line1'],
-            'shipping_zip' => $adress['address']['postal_code'],
+            'shipping_zip' => $adress['address']['postal_code']||"something",
             'shipping_city' => $adress['address']['city'],
             'shipping_fee' => $order->total_price+$order->total_price*$ShippingCity->price/100,
         ]);
