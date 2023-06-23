@@ -119,4 +119,10 @@ class OtherController extends Controller
         $allOrders=Order::with('user')->get();
         return response()->json(['orders'=>$allOrders]);
     }
+
+
+    public function getUserPoints(Request $request){
+        $user = User::where('id',$request->user()->id)->with('pointLevel')->first();
+        return response()->json(['points'=>$user]);
+    }
 }

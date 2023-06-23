@@ -193,6 +193,7 @@ class PaimentController extends Controller
             $request->session()->put('Token_id',$session->id);
             $request->session()->put('adress',$adress);
             $request->session()->put('order_id',$order->id);
+            $request->session()->put('user_id',$request->user()->id);
             return response()->json(['url'=>$session->url]);
     }
 

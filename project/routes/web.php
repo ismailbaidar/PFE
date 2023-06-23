@@ -31,6 +31,7 @@ Route::get('/success', function (Request $request) {
     \Stripe\Stripe::setApiKey(config('stripe.sk'));
     $sessionId = $request->session();
     $adress = $sessionId->get('adress');
+    $user=$sessionId->get('user_id');
     $id = $sessionId->get('Token_id');
     $paymentDetails = \Stripe\Checkout\Session::retrieve($id);
     $shippingFee = $paymentDetails->shipping_cost->amount_subtotal;
@@ -46,7 +47,8 @@ Route::get('/success', function (Request $request) {
     $cardNumber = $paymentData->card->last4;
     $exp_date = $paymentData->card->exp_month.'/'.$paymentData->card->exp_year;
     $cvc = $paymentData->card->checks->cvc_check;
-    $user=$request->user()->points+=($amount/100)*0.02;
+    $user=User::find($user);
+    $user->points+=($amount/100)*0.02;
     $user->save();
     $payment = Payment::create([
         'payment_method' => 'card',
