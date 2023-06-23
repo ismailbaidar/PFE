@@ -81,6 +81,7 @@ const userSlice = createSlice({
             localStorage.setItem("user", JSON.stringify(payload.user));
             localStorage.setItem("role", payload.role);
         },
+
         [logout.fulfilled]: (state, { payload }) => {
             state.user = null;
             state.token = null;
@@ -99,9 +100,8 @@ const userSlice = createSlice({
             localStorage.setItem("user", JSON.stringify(payload.user));
             localStorage.setItem("role", payload.role);
         },
-        [register.fulfilled]: (state, {payload}) => {
-            console.log(payload)
-            localStorage.setItem('AUTH_TOKEN',payload.token)
+        [register.fulfilled]: (state, { payload }) => {
+            localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
             window.location.href = "http://localhost:3000/confirmationCode";
         },
     },

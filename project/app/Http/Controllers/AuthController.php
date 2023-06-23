@@ -50,8 +50,7 @@ class AuthController extends Controller
 
         try {
 
-
-
+            event(new PointCreation($user->id));
                 $token=$user->createToken('AUTH_TOKEN')->plainTextToken;
                 return response()->json(['AUTH_TOKEN'=>$token,"user"=>$user,"role"=>md5($user->role)]);
 

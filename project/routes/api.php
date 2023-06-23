@@ -33,6 +33,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::get('getShippingcity', [OtherController::class, 'getShippingcity']);
 Route::apiResource('collection', CollectionController::class);
 Route::post('addShippingcities', [OtherController::class, 'addCvc']);
@@ -74,9 +76,7 @@ Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
     Route::post('brand/{id}',[BrandController::class,'update']);
     Route::post('spect/{id}',[SpectController::class,'update']);
     Route::apiResource('brand',BrandController::class)->except('update');
-
-
-Route::apiResource('product', ProductController::class)->except('update');
+    Route::apiResource('product', ProductController::class)->except('update');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
@@ -86,13 +86,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('brand/{id}', [BrandController::class, 'update']);
     Route::apiResource('brand', BrandController::class)->except('update');
     Route::post('GetCoupon',[OtherController::class,'GetCoupon']);
-
+    Route::apiResource('spect', SpectController::class)->except('update');
     Route::post('product/{id}',[ProductController::class,'update']);
     Route::post("/updateUser",[UserController::class,"update"]);
-    Route::post("logout",[AuthController::class,"Logout"]);
     Route::post("toggleProducts",[WishlistController::class,"toggleProducts"]);
-    Route::get("getUserWishlist/{id}",[WishlistController::class,"getUserWishlist"]);
-
-
+    Route::post('getUserPoints',[OtherController::class,'getUserPoints']);
 }
 );
