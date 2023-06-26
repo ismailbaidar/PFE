@@ -9,4 +9,5 @@ class Discount extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    protected $fillable = ["code","prc"];
 }

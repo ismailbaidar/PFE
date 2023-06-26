@@ -33,7 +33,7 @@ export default function Logs() {
                 )
             )
             .catch((err) => console.log(err));
-    });
+    }, []);
 
     return (
         <>

@@ -25,7 +25,7 @@ class discountFactory extends Factory
             $coupon = Coupon::create([
                 'name' => Str::random(15),
                 'percent_off' => rand(5,40),
-                'duration' => fake()->date,
+                'duration' => 'repeating',
                 'duration_in_months' => 4,
             ]),
             Discount::create([

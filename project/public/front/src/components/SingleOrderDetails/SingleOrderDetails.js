@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUserOrders } from "../../features/orderSlice";
+import { Link } from "react-router-dom";
 export default function SingleOrderDetails({ setDetailsVisible }) {
     const { id } = useParams();
     const orders = useSelector((state) => state.orderReducer.orders);
@@ -55,7 +56,10 @@ export default function SingleOrderDetails({ setDetailsVisible }) {
                                 {" "}
                                 Payment Status :{" "}
                                 <span>
-                                    <Status word="pending" type="success" />
+                                    <Status
+                                        word={order.satatus_payment}
+                                        type="success"
+                                    />
                                 </span>
                             </div>
                         </div>
@@ -91,6 +95,9 @@ export default function SingleOrderDetails({ setDetailsVisible }) {
             <div className="buttons">
                 <button className="print-button" onClick={() => window.print()}>
                     print
+                </button>
+                <button className="print-button">
+                    <Link to="/">Back To Home</Link>
                 </button>
             </div>
         </div>

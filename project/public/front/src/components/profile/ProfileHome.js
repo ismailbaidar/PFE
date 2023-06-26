@@ -12,9 +12,6 @@ export default function ProfileHome() {
             </div>
             <div className="activities">
                 <ActivityProducts />
-                <ActivityProducts />
-                <ActivityProducts />
-                <ActivityProducts />
             </div>
         </div>
     );

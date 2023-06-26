@@ -102,7 +102,13 @@ const userSlice = createSlice({
             localStorage.setItem("role", payload.role);
         },
         [register.fulfilled]: (state, { payload }) => {
+            console.log(payload);
             localStorage.setItem("AUTH_TOKEN", payload.AUTH_TOKEN);
+            localStorage.setItem("user", JSON.stringify(payload.user));
+            localStorage.setItem("role", payload.user.role);
+            localStorage.setItem("UID", payload.user.id);
+            state.user = payload.user;
+            state.token = payload.AUTH_TOKEN;
             window.location.href = "http://localhost:3000/confirmationCode";
         },
     },

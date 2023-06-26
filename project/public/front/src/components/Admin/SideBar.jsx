@@ -7,6 +7,7 @@ import {
     faBoxArchive,
     faList,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import "../../styles/AdminSideBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,13 +23,13 @@ const SideBar = () => {
                     : "fullSideBarAdmin"
             }`}
         >
-            <div className="logo">
+            <Link to="/" className="logo">
                 <img
                     src="../../images/logored.png"
                     alt=""
                     width={show || window.innerWidth ? 40 : 90}
                 />
-            </div>
+            </Link>
             <div className="sidebar-items">
                 <ItemSideBar to="/admin/" icon={faBox} title={"Dashbord"} />
                 <ItemSideBar
@@ -56,7 +57,7 @@ const SideBar = () => {
                     icon={faBoxArchive}
                     title={"spects"}
                 />
-                
+
                 <ItemSideBar
                     to={"/admin/orders"}
                     icon={faBoxArchive}

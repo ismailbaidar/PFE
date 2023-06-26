@@ -20,7 +20,7 @@ import LivraisonHome from "./components/Livraison/LivraisonHome";
 import ToUpButton from "./components/Tools/ToUpButton";
 import PaymentSuccess from "./components/Payment-success/PaymentSuccess";
 import md5 from "md5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "./features/userSlice";
 import AllProducts from "./pages/AllProducts";
 import Home from "./pages/Home";
@@ -46,16 +46,23 @@ function App() {
         return config;
     });
     const navigate = useNavigate();
+    const token = useSelector((state) => state.userReducer.token);
+
+    useEffect(() => {
+        if (localStorage.getItem("role") == md5("livreur")) {
+            navigate("/livreur");
+        }
+        if (localStorage.getItem("role") == md5("user")) {
+            navigate("/");
+        }
+    }, []);
     return (
         <div className="App">
             <div id="top"></div>
 
             <Routes>
                 <Route path="/*" element={<MainRoute />} />
-                <Route
-                    path="/confirmationCode"
-                    element={<ConfirmationCode />}
-                />
+
                 <Route
                     path="/confirmationCode"
                     element={<ConfirmationCode />}
@@ -65,10 +72,10 @@ function App() {
                     <Route
                         path="order/:id"
                         element={
-                            md5("user") == localStorage.getItem("role") ? (
+                            localStorage.getItem("role") ? (
                                 <SingleOrderDetails />
                             ) : (
-                                <ErrorPage errorType={401} />
+                                <Login />
                             )
                         }
                     />
@@ -97,16 +104,23 @@ function App() {
                             md5("user") == localStorage.getItem("role") ? (
                                 <SingleOrderDetails />
                             ) : (
-                                <ErrorPage errorType={401} />
+                                <Login />
                             )
                         }
                     />
                 </>
-                {md5("admin") == localStorage.getItem("role") && (
-                    <>
-                        <Route path="/Admin/*" element={<AdminRoute />} />
-                    </>
-                )}
+
+                <>
+                    <Route
+                        path="/Admin/*"
+                        element={
+                            <PreventDirectAccess type="auth">
+                                <AdminRoute />
+                            </PreventDirectAccess>
+                        }
+                    />
+                </>
+
                 <Route
                     path="register"
                     element={
@@ -124,7 +138,14 @@ function App() {
                     }
                 />
 
-                <Route path="livreur" element={<LivraisonHome />} />
+                <Route
+                    path="livreur"
+                    element={
+                        <PreventDirectAccess type="auth">
+                            <LivraisonHome />
+                        </PreventDirectAccess>
+                    }
+                />
 
                 <Route
                     path="notfound"

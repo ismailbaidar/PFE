@@ -9,11 +9,15 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../features/productSlice";
 import ReviewChecker from "./ReviewChecker";
+import { addProductToCart, updateCart } from "../../features/cartSlice";
+
 export default function SinglePage() {
     const dispatch = useDispatch();
 
     const { productId } = useParams();
     const description = useRef();
+    const cart = useSelector((state) => state.cartReducer.cart);
+
     useEffect(() => {
         dispatch(getProducts());
     }, []);
@@ -35,6 +39,17 @@ export default function SinglePage() {
     }, [product]);
 
     const [visibleItem, setVisibleItem] = useState("description");
+    const [count, setCount] = useState(1);
+    function addOrUpdateProductInCart(p) {
+        const product = cart.find((prod) => prod.id == p.id);
+        console.log(product);
+        if (product == undefined) {
+            dispatch(addProductToCart({ ...p, qte: count }));
+        } else {
+            dispatch(updateCart({ ...product, qte: product.qte + count }));
+        }
+    }
+
     return (
         <div className="single-page-wrapper">
             {product != undefined && (
@@ -94,10 +109,9 @@ export default function SinglePage() {
                                 </div>
                             </div>
                             <div className="specs">
-                                <SpecCard />
-                                <SpecCard />
-                                <SpecCard />
-                                <SpecCard />
+                                {product.spects.map((s) => {
+                                    return <SpecCard {...s} />;
+                                })}
                             </div>
 
                             <div className="brand-icon-rating">
@@ -106,15 +120,33 @@ export default function SinglePage() {
                             </div>
                             <div className="qte-input-cart-button">
                                 <div className="qte-input">
-                                    <button className="qte-changer-button increment-qte">
+                                    <button
+                                        className="qte-changer-button increment-qte"
+                                        onClick={() => setCount(count - 1)}
+                                    >
                                         -
                                     </button>
-                                    <span>1</span>
-                                    <button className="qte-changer-button decrement-qte">
+                                    <span>{count}</span>
+                                    <button
+                                        className="qte-changer-button decrement-qte"
+                                        onClick={() => setCount(count + 1)}
+                                    >
                                         +
                                     </button>
                                 </div>
-                                <button className="cart-button">
+                                <button
+                                    className="cart-button"
+                                    onClick={() =>
+                                        addOrUpdateProductInCart({
+                                            id: product.id,
+                                            name: product.name,
+                                            price: product.price,
+                                            discount: product.discount,
+                                            images: product.images,
+                                            brand: product.brand.name,
+                                        })
+                                    }
+                                >
                                     Add to cart
                                 </button>
                             </div>

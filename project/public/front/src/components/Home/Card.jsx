@@ -25,7 +25,7 @@ const Card = ({ id, name, price, discount, images, brand }) => {
     }
     return (
         <div className="card">
-            <Link to={`product/${id}`}>
+            <Link to={`/product/${id}`}>
                 <div className="catImages">
                     <img src={img1} alt="" />
                     <img src={img2} alt="" />

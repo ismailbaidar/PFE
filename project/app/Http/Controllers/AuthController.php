@@ -20,7 +20,7 @@ class AuthController extends Controller
             event(new VerifyEvent($data));
             event(new PointCreation($user->id));
             $token = $user->createToken('AUTH_TOKEN')->plainTextToken;
-            return response()->json(['Status'=>'User Created ','AUTH_TOKEN'=>$token]) ;
+            return response()->json(['Status'=>'User Created ','AUTH_TOKEN'=>$token,"user"=>$user]) ;
         } catch (\Throwable $th) {
             return response()->json(['error'=>$th->getMessage()]);
         }

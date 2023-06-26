@@ -34,7 +34,7 @@ const AdminRoute = () => {
     const AddProduct = React.lazy(() => import("../pages/AddProduct"));
     const show = useSelector((state) => state.showReducer.show);
     return (
-        <div className="DashbordMain dark  ">
+        <div className="DashbordMain  ">
             <SideBar />
             <div className="WrapperAdmin" data-show={show}>
                 <Search />

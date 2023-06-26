@@ -14,7 +14,7 @@ import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/userSlice";
 import { getWishlist } from "../features/wishlistSlice";
-
+import md5 from "md5";
 const Navbar = () => {
     const [toogle, setToogle] = useState(false);
     const [search, setSearch] = useState(false);
@@ -54,7 +54,9 @@ const Navbar = () => {
                 </div>
                 <div className="count">
                     <span>{wishlist.length}</span>
-                    <FontAwesomeIcon icon={faHeart} />
+                    <Link to="/profile/wishlist">
+                        <FontAwesomeIcon icon={faHeart} />
+                    </Link>
                 </div>
 
                 <FontAwesomeIcon
@@ -88,6 +90,11 @@ const Navbar = () => {
                         )}
                     </ul>
                 </div>
+                {md5("admin") == localStorage.getItem("role") && (
+                    <div>
+                        <Link to="/admin">Dashboard</Link>
+                    </div>
+                )}
             </div>
             {toogle && <SectionSideNavigation set={setToogle} />}
             {search && <Search hide={setSearch} />}

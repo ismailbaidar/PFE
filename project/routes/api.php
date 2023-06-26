@@ -67,11 +67,7 @@ Route::apiResource('product',ProductController::class)->except('update');
 
 
 
-Route::post('register', [AuthController::class, 'Register']);
-Route::post('login', [AuthController::class, 'Login']);
-Route::post('loginGoogle', [AuthController::class, 'LoginGoogle']);
-Route::post('checkCoupon', [PaimentController::class, 'checkCoupon']);
-Route::post('paimentlivresion', [PaimentController::class, 'paimentlivresion']);
+
     Route::post('categorie/{id}',[CategorieController::class,'update']);
     Route::post('brand/{id}',[BrandController::class,'update']);
     Route::post('spect/{id}',[SpectController::class,'update']);

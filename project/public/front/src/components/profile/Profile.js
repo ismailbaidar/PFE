@@ -10,27 +10,45 @@ import SingleOrderDetails from "../SingleOrderDetails/SingleOrderDetails";
 import ToUpButton from "../Tools/ToUpButton";
 import EditProfile from "./EditProfile";
 import ShowProgress from "./ShowProgress";
-import { useState,useEffect,useMemo } from "react";
-import axios from 'axios'
+import { useState, useEffect, useMemo } from "react";
+import axios from "axios";
 export default function Profile() {
     const [visible, setVisible] = useState(false);
     const [data, setData] = useState(false);
     useEffect(() => {
-        (async()=>{
-            axios.post('http://localhost:8000/api/getUserPoints')
-            .then(res=>setData(res.data.points))
-        })()
+        (async () => {
+            axios
+                .post("http://localhost:8000/api/getUserPoints")
+                .then((res) => setData(res.data.points));
+        })();
     }, []);
-    const minV=useMemo(()=>data? data?.point_level.find(e=>e.used==true):{},[data])
-    const maxV =useMemo(()=>data ? data?.point_level.find((e,i)=>{if(e.used){
-        return data?.point_level[i+1]
-    }}):{},[data]) 
+    const minV = useMemo(
+        () => (data ? data?.point_level.find((e) => e.used == true) : {}),
+        [data]
+    );
+    const maxV = useMemo(
+        () =>
+            data
+                ? data?.point_level.find((e, i) => {
+                      if (e.used) {
+                          return data?.point_level[i + 1];
+                      }
+                  })
+                : {},
+        [data]
+    );
+
+    console.log("dataaaa", data);
     return (
         <div className="profile">
             <NavigationSidebar></NavigationSidebar>
             <div>
                 {visible && (
-                    <ShowProgress data={data} currentPoints={data?.points} setVisible={setVisible} />
+                    <ShowProgress
+                        data={data}
+                        currentPoints={data?.points}
+                        setVisible={setVisible}
+                    />
                 )}
                 <ProfileNavbar></ProfileNavbar>
 

@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 
 export default function PointsProgressBar({ current, min, max }) {
-    const [width, setWidth] = useState();
     const currentProgress = useRef();
     useEffect(() => {
-        currentProgress.current.style.width = `${(current * 100) / max - min}%`;
-    }, []);
+        const width = (current * 100) / max - min;
+        console.log(width, "width");
+        currentProgress.current.style.width = `${width}%`;
+    }, [current]);
     return (
         <div className="progress-bar-wrapper">
             <div className="points-interval">

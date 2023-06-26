@@ -31,7 +31,12 @@
     aspect-ratio: 1;
     background: blue;
     border-radius: 50%;
+    overflow: hidden;
 }
+.stats-sidebar .image-name-email .image img {
+    object-fit: contain;
+}
+
 .stats-sidebar .image-name-email .name {
     font-size: 1.2rem;
     font-weight: bold;
@@ -137,6 +142,7 @@
 .progress-bar-wrapper .progress-bar .current-progress {
     height: 100%;
     background-color: var(--red);
+    display: block;
 }
 .second-part .show-progress {
     background-color: var(--red) !important;

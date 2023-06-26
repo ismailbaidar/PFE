@@ -4,9 +4,11 @@ use Stripe\Coupon;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Shipping;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+
 
 /*
 |--------------------------------------------------------------------------

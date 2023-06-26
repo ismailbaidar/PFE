@@ -17,4 +17,9 @@
     width: 40px;
     aspect-ratio: 1;
     background-color: blue;
+    overflow: hidden;
+}
+.profile-navbar .profile-partie .image-profile img {
+    object-fit: contain;
+    width: 40px;
 }

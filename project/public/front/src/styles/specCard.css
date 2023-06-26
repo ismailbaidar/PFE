@@ -7,7 +7,14 @@
 .spec-card .image {
     width: 50px;
     aspect-ratio: 1;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.spec-card .image img {
+    width: 50px !important;
+    object-fit: cover;
+    aspect-ratio: 1;
 }
 .spec-card .key-value-info {
     display: flex;
